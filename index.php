@@ -4,25 +4,23 @@
 <?php endif; ?>
 
 <h1 id="site-title"><?php echo link_to_home_page(); ?></h1>
-<form id="simple-search" action="<?php echo uri(array('controller'=>'items', 'action'=>'browse'))?>" method="get">		
-	<input type="search" name="search" id="search" value="" class="textinput">
-	<input type="submit" name="submit_search" id="submit_search" value="Search">		
+<form id="simple-search" action="<?php echo uri(array('controller'=>'items', 'action'=>'browse'))?>" method="get">      
+    <input type="search" name="search" id="search" value="" class="textinput">
+    <input type="submit" name="submit_search" id="submit_search" value="Search">        
 </form>
 
 <section id="featured-content" class="<?php echo forbes_theme_featured_content_class(); ?>">
-	<?php if (get_theme_option('Display Featured Item') !== '0'): ?>
+    <?php if (get_theme_option('Display Featured Item') !== '0'): ?>
         <section id="featured-item"><?php forbes_theme_display_random_featured_item(); ?></section>
         <?php endif; ?>
 
         <?php if (get_theme_option('Display Featured Collection') !== '0'): ?>
         <section id="featured-collection"><?php forbes_theme_display_random_featured_collection(); ?></section>
-	<?php endif; ?>
+    <?php endif; ?>
 
-	<?php if ((get_theme_option('Display Featured Exhibit') !== '0')
-		&& plugin_is_active('ExhibitBuilder')
-		&& function_exists('forbes_theme_display_random_featured_exhibit')): ?>
-	<section id="featured-exhibit"><?php forbes_theme_display_random_featured_exhibit(); ?></section>
-	<?php endif; ?>
+    <?php if (get_theme_option('Display Featured Exhibit') !== '0'): ?>
+        <section id="featured-exhibit"><?php forbes_theme_display_random_featured_exhibit(); ?></section>
+    <?php endif; ?>
 </section>
 
 <?php foot(); ?>

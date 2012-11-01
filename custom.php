@@ -129,9 +129,16 @@ function forbes_theme_snippet_with_new_lines($text, $startPos, $endPos, $append=
  * Displays a random featured exhibit
  */
 function forbes_theme_display_random_featured_exhibit() {
+    if (!plugin_is_active('ExhibitBuilder')) {
+        echo '<h2>', __('Featured Exhbit'), '</h2>',
+            __('The "Display Featured Exhibit" option requires the ExhibitBuilder plugin.'),
+            __('Please make sure the ExhbitBuilder plugin is installed and enabled.');
+        return;
+    }
     $featuredExhibit = exhibit_builder_random_featured_exhibit();
     if (!$featuredExhibit) {
-        echo __('No featured exhibits found');
+        echo '<h2>', __('Featured Exhibit'), '</h2>',
+            __('No featured exhibits found');
         return;
     }
     echo '<hgroup>',
