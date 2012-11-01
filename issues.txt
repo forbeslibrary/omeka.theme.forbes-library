@@ -21,3 +21,4 @@
 21 x The dropdown menus on the advanced search screen show too many options, many of which are not relevant. These should be removed. @completed_enhancement
 22 x The theme should use HTML5 for a better user experience @completed_enhancement
 23 x (D) Rename all functions in custom.php to use a common 'forbes' namespace @refactor_complete
+24 (A) The items listed on items/browse should be in ascending order @confirmed_bug submittedBy:dylan
