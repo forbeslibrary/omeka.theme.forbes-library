@@ -188,7 +188,7 @@ function forbes_theme_display_random_featured_collection() {
             '</hgroup>',
             '<figure>', link_to_collection(forbes_theme_collection_thumbnail()), '</figure>',
             '<p class="description">', $description, '</p>',
-            '<a id="link-from-feature-to-collections" href="', uri('items'), '">See all collections</a>';
+            '<a id="link-from-feature-to-collections" href="', uri('collections'), '">See all collections</a>';
     } else {
         echo '<h2>', __('Featured Collection'), '</h2>',
             __('<p>No featured collection found</p>');
