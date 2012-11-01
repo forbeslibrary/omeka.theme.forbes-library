@@ -1,37 +1,18 @@
-OMEKA THEME TODO
-
-HIGH PRIORITY
-Fix bug: percent signs in search give "Not Acceptable" message
-Replace select() with Zend View Helper formSelect in items/advanced-search.php
-Improve element ordering in items/advanced-search.php select menu.
-Create buy/permision-request plugin.
-Create print-friendly plugin.
-Add tool bar to items/show.php: download|print|buy|share
-Clean up CSS.
-Test exhibits with exhibit builder.
-Open site to staff for testing.
-Customize advanced search page so that drop downs don't show irrelevant data.
-Customize navigation code so that link highlighting works better. ('Browse items' should not highlight for search results or advanced search.)
-Update to HTML5. (Use HTML5 Shiv)
-
-LOW PRIORITY
-Replace all tabs with spaces and indent consistently.
-Rename all functions in custom.php to use a common 'forbes' namespace.
-Javascript version (Fix non-responsive script on multiple resizes.)
-Create help pages plugin.
-Fix plurals in browse-summary.php
-Replace unnecessary double quotes with single quotes.
-Make sure __() is used for all text.
-
-DONE
-X Fix slashes in tags
-X Add summary line for searches
-X Figure out what is going on with __() and %s$1
-X Customize item browse for browse by tag
-X Increase font size in header.
-X Fix search bar padding / margins.
-X Add summary line for advanced searches
-X Create plugin to seperate Forbes from Forbes-Dev themes.
-X Add images to collection browse.
-X Look at other themes and flickers for browse and item page inspiration.
-X Make text size larger.
+(B) Percent signs in search give "Not Acceptable" message @confirmed_bug
+(B) Replace select() with Zend View Helper formSelect in items/advanced-search.php @refactor
+(B) Improve element ordering in items/advanced-search.php select menu @enhancement
+(A) Create buy/permision-request plugin. @enhancement
+(C) Create print-friendly plugin. @enhancement
+(C) Clean up CSS. @refactor
+(B) Customize navigation code so that link highlighting works better ('Browse items' should not highlight for search results or advanced search.) @confirmed_bug
+(D) Replace all tabs with spaces and indent consistently @refactor
+(D) There should be help pages @enchancement
+(D) Broken plurals in browse-summary.php @unconfirmed_bug
+(D) Replace unnecessary double quotes with single quotes @refactor
+(D) Make sure __() is used for all text @refactor
+X When slashes are used as the tag separator they show between item tags @bug @fixed
+X When viewing search results you should see a summary of the original search @enchancement @complete
+X The font size in the header should be larger @enchancement @complete submitedBy:Faith
+x The dropdown menus on the advanced search screen show too many options, many of which are not relevant. These should be removed. @enchancement @completed
+x The theme should use HTML5 for a better user experience @enchancement @complete
+x (D) Rename all functions in custom.php to use a common 'forbes' namespace @refactor @complete
