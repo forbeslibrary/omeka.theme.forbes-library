@@ -260,4 +260,36 @@ function forbes_theme_largeicon_link_tag()
     }
     return null;
 }
-?>
+
+/**
+ * Retrieve and loop through a subset of items in the collection.
+ *
+ * This is identical to Omeka's built in loop_items_in_collection except that it actually
+ * uses the option parameter (which is ignored due to a bug in omeka 1.3).
+ * 
+ * @param integer $num 
+ * @param array $options Optional
+ * @return Item|null
+ ***/
+function forbes_theme_loop_items_in_collection($num = 10, $options = array())
+{
+    $options = array_merge($options, array('collection'=>get_current_collection()->id));
+    
+    // Cache this so we don't end up calling the DB query over and over again
+    // inside the loop.
+    static $loopIsRun = false;
+    
+    if (!$loopIsRun) {
+        // Retrieve a limited # of items based on the collection given.
+        $items = get_items($options, $num);
+        set_items_for_loop($items);
+        $loopIsRun = true;
+    }
+    
+    $item = loop_items();
+    if (!$item) {
+        $loopIsRun = false;
+    }
+    return $item;
+}
+

@@ -26,7 +26,7 @@
         </div>
     <?php endif; ?>
     <ul>
-        <?php while (loop_items_in_collection(5)): ?>
+        <?php while (forbes_theme_loop_items_in_collection(5, array('sort_field' => 'Dublin Core,Identifier'))): ?>
             <?php common("show-in-browse", $vars = array(), $dir = 'items') ?>
         <?php endwhile; ?>
     </ul>
