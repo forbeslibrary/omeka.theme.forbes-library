@@ -33,11 +33,14 @@
     <? if ($total_items > 5): ?>
         <div class="collections-show-more-items-line">
             <?php echo __('Showing first five items in this collection.');?>
-            <?php echo link_to_items_in_collection(__('See all %s items', $total_items));?>
+            <?php echo link_to_items_in_collection(
+                __('See all %s items', $total_items),
+                array('sort_field' => 'Dublin Core,Identifier')
+            );?>
         </div>
     <?php endif; ?>
 </section>
 
-<?php echo plugin_append_to_collections_show(); ?>
-<?php foot(); ?>
-
+<?php
+echo plugin_append_to_collections_show();
+foot();
