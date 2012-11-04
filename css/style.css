@@ -135,9 +135,6 @@ input.textinput { margin-bottom:1em; }
 #advanced-search-page .field button {
     float:right;
 }
-#advanced-search-page #search-submit {
-width:100%;
-}
 
 /* Tables */
 th,
@@ -561,24 +558,6 @@ th {
 	margin:0;
 	}
 
-/* Footer Navigation */
-
-footer ul.navigation {
-	padding:0;
-	margin:0 0 0.25em;
-	}
-    footer ul.navigation li {
-	padding-right:0.25em;
-	}
-		
-/* Thumbnails */
-span.thumb {
-	margin:0 0 2em;
-	}
-span.thumb a img {
-	border:1px solid #ccc;
-	} 
-
 /* Browse and Item Pages */
 .pagination,
 .item-pagination {
@@ -602,46 +581,15 @@ span.thumb a img {
 	margin:.5em 0 0;
 }
 
-.item {
-	overflow:hidden;
-	width:100%;
-	padding:0;
-	margin:0;
-	clear:both;
-	border-bottom:0.125em solid #eee;
-	padding-bottom:18px;
-}
-	.item .item-content {
-		float:right;
-		margin-left:18px;
-		margin-bottom:18px;
-	}
-	.item .item-meta {
-		float:left;
-		width:100%;
-	}
- 	.item span {
-		line-height:1.5em;
-		margin-bottom:1.5em;
-	}
-	.item span.thumb {
-		float: right;
-	}
-	.item div.item-img {
-		padding-left:0.5em;
-		float:right;
-	}
-.hentry {
-	margin:1em 0;
-}
-
 .item-description {
 	display:block;
 	margin:0 0 1em;
 }
+
 ul.tags {
 	padding-left:0;
 }
+
 ul.tags li {
 	display:inline;
 	padding:0 .5em 0 0;
