@@ -1,5 +1,5 @@
 1 (B) I would love to see a widget that pulled a random image from someplace within the collections that pulled the title and linked to the record. @enhancement_request submittedBy:lisa
-2 (A) I would love to have the Forbes logo and contact info on the home page. @enhancement_request submittedBy:lisa
+2 (A) I would love to have the Forbes logo and contact info on the home page. submittedBy:lisa @wont_fix [This is already possible by setting Footer Text in the theme options]
 3 (A) On opening page the link in the upper right appears to overlap upon itself. Firefox on PC @unconfirmed_bug submittedBy:lisa
 4 (A) The search box and the word “search” are separated on the home page by several inches. Firefox on PC @unconfirmed_bug submittedBy:lisa
 5 x (A) The "See all collections" link in the featured collection on the home page links to items instead of collections @fixed_bug
@@ -23,3 +23,4 @@
 23 x (D) Rename all functions in custom.php to use a common 'forbes' namespace @refactor_complete
 24 x (A) The items listed on collections/show and after following the link from there to all items in the collection should be sorted consistently.  @fixed_bug submittedBy:dylan
 25 (B) If forbes_theme_display_random_featured_exhibit is enabled and there is no featured exhibit an appropriate message should appear on the homepage @fixed_bug
+26 (A) Add option to display more items per page and to set sort order. @enhancement_request submitedBy:Paula
