@@ -266,24 +266,17 @@ th {
 }
 
 #page-header>#simple-search {
-    text-align:right;
     padding:0.5em;
     margin:0;
     display:inline-block;
-    width:50%;
     height:2em;
-    position:relative;
     vertical-align:middle;
 }
 #search.textinput {
-    position:absolute;
-    left:0;
-    right:6em;
+    width:40em;
 }
 #submit_search {
-    position:absolute;
     width:5.5em;
-    right:0;
 }
 
 #site-logo {
@@ -314,11 +307,11 @@ th {
         vertical-align:middle;
     }
     #page-header>#simple-search {
-        width:auto;
+        width:75%;
     }
     #page-header>#simple-search>.textinput {
-        position:static;
         display:inline-block;
+        width:100%;
     }
     #page-header>#simple-search>#submit_search {
         display:none;
@@ -326,6 +319,7 @@ th {
     #site-logo { padding: 0 0.25em; }
     #top-level-nav {
         margin:0;
+        width:25%;
         padding:0;
         height:100%;
         background:<?php echo Color::bodyText; ?>;
@@ -417,16 +411,14 @@ th {
         margin: 7ex auto;
 }
 #home #simple-search #search {
-        position:absolute;
-        left:0;
-        right:6em;
         font-size:2.5ex;
+        width:100%;
+        display:block;
     }
 #home #simple-search #submit_search {
-        position:absolute;
-        width:5.5em;
-        right:0;
         font-size:2.5ex;
+        display:block;
+        margin: 1em auto;
 	}
 #featured-content {
         margin:5ex 0 2ex 0;
