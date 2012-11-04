@@ -3,7 +3,7 @@
 3 x (A) On opening page the link in the upper right appears to overlap upon itself. Firefox on PC @fixed_bug submittedBy:lisa
 4 x (A) The search box and the word “search” are separated on the home page by several inches. Firefox on PC @fixed_bug submittedBy:lisa
 5 x (A) The "See all collections" link in the featured collection on the home page links to items instead of collections @fixed_bug
-6 (B) Percent signs in search give "Not Acceptable" message @confirmed_bug
+6 (B) Percent signs in search give "Not Acceptable" message @wont_fix [Can only reproduce on forbeslibrary.org. Problem must be with production environment]
 7 (B) Replace select() with Zend View Helper formSelect in items/advanced-search.php @refactor_needed
 8 (B) Improve element ordering in items/advanced-search.php select menu @enhancement_request
 9 (A) Create buy/permission-request plugin. @enhancement_request
