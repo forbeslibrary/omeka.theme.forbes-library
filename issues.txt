@@ -25,3 +25,5 @@
 25 x (B) If forbes_theme_display_random_featured_exhibit is enabled and there is no featured exhibit an appropriate message should appear on the homepage @fixed_bug
 26 (A) Add option to display more items per page and to set sort order. @enhancement_request submitedBy:Paula
 27 (A) drop down menu (shown on small screens) does not work in FireFox @confirmed_bug
+28 (A) Increase size of image for featured item box on homepage @enhancement_request
+29 (A) Show multiple thumbnails for featured collection box on homepage @enhancement_request
