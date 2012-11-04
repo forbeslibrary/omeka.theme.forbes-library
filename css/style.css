@@ -37,11 +37,6 @@ hgroup { /* hgroup vertical margins */
     margin-bottom:1em;
 }
 img { max-width:100%; }
-dt {
-	display:inline;
-	font-weight:bold;
-}
-dd { display:inline; }
 html { height:100%; }
 body {
 	font:<?php echo Font::bodyFont; ?>;
@@ -58,13 +53,6 @@ dl {
 	font-size:1em;
 	line-height:1.6em;
 }
-abbr,
-acronym {
-	border:none;
-	font-style: normal;
-}
-img a {	border:none; }
-blockquote { font-style:italic; }
 /* Headings */
 h1,
 h2,
@@ -107,17 +95,10 @@ h2 a,
 h3 a,
 h4 a { text-decoration:none; }
 
-h4 a { padding:.25em 0; }
-
 /* Forms */
 fieldset {
 	border:0;
 	padding:0;
-}
-legend {
-	font-size:1.5em;
-	line-height:1em;
-	margin:1em 0 0 ;
 }
 input.textinput { margin-bottom:1em; }
 #submit_search_advanced {
@@ -154,23 +135,8 @@ input.textinput { margin-bottom:1em; }
 #advanced-search-page .field button {
     float:right;
 }
-#advanced-search-page input.submitinput {
-    margin-top:1em;
-}
 #advanced-search-page #search-submit {
 width:100%;
-}
-#primary .radioinputs label {
-    display:block;
-    float:left;
-    width:48%;
-    clear:none;
-}
-#primary .search-entry select {
-    margin-bottom:.5em;
-}
-#primary #submit_search {
-    margin:.5em 0 0 458px;
 }
 
 /* Tables */
@@ -567,14 +533,6 @@ th {
     margin-bottom: 1.5em;
 }
 /* ====== Structure ====== */
-#secondary {
-	clear:both;
-	margin:3em 0 0;
-	}
-#primary {
-	height:100%; 
-	margin:0 auto;
-	}
 #recent-items {
 	clear:both;
 	overflow:hidden;
