@@ -109,8 +109,10 @@ input.textinput { margin-bottom:1em; }
     padding:0.75em 0;
     overflow:hidden;
 }
-@media (min-width: 40em) { /* use grid on large screens */
+@media (min-width: 40em) {
+    /* use grid on large screens */
     #advanced-search-page .field {
+        vertical-align:top;
         width:19em;
         padding:0.75em;
         display:inline-block;
@@ -131,7 +133,7 @@ input.textinput { margin-bottom:1em; }
 }
 #advanced-search-page .field select {
     width: 92%;
-    }
+}
 #advanced-search-page .field button {
     float:right;
 }
