@@ -1,0 +1,15 @@
+CHANGE SUMMARY
+This is a summary of big changes including bug fixes and enhancements.
+
+=== v0.1.1
+Improvements to CSS, including fixes for display problems in Firefox caused by the way
+    that browser handles absolute positioning.
+The items listed on collections/show are sorted according to Dublin Core Identifier.
+The items seen after following the link from collections/show to all items in the
+    collection are now sorted by Dublin Core Identifier.
+If forbes_theme_display_random_featured_exhibit is enabled and there is no featured
+    exhibit an appropriate message is now shown on the homepage.
+The "See all collections" link in the featured collection on the home page links now links
+    to items/ instead of collections/
+=== v0.1
+* initial release
