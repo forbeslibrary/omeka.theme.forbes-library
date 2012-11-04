@@ -130,14 +130,14 @@ function forbes_theme_snippet_with_new_lines($text, $startPos, $endPos, $append=
  */
 function forbes_theme_display_random_featured_exhibit() {
     if (!plugin_is_active('ExhibitBuilder')) {
-        echo '<h2>', __('Featured Exhbit'), '</h2>',
+        echo '<hgroup><h2>', __('Featured Exhbit'), '</h2></hgroup>',
             __('The "Display Featured Exhibit" option requires the ExhibitBuilder plugin.'),
             __('Please make sure the ExhbitBuilder plugin is installed and enabled.');
         return;
     }
     $featuredExhibit = exhibit_builder_random_featured_exhibit();
     if (!$featuredExhibit) {
-        echo '<h2>', __('Featured Exhibit'), '</h2>',
+        echo '<hgroup><h2>', __('Featured Exhibit'), '</h2></hgroup>',
             __('No featured exhibits found');
         return;
     }
@@ -260,4 +260,64 @@ function forbes_theme_largeicon_link_tag()
     }
     return null;
 }
-?>
+
+/**
+ * Retrieve and loop through a subset of items in the collection.
+ *
+ * This is identical to Omeka's built in loop_items_in_collection except that it actually
+ * uses the option parameter (which is ignored due to a bug in omeka 1.3).
+ * 
+ * @param integer $num 
+ * @param array $options Optional
+ * @return Item|null
+ ***/
+function forbes_theme_loop_items_in_collection($num = 10, $options = array())
+{
+    $options = array_merge($options, array('collection'=>get_current_collection()->id));
+    
+    // Cache this so we don't end up calling the DB query over and over again
+    // inside the loop.
+    static $loopIsRun = false;
+    
+    if (!$loopIsRun) {
+        // Retrieve a limited # of items based on the collection given.
+        $items = get_items($options, $num);
+        set_items_for_loop($items);
+        $loopIsRun = true;
+    }
+    
+    $item = loop_items();
+    if (!$item) {
+        $loopIsRun = false;
+    }
+    return $item;
+}
+
+
+/**
+ * Creates a link to the items in a collection, using the current collection if none is
+ * specified.
+ *
+ * This function is identical to the built in link_to_items_in_collection() accept that it
+ * accepts a queryParams argument.
+ */
+function fobres_theme_link_to_items_in_collection(
+    $text = null,
+    $props = array(),
+    $action = 'browse',
+    $collectionObj = null,
+    $queryParams = array()
+    )
+{
+    if (!$collectionObj) {
+        $collectionObj = get_current_collection();
+    }
+ 
+    $queryParams['collection'] = $collectionObj->id;
+    
+    if ($text === null) {
+        $text = $collectionObj->totalItems();
+    }
+ 
+    return link_to('items', $action, $text, $props, $queryParams);
+}

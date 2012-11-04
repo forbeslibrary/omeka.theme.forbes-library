@@ -23,7 +23,7 @@
     echo forbes_theme_largeicon_link_tag();
     plugin_header();
 
-    forbes_theme_queue_generated_css('style.php');
+    queue_css('style');
     display_css();
     display_js(); ?>
 </head>
