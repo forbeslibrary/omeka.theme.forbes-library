@@ -24,3 +24,4 @@
 24 x (A) The items listed on collections/show and after following the link from there to all items in the collection should be sorted consistently.  @fixed_bug submittedBy:dylan
 25 (B) If forbes_theme_display_random_featured_exhibit is enabled and there is no featured exhibit an appropriate message should appear on the homepage @fixed_bug
 26 (A) Add option to display more items per page and to set sort order. @enhancement_request submitedBy:Paula
+27 (A) drop down menu (shown on small screens) does not work in FireFox @confirmed_bug
