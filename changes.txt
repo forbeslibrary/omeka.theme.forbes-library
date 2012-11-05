@@ -1,6 +1,14 @@
 CHANGE SUMMARY
 This is a summary of big changes including bug fixes and enhancements.
 
+=== v0.1.2
+Changed css so that footer will be above the fold more often.
+The user may now turn css inclusion on and off.
+Improved language in browse-summary.php and fixed bug with element names in advanced
+    search.
+Fixed problem where more than one entry in the main navigation would have the
+    class="current".
+    
 === v0.1.1
 Improvements to CSS, including fixes for display problems in Firefox caused by the way
     that browser handles absolute positioning.
