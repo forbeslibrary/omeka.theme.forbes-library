@@ -1,6 +1,9 @@
 CHANGE SUMMARY
 This is a summary of big changes including bug fixes and enhancements.
 
+=== v0.1.3
+forbes_theme_nav() now compatible with PHP 5.2.
+
 === v0.1.2
 Changed css so that footer will be above the fold more often.
 The user may now turn css inclusion on and off.

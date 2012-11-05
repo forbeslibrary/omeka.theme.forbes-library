@@ -64,12 +64,7 @@ function forbes_theme_nav(array $links, $navType=Null)
     }
     
     // flatten array by getting single link from any subarrays
-    $lambda = function($value) {
-        if (is_array($value)) {
-            return (string) $value['uri'];
-        }
-        return $value;
-    };
+    $lambda = create_function('$value', 'if (is_array($value)) { return (string) $value["uri"]; } return $value;');
     $links = array_map($lambda, $links);
     
     // determine which link should get class="current"
