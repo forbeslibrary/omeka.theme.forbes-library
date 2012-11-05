@@ -9,7 +9,7 @@
 9 (A) Create buy/permission-request plugin. @enhancement_request
 10 (C) Create print-friendly plugin. @enhancement_request
 11 (C) Clean up CSS. @refactor_needed
-12 (B) Customize navigation code so that link highlighting works better ('Browse items' should not highlight for search results or advanced search.) @confirmed_bug
+12 x (B) Customize navigation code so that link highlighting works better ('Browse items' should not highlight for search results or advanced search.) @fixed_bug
 13 (D) Replace all tabs with spaces and indent consistently @refactor_needed
 14 (A) I would like to see an FAQ section (what is a collection versus exhibit, how to order prints, how to get further assistance, what portion of our collections this represent, etc) @enhancement_request submittedBy:lisa
 15 (D) Broken plurals in browse-summary.php @unconfirmed_bug
