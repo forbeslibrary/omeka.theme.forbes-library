@@ -1,14 +1,14 @@
 <?php
 if (isset($_GET['search']) && $_GET['search']!='') {
 	$limits[] = __(
-    		'matching at least one of the words in the query "%s"',
+    		'with at least one of the words in the query "%s"',
     		html_escape($_GET['search'])
     		);
 
 }
 if (isset($_GET['advanced'])) {
     foreach ($_GET['advanced'] as $search_line) {
-        $element = get_db()->getTable('Element')->find($search_line['element_id'])->name;
+        $element = @get_db()->getTable('Element')->find($search_line['element_id'])->name;
         $type = $search_line['type'];
         $terms = $search_line['terms'];
         if ($element=='' or $type=='' or $terms=='') {
@@ -43,9 +43,9 @@ if (isset($_GET['type']) && $_GET['type']!='') {
 	$table = get_db()->getTable('ItemType');
 	$type_name = $table->find($type_id)->name;
 	if ($type_name) {
-            $limits[] = __('have type %s.', html_escape($type_name));
+            $limits[] = __('with type %s.', html_escape($type_name));
         } else {
-            $limits[] = __('have type with the id %s (type does not exist).', html_escape($type_id));
+            $limits[] = __('which have the type with the id %s (type does not exist).', html_escape($type_id));
         }
 }
 if (isset($_GET['tags']) && $_GET['tags']!='') {
@@ -66,16 +66,16 @@ if (isset($_GET['user']) && $_GET['user']!='') {
 }
 if (isset($_GET['public']) && $_GET['public']) {
     if ($_GET['public']==1) {
-        $limits[] = __('is public');
+        $limits[] = __('which are public');
     } else {
-        $limits[] = __('is not public');
+        $limits[] = __('which are not public');
     }
 }
 if (isset($_GET['featured']) && $_GET['featured']) {
     if ($_GET['featured']==1) {
-        $limits[] = __('is featured');
+        $limits[] = __('which are featured');
     } else {
-        $limits[] = __('is not featured');
+        $limits[] = __('which are not featured');
     }
 }
 if ($tag = Zend_Controller_Front::getInstance()->getRequest()->getParam('tag')) {

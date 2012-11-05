@@ -52,7 +52,7 @@ $formAttributes['method'] = 'GET'; ?>
                     echo __v()->formSelect(array(
 			'name'=>"advanced[$i][element_id]",
 			'value'=>@$rows['element_id'],
-			'options'=>array_merge(array(''=>__('Select Field')),forbes_theme_element_pairs_for_select())
+			'options'=>(array(''=>__('Select Field')) + forbes_theme_element_pairs_for_select())
 			));
                     echo __v()->formSelect(array(
 			'name'=>"advanced[$i][type]",
@@ -106,7 +106,7 @@ $formAttributes['method'] = 'GET'; ?>
 				echo __v()->formSelect(array(
 					'name'=>'type',
 					'id'=>'item-type-search',
-					'options'=>array_merge(array(''=>__('Any Type')), $usedItemTypes),
+					'options'=>(array(''=>__('Any Type')) + $usedItemTypes),
 					'value'=>@$_REQUEST['type']
 				    )); ?>
 			</div>

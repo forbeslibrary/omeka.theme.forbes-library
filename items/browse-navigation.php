@@ -1,11 +1,11 @@
 <nav id="items-browse-nav">
-<h1><?php echo $pageTitle;?></h1>
 <ul class="navigation">
-<?php echo public_nav_items(
-    array(
-        __('Browse All') => uri('items'), 
-        __('View Tags') => uri('items/tags')
-    )
-);?>
+<?php
+$navArray = array(
+    __('Browse All') => uri('items'), 
+    __('View Tags') => uri('items/tags')
+);
+echo forbes_theme_nav($navArray, 'items');
+?>
 </ul>
 </nav>

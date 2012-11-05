@@ -1,3 +1,6 @@
+<?php
+$forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
+?>
 	</div><!-- end content -->
 
 	<footer>
@@ -10,8 +13,19 @@
 			<p><?php echo __('Proudly powered by <a href="http://omeka.org">Omeka</a>.'); ?></p>
 		</div>
 
-		<?php plugin_footer(); ?>
-
+		<?php
+		plugin_footer();
+        
+        // provide links to turn css on and off
+        $params = $_GET;
+        if ($forbesThemeSession->useCss) {
+            $params['use_css'] = 'false';
+            echo 'Having trouble using this site? Try using the <a href="' . current_uri($params) . '">simple style</a>.';
+        } else {
+            $params['use_css'] = 'true';
+            echo 'You are using the simple style. You may return to the <a href="' . current_uri($params) . '">styled site</a> at any time.';
+        }
+        ?>
 	<footer>
 </body>
 </html>

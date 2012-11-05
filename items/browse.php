@@ -11,10 +11,15 @@ if (isset($_GET['search'])) {
 head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 ?>
 
-<?php common('browse-navigation', array('pageTitle'=>$pageTitle), 'items')?>
-<?php common('browse-warnings', array(), 'items')?>
-<?php common('browse-summary', array(), 'items')?>
-
+<h1><?php echo $pageTitle;?></h1>
+<?php
+if (!forbes_theme_on_search_results_page()) {
+    common('browse-navigation', array(), 'items');
+} else {
+    common('search-warnings', array(), 'items');
+    common('search-summary', array(), 'items');
+}
+?>
 <div id="pagination-top" class="pagination"><?php echo pagination_links(); ?></div>
 <div id="items-browse-loop">
 	<?php while (loop_items()): ?>
