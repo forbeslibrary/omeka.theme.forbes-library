@@ -15,9 +15,10 @@ head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 <?php
 if (!forbes_theme_on_search_results_page()) {
     common('browse-navigation', array(), 'items');
+} else {
+    common('search-warnings', array(), 'items');
+    common('search-summary', array(), 'items');
 }
-common('browse-warnings', array(), 'items');
-common('browse-summary', array(), 'items');
 ?>
 <div id="pagination-top" class="pagination"><?php echo pagination_links(); ?></div>
 <div id="items-browse-loop">
