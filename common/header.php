@@ -1,3 +1,17 @@
+<?php
+$forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
+
+if(!isset($forbesThemeSession->useCss)) {
+    $forbesThemeSession->useCss = True;
+}
+if (in_array(@strtolower($_GET['use_css']), array('1','true'))) {
+    $forbesThemeSession->useCss = true;
+}
+if (in_array(@strtolower($_GET['use_css']), array('0','false'))) {
+    $forbesThemeSession->useCss = false;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="<?php echo get_html_lang(); ?>">
 <head><?php
@@ -24,7 +38,9 @@
     plugin_header();
 
     queue_css('style');
-    display_css();
+    if ($forbesThemeSession->useCss) {
+        display_css();
+    }
     display_js(); ?>
 </head>
 
@@ -60,5 +76,4 @@
 	<?php endif; ?>
 
 	<div id="content">
-		<?php plugin_page_content(); ?>
-
+		<?php plugin_page_content();
