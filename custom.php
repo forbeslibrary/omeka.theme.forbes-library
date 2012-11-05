@@ -3,7 +3,11 @@
  * Whether or not the curent page is a search results page.
  */
 function forbes_theme_on_search_results_page() {
-    return array_key_exists('search', $_GET);
+    $tag = Zend_Controller_Front::getInstance()->getRequest()->getParam('tag');
+    return array_key_exists('tags', $_GET)
+        || array_key_exists('search', $_GET)
+        || array_key_exists('collection', $_GET)
+        || $tag;
 }
 
 /**
