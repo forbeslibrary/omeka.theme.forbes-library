@@ -1,4 +1,10 @@
 <?php
+/**
+ * Whether or not the curent page is a search results page.
+ */
+function forbes_theme_on_search_results_page() {
+    return array_key_exists('search', $_GET);
+}
 
 /**
  * Displays the main site navigation.
