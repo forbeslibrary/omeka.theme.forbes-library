@@ -28,3 +28,5 @@
 28 (A) Increase size of image for featured item box on homepage @enhancement_request
 29 (A) Show multiple thumbnails for featured collection box on homepage @enhancement_request
 30 (A) Add custom theme for simple pages plugin @enhancement_request
+31 (A) Tags should be styled in such a way that they are easy to read on the items/tags page @enhancement_request
+32 (A) Collections should be sorted alphabetically on collections page @enhancement_request
