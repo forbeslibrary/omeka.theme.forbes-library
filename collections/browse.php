@@ -3,7 +3,12 @@ $pageTitle = __('Collections');
 head(array('title'=>$pageTitle,'bodyid'=>'collections','bodyclass' => 'browse'));
 ?>
 <h1><?php echo $pageTitle; ?></h1>
-<div class="pagination"><?php echo pagination_links(); ?></div>
+
+<?php
+// We will include all collections on this page, sorted by collection name
+// We have sacrificed easy pagination in order to allow for easy sorting
+set_collections_for_loop(get_collections(array ('sort_field'=>'name')));
+?>
 
 <ul class="collections-browse-collection-list">
 <?php while (loop_collections()): ?>
