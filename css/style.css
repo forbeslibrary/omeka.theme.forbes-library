@@ -615,104 +615,51 @@ ul.tags li {
 	}
 	.hTagcloud li {
 		display:inline;
+                padding:0 1em 0 0;
+                white-space:nowrap;
 		}
 	.popular,
 	.-popular {
-		font-size:120%;
+		font-size:100%;
+                font-weight:100;
 		}
 	.v-popular {
-		font-size:140%;
+		font-size:110%;
+                font-weight:200;
 		}
 	.vv-popular {
-		font-size:180%;
+		font-size:120%;
+                font-weight:300;
 		}
 	.vvv-popular {
-		font-size:220%;
+		font-size:130%;
+                font-weight:400;
 		}
 	.vvvv-popular {
-		font-size:260%;
+		font-size:140%;
+                font-weight:500;
 		}
 	.vvvvv-popular {
-		font-size:300%;
+		font-size:150%;
+                font-weight:600;
 		}
 	.vvvvvv-popular {
-		font-size:320%;
+		font-size:160%;
+                font-weight:700;
 		}
 	.vvvvvvv-popular {
-		font-size:340%;
+		font-size:170%;
+                font-weight:800;
 		}
 	.vvvvvvvv-popular {
-		font-size:360%;
+		font-size:180%;
+                font-weight:900;
 		}
-	.popular a,
-	.popular a:visited {
-		color: #ccc;
-		}
-	.-popular a,
-	.-popular a:visited {
-		color: #ccc;
-		}
-	.v-popular a,
-	.v-popular a:visited {
-		color: #ccc;
-		}
-	.vv-popular a,
-	.vv-popular a:visited {
-		color: #bebebe;
-		}
-	.vvv-popular a,
-	.vvv-popular a:visited {
-		color: #b1b1b1;
-		}
-	.vvvv-popular a,
-	.vvvv-popular a:visited {
-		color: #a3a3a3;
-		}
-	.vvvvv-popular a,
-	.vvvvv-popular a:visited {
-		color: #959595;
-		}
-	.vvvvvv-popular a,
-	.vvvvvv-popular a:visited {
-		color: #888;
-		}
-	.vvvvvvv-popular a,
-	.vvvvvvv-popular a:visited {
-		color: #7a7a7a;
-		}
-	.vvvvvvvv-popular a,
-	.vvvvvvvv-popular a:visited {
-		color: #6d6d6d;
-		}
-
-	.popular a:hover,
-	.-popular a:hover {
-		color: #4B0049;
-		}
-	.v-popular a:hover {
-		color: #5B175A;
-		}
-	.vv-popular a:hover {
-		color: #6C2E6A;
-		}
-	.vvv-popular a:hover {
-		color: #7C467B;
-		}
-	.vvvv-popular a:hover {
-		color: #8C5D8B;
-		}
-	.vvvvv-popular a:hover {
-		color: #9D749C;
-		}
-	.vvvvvv-popular a:hover {
-		color: #AD8BAC;
-		}
-	.vvvvvvv-popular a:hover {
-		color: #BEA2BD;
-		}
-	.vvvvvvvv-popular a:hover {
-		color: #CEB9CD;
-		}
+@media (max-width: 600px) { /* one tag per line on small screens */
+    .hTagcloud li {
+        display:block;
+    }
+}
 /* === Exhibit Styles ====================================================== */
 #exhibits p,
 #exhibits .tags {
