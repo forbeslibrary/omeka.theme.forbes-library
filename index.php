@@ -1,3 +1,11 @@
+<?php if (in_array(strtolower($_GET['nav']), array('1','true'))) {
+    common('head');
+    echo '<body><div id="content">';
+    common('site_map');
+    foot();
+    return;
+} ?>
+
 <?php head(array('bodyid'=>'home')); ?>
 <?php if (get_theme_option('Homepage Text')): ?>
 <p><?php echo get_theme_option('Homepage Text'); ?></p>

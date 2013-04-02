@@ -255,9 +255,6 @@ th {
 	overflow:hidden;
 	font-size:larger;
 	background-color:<?php echo Color::backgroundAccent1; ?>;
-}	
-#top-level-nav:focus {
-    outline:none;
 }
 #top-level-nav>.navigation-label {
         display:none;
@@ -291,7 +288,6 @@ th {
     }
     #top-level-nav>.navigation-label {
         display:block;
-        color:<?php echo Color::background; ?>;
         margin:0em;
         padding:1em 0.5em;
         text-decoration:none;
@@ -300,53 +296,11 @@ th {
         cursor:pointer;
         text-align:center;
     }
-    #top-level-nav:focus .nav-jump-to-content {
-        display:block;
-        width:0; /* we give this zero size, but make the link big */
-        height:0;
-        padding:0;
-    }
-    #top-level-nav:focus .nav-jump-to-content>a {
-        /* make link invisible */
-        background: transparent;
-        border: 0;
-        text-indent: -999em;
-        /* make link fill screen */
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        /* ensure it sits behind the other links */
-        z-index:0;
-        /* make the pointer look like it's not pointing at a link */
-        cursor:default;
+    #top-level-nav>.navigation-label>a {
+        color:<?php echo Color::background; ?>;
     }
     #top-level-nav>ul {
         display:none;
-    }
-    #top-level-nav:focus>ul {
-        margin:0;
-        margin-top:1em;
-        display:block;
-        position:fixed;
-        left:0;
-        right:0;
-        z-index:99;
-        background:<?php echo Color::bodyText; ?>;
-    }
-    #top-level-nav:focus>ul>li {
-        display:block;
-        background:<?php echo Color::backgroundAccent1; ?>;
-        padding:0.5ex 1em;
-        margin:1px;
-    }
-    #top-level-nav:focus>ul>li>a {
-        display:block;
-        width:100%;
-        height:100%;
-        position:relative;
-        z-index:100;
     }
 }				
 /* === common/pagination-control.php ======================================= */

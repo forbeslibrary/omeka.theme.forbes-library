@@ -14,43 +14,16 @@ if (in_array(@strtolower($_GET['use_css']), array('0','false'))) {
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo get_html_lang(); ?>">
-<head><?php
-    // Meta tags
-    $this->headMeta()->setCharset('utf-8');
-    $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1');
-    if ( $description = settings('description')) {
-        $this->headMeta()->appendName('description', $description);
-    }
-    echo $this->headMeta();
-    
-    // title
-    echo '<title>';
-    if (isset($title)) {
-        echo strip_formatting($title).' | ';	
-    }
-    echo settings('site_title');
-    echo '</title>';
 
-    // link tags
-    echo auto_discovery_link_tags();
-    echo forbes_theme_favicon_link_tag();
-    echo forbes_theme_largeicon_link_tag();
-    plugin_header();
-
-    queue_css('style');
-    if ($forbesThemeSession->useCss) {
-        display_css();
-    }
-    display_js(); ?>
-</head>
+<?php common('head'); ?>
 
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
     <?php if(!array_key_exists('print',$_GET)):?>
     <?php plugin_body();?>
 	<?php plugin_page_header(); ?>
 	<header id="page-header">
-        <nav id="top-level-nav" tabindex="0" onclick="void(0)";><!-- tabindex and onclick are neccesary for css dropdown menu! -->
-            <h2 class="navigation-label"><?php echo __('Navigation'); ?></h2>
+        <nav id="top-level-nav">
+            <h2 class="navigation-label"><a href="<?php echo uri('?nav=True');?>"><?php echo __('Navigation'); ?></a></h2>
 		<ul class="navigation">
                     <li class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></li>
                     <?php echo forbes_theme_public_header_nav(); ?>
@@ -58,7 +31,6 @@ if (in_array(@strtolower($_GET['use_css']), array('0','false'))) {
                     <li><a href="<?php echo get_theme_option('main_site_url');?>"><?php echo get_theme_option('main_site_title');?></a></li>
                     <?php endif; ?>
 		</ul>
-		<div class="navigation-close"/>
 		</nav>
         
         <?php if ($logo = custom_display_logo()): ?>

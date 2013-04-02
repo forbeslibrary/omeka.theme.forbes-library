@@ -38,4 +38,4 @@
 38 (A) All collections that have an overview on the existing special collections page must link to that page @enhancement_request @top_priority
 39 (A) Search on each page should be shorter and right justified @enhancement_request @top_priority
 40 (A) Message on incomplete collections must be large and direct patrons to staff @enhancement_request @top_priority
-41 (A) Complicated mobile dropdown manue should be replace with a link to the sitemap (this will work on all browsers and devices) @enhancement_request @top_priority
+41 x (A) Complicated mobile dropdown manue should be replace with a link to the sitemap (this will work on all browsers and devices) @enhancement_request @completed_enhancement
