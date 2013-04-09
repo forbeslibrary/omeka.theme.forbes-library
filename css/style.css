@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/css; charset: UTF-8");
-class Color {
+class GrayColors {
     const background = '#FFFFF7';
     const backgroundAccent1 = '#DDDDD0';
     const backgroundAccent2 = '#EEEEE0';
@@ -12,6 +12,19 @@ class Color {
     const linkHover = '#808';
     const alertText = '#D00';
 }
+class ForbesColors {
+    const background = '#FFFFF7';
+    const backgroundAccent1 = '#EDE291';
+    const backgroundAccent2 = '#FFF6CC';
+    const bodyText = '#131';
+    const headerBackground = '#111';
+    const textAccent1 = '#8A2629';
+    const link = '#8A2629';
+    const linkActive = '#A0A';
+    const linkHover = '#C34';
+    const alertText = '#D00';
+}
+class Color extends ForbesColors {} // use gray colors
 class Font {
     const headingFont = '2em Palatino, Times, serif';
     const bodyFont = '75% "Helvetica Neue",Helvetica, Arial, sans-serif;';
