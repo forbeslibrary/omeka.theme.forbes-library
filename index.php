@@ -7,11 +7,13 @@
 } ?>
 
 <?php head(array('bodyid'=>'home')); ?>
-<?php if (get_theme_option('Homepage Text')): ?>
-<p><?php echo get_theme_option('Homepage Text'); ?></p>
-<?php endif; ?>
 
 <h1 id="site-title"><?php echo link_to_home_page(); ?></h1>
+
+<?php if (get_theme_option('Homepage Text')): ?>
+<div id="home-page-text"><?php echo get_theme_option('Homepage Text'); ?></div>
+<?php endif; ?>
+
 <form id="simple-search" action="<?php echo uri(array('controller'=>'items', 'action'=>'browse'))?>" method="get">      
     <input type="search" name="search" id="search" value="" class="textinput">
     <input type="submit" name="submit_search" id="submit_search" value="Search">        

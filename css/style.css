@@ -332,6 +332,11 @@ th {
     width:100%;
     font:<?php echo Font::headingFont; ?>;
 }
+#home-page-text {
+    max-width:40em;
+    margin-left:auto;
+    margin-right:auto;
+}
 #home #content {	
 	margin-left: auto;
 	margin-right: auto;
