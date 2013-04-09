@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/css; charset: UTF-8");
-class Color {
+class GrayColors {
     const background = '#FFFFF7';
     const backgroundAccent1 = '#DDDDD0';
     const backgroundAccent2 = '#EEEEE0';
@@ -12,6 +12,19 @@ class Color {
     const linkHover = '#808';
     const alertText = '#D00';
 }
+class ForbesColors {
+    const background = '#FFFFF7';
+    const backgroundAccent1 = '#EDE291';
+    const backgroundAccent2 = '#FFF6CC';
+    const bodyText = '#131';
+    const headerBackground = '#FFFFF7';
+    const textAccent1 = '#8A2629';
+    const link = '#8A2629';
+    const linkActive = '#A0A';
+    const linkHover = '#C34';
+    const alertText = '#D00';
+}
+class Color extends ForbesColors {} // use gray colors
 class Font {
     const headingFont = '2em Palatino, Times, serif';
     const bodyFont = '75% "Helvetica Neue",Helvetica, Arial, sans-serif;';
@@ -234,11 +247,12 @@ th {
     padding:0.5em;
     margin:0;
     display:inline-block;
-    height:2em;
+    height:2.2em;
     vertical-align:middle;
+    float:right;
 }
 #search.textinput {
-    width:40em;
+    width:20em;
 }
 #submit_search {
     width:5.5em;
@@ -255,9 +269,6 @@ th {
 	overflow:hidden;
 	font-size:larger;
 	background-color:<?php echo Color::backgroundAccent1; ?>;
-}	
-#top-level-nav:focus {
-    outline:none;
 }
 #top-level-nav>.navigation-label {
         display:none;
@@ -291,7 +302,6 @@ th {
     }
     #top-level-nav>.navigation-label {
         display:block;
-        color:<?php echo Color::background; ?>;
         margin:0em;
         padding:1em 0.5em;
         text-decoration:none;
@@ -300,53 +310,11 @@ th {
         cursor:pointer;
         text-align:center;
     }
-    #top-level-nav:focus .nav-jump-to-content {
-        display:block;
-        width:0; /* we give this zero size, but make the link big */
-        height:0;
-        padding:0;
-    }
-    #top-level-nav:focus .nav-jump-to-content>a {
-        /* make link invisible */
-        background: transparent;
-        border: 0;
-        text-indent: -999em;
-        /* make link fill screen */
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        /* ensure it sits behind the other links */
-        z-index:0;
-        /* make the pointer look like it's not pointing at a link */
-        cursor:default;
+    #top-level-nav>.navigation-label>a {
+        color:<?php echo Color::background; ?>;
     }
     #top-level-nav>ul {
         display:none;
-    }
-    #top-level-nav:focus>ul {
-        margin:0;
-        margin-top:1em;
-        display:block;
-        position:fixed;
-        left:0;
-        right:0;
-        z-index:99;
-        background:<?php echo Color::bodyText; ?>;
-    }
-    #top-level-nav:focus>ul>li {
-        display:block;
-        background:<?php echo Color::backgroundAccent1; ?>;
-        padding:0.5ex 1em;
-        margin:1px;
-    }
-    #top-level-nav:focus>ul>li>a {
-        display:block;
-        width:100%;
-        height:100%;
-        position:relative;
-        z-index:100;
     }
 }				
 /* === common/pagination-control.php ======================================= */
@@ -363,6 +331,11 @@ th {
     text-align:center;
     width:100%;
     font:<?php echo Font::headingFont; ?>;
+}
+#home-page-text {
+    max-width:40em;
+    margin-left:auto;
+    margin-right:auto;
 }
 #home #content {	
 	margin-left: auto;
@@ -614,105 +587,14 @@ ul.tags li {
 	padding-left:0;
 	}
 	.hTagcloud li {
-		display:inline;
+                padding:0 1em 0 0;
+                white-space:nowrap;
 		}
-	.popular,
-	.-popular {
-		font-size:120%;
-		}
-	.v-popular {
-		font-size:140%;
-		}
-	.vv-popular {
-		font-size:180%;
-		}
-	.vvv-popular {
-		font-size:220%;
-		}
-	.vvvv-popular {
-		font-size:260%;
-		}
-	.vvvvv-popular {
-		font-size:300%;
-		}
-	.vvvvvv-popular {
-		font-size:320%;
-		}
-	.vvvvvvv-popular {
-		font-size:340%;
-		}
-	.vvvvvvvv-popular {
-		font-size:360%;
-		}
-	.popular a,
-	.popular a:visited {
-		color: #ccc;
-		}
-	.-popular a,
-	.-popular a:visited {
-		color: #ccc;
-		}
-	.v-popular a,
-	.v-popular a:visited {
-		color: #ccc;
-		}
-	.vv-popular a,
-	.vv-popular a:visited {
-		color: #bebebe;
-		}
-	.vvv-popular a,
-	.vvv-popular a:visited {
-		color: #b1b1b1;
-		}
-	.vvvv-popular a,
-	.vvvv-popular a:visited {
-		color: #a3a3a3;
-		}
-	.vvvvv-popular a,
-	.vvvvv-popular a:visited {
-		color: #959595;
-		}
-	.vvvvvv-popular a,
-	.vvvvvv-popular a:visited {
-		color: #888;
-		}
-	.vvvvvvv-popular a,
-	.vvvvvvv-popular a:visited {
-		color: #7a7a7a;
-		}
-	.vvvvvvvv-popular a,
-	.vvvvvvvv-popular a:visited {
-		color: #6d6d6d;
-		}
-
-	.popular a:hover,
-	.-popular a:hover {
-		color: #4B0049;
-		}
-	.v-popular a:hover {
-		color: #5B175A;
-		}
-	.vv-popular a:hover {
-		color: #6C2E6A;
-		}
-	.vvv-popular a:hover {
-		color: #7C467B;
-		}
-	.vvvv-popular a:hover {
-		color: #8C5D8B;
-		}
-	.vvvvv-popular a:hover {
-		color: #9D749C;
-		}
-	.vvvvvv-popular a:hover {
-		color: #AD8BAC;
-		}
-	.vvvvvvv-popular a:hover {
-		color: #BEA2BD;
-		}
-	.vvvvvvvv-popular a:hover {
-		color: #CEB9CD;
-		}
+@media (max-width: 600px) { /* one tag per line on small screens */
+    .hTagcloud li {
+        display:block;
+    }
+}
 /* === Exhibit Styles ====================================================== */
 #exhibits p,
 #exhibits .tags {
