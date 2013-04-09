@@ -247,11 +247,12 @@ th {
     padding:0.5em;
     margin:0;
     display:inline-block;
-    height:2em;
+    height:2.2em;
     vertical-align:middle;
+    float:right;
 }
 #search.textinput {
-    width:40em;
+    width:20em;
 }
 #submit_search {
     width:5.5em;
