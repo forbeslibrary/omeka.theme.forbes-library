@@ -32,7 +32,7 @@
 32 x (A) Collections should be sorted alphabetically on collections page @completed_enhancement
 33 (A) A sumary and link to the special collections page must appear on the home screen @enhancement_request @top_priority
 34 x (A) Collections should be listed alphabetically @duplicate request
-35 (A) Tags on tag browse page should appear as a simple alphabetical list @enhancement_request @top_priority
+35 (A) Tags on tag browse page should appear as a simple alphabetical list @completed_enhancement
 36 (A) A summary of the terms of use and a link to full trems of use must appear on every page @enhancement_request @top_priority
 37 x (A) Bad URLs must give a sensible File Not Found message and a link to the homepage @completed_enhancement
 38 (A) All collections that have an overview on the existing special collections page must link to that page @enhancement_request @top_priority
