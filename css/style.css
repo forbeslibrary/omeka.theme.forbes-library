@@ -192,6 +192,9 @@ th {
 	color:<?php echo Color::textAccent1; ?>;
 	font-weight:bold;
 }
+.thumbnail, a .thumbnail {
+	border:1px solid black;
+}
 /* === collections/browse.php ============================================== */
 .collections-browse-collection-list {
     padding:0;

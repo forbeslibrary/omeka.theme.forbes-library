@@ -42,4 +42,4 @@
 42 (B) Pages do not magnify well (using ctrl-+) @confirmed_bug
 43 Remove the word 'description" from collections/show and collections/browse pages @enhancement_request
 44 Find simple way of including HTML in collection descriptions @enhancement_request
-45 Add border around images @enhancement_request
+45 x Add border around thumbnails @completed_enhancement

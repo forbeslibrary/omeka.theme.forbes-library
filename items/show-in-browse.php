@@ -6,7 +6,7 @@
 		echo link_to_item($line, array('class'=>'permalink'));
 	?></h2>
 	<figure>
-    	<?php $thumbnail = (item_has_thumbnail() ? item_thumbnail() :  '<img src="'.img('image-not-available.png').'">' ); ?>
+    	<?php $thumbnail = (item_has_thumbnail() ? item_thumbnail(array('class'=>'thumbnail')) :  '<img src="'.img('image-not-available.png').'">' ); ?>
 		<?php echo link_to_item($thumbnail); ?>
 	</figure>
 	<div class="items-show-in-browse-details">

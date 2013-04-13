@@ -225,7 +225,7 @@ function forbes_theme_display_random_featured_item() {
             '<h2>', __('Featured Item'), '</h2>',
             '<h3>', link_to_item($title), '</h3>',
             '</hgroup>',
-            '<figure>', link_to_item(item_thumbnail()), '</figure>',
+            '<figure>', link_to_item(item_thumbnail(array('class'=>'thumbnail'))), '</figure>',
             $format,
             $creator,
             '<p class="description">', $description, '</p>',
@@ -272,7 +272,8 @@ function forbes_theme_collection_thumbnail() {
         $result = $db->query($select)->fetch();
         if ($result) {  
             set_current_item(get_item_by_id($result['id']));
-            return item_thumbnail();
+            $alttext = item('Dublin Core', 'Identifier') . ' ' . item('Dublin Core', 'Title');
+            return item_thumbnail(array('class'=>'thumbnail', 'alt'=>$alttext));
         }
 }
 
