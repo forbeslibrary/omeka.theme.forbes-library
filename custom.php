@@ -1,6 +1,6 @@
 <?php
 /**
- * Whether or not the curent page is a search results page.
+ * Whether or not the current page is a search results page.
  */
 function forbes_theme_on_search_results_page() {
     $tag = Zend_Controller_Front::getInstance()->getRequest()->getParam('tag');
@@ -214,23 +214,23 @@ function forbes_theme_display_random_featured_item() {
     if ($item) {
         set_current_item($item);
         $title = item('Dublin Core', 'Title');
-        $description = forbes_theme_snippet_with_new_lines(item('Dublin Core', 'Description'),0, 100);
-        if ($format = item('Dublin Core', 'Format')) {
-	    $format = '<p>' . __('Format: %s.', $format) . '</p>';
-	}
-	if ($creator = item('Dublin Core', 'Creator')) {
-	    $creator =  '<p>' . __('Creator: %s.', $creator) . '</p>';
-	}
+        $description = forbes_theme_snippet_with_new_lines(item('Dublin Core', 'Description'),0, 300);
+		if ($creator = item('Dublin Core', 'Creator')) {
+				$creator =  '<p>' . __('Creator: %s.', $creator) . '</p>';
+		}
+		while(loop_files_for_item()) {
+		  $file_uri = item_file('uri');
+		  break;
+		}
+		$style = "background-image:url($file_uri); height:400px; background-size:cover; background-position:center; margin:0;";
         echo '<hgroup>',
             '<h2>', __('Featured Item'), '</h2>',
             '<h3>', link_to_item($title), '</h3>',
             '</hgroup>',
-            '<figure>', link_to_item(item_thumbnail(array('class'=>'thumbnail'))), '</figure>',
+            link_to_item('<figure style="'. $style. '"></figure>'),
             $format,
             $creator,
-            '<p class="description">', $description, '</p>',
-            link_to_item(__('More information'), array('class'=>'items-show-in-browse-details')),
-            '<a id="link-from-feature-to-items" href="', uri('items'), '">See all items</a>';
+            '<p class="description">', $description, '</p>';
     } else {
         echo '<h2>', __('Featured Item'), '</h2>',
             __('<p>No featured item found</p>');
@@ -246,13 +246,19 @@ function forbes_theme_display_random_featured_collection() {
         set_current_collection($collection);
         $title = collection('Name');
         $description = snippet_by_word_count(collection('Description'), 100);
+        $image_uris = forbes_theme_collection_image_uris();
         echo '<hgroup>',
             '<h2>', __('Featured Collection'), '</h2>',
             '<h3>', link_to_collection($title), '</h3>',
             '</hgroup>',
-            '<figure>', link_to_collection(forbes_theme_collection_thumbnail()), '</figure>',
-            '<p class="description">', $description, '</p>',
-            '<a id="link-from-feature-to-collections" href="', uri('collections'), '">See all collections</a>';
+            '<figure style="margin:0;">',
+            link_to_collection(			
+			  '<div style="float:left; border-right:solid black 1px; box-sizing:border-box; width:33%;  height:400px; background-position:center; background-size:cover; background-image:url(' . $image_uris[0] . ');"></div>' .
+			  '<div style="float:left; border-right:solid black 1px; box-sizing:border-box; width:32%; height:400px; background-position:center; background-size:cover; background-image:url(' . $image_uris[1] . ');"></div>' .
+			  '<div style="float:left; box-sizing:border-box; width:33%;  height:400px; background-position:center; background-size:cover; background-image:url(' . $image_uris[2] . ');"></div>'
+			),
+            '</figure>',
+            '<p class="description">', $description, '</p>';
     } else {
         echo '<h2>', __('Featured Collection'), '</h2>',
             __('<p>No featured collection found</p>');
@@ -272,9 +278,30 @@ function forbes_theme_collection_thumbnail() {
         $result = $db->query($select)->fetch();
         if ($result) {  
             set_current_item(get_item_by_id($result['id']));
-            $alttext = item('Dublin Core', 'Identifier') . ' ' . item('Dublin Core', 'Title');
-            return item_thumbnail(array('class'=>'thumbnail', 'alt'=>$alttext));
+            return item_thumbnail();
         }
+}
+
+/**
+ * Returns the first 3 available item image uris from the items in the current collection.
+ */
+function forbes_theme_collection_image_uris() {
+        $db = get_db();
+        $select = $db->select()
+            ->from(array('i' =>'omeka_items'),'id')
+            ->join(array('f' =>'omeka_files'),'f.item_id = i.id', array())
+            ->where('f.has_derivative_image = 1 AND i.collection_id = ?', collection('id'));
+        $results = $db->query($select)->fetchAll();
+        $image_uris = array();
+        foreach ($results as $result) {  
+            set_current_item(get_item_by_id($result['id']));
+            while(loop_files_for_item()) {
+				       $image_uris[] = item_file('uri');
+				       break;
+				    }
+				    if (count($image_uris)==3) { break; }
+        }
+        return $image_uris;
 }
 
 /**
