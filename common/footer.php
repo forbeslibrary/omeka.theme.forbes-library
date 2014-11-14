@@ -26,6 +26,6 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
             echo 'You are using the simple style. You may return to the <a href="' . current_uri($params) . '">styled site</a> at any time.';
         }
         ?>
-	<footer>
+	</footer>
 </body>
 </html>
