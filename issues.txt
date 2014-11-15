@@ -40,3 +40,6 @@
 40 (A) Message on incomplete collections must be large and direct patrons to staff @enhancement_request @top_priority
 41 x (A) Complicated mobile dropdown manue should be replace with a link to the sitemap (this will work on all browsers and devices) @enhancement_request @completed_enhancement
 42 (B) Pages do not magnify well (using ctrl-+) @confirmed_bug
+43 Remove the word 'description" from collections/show and collections/browse pages @enhancement_request
+44 x Find simple way of including HTML in collection descriptions @completed_enhancement
+45 x Add border around thumbnails @completed_enhancement

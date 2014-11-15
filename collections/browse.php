@@ -19,7 +19,7 @@ set_collections_for_loop(get_collections(array ('sort_field'=>'name')));
         <?php endif; ?>
         </figure>
         
-        <?php if ($description = forbes_theme_snippet_with_new_lines(collection('Description'), 0, 400)): ?>
+        <?php if ($description = forbes_theme_snippet_with_new_lines(get_current_collection()->description, 0, 400)): ?>
         <div>
             <h3><?php echo __('Description'); ?></h3>
             <div><?php echo nls2p($description); ?></div>

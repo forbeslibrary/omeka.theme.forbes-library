@@ -15,7 +15,12 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
 <h1><?php echo __('Collection: ') . collection('Name'); ?></h1>
 <section>
     <h2><?php echo __('Description'); ?></h2>
-    <div class="element-text"><?php echo nls2p(collection('Description')); ?></div>
+ 
+    <div class="element-text"><?php
+    // we get the description this way so that HTML will not be escaped
+    // Note that the HTML is not sanitized either!
+    echo nls2p(get_current_collection()->description);
+   ?></div>
 </section>
 
 <?php if (collection_has_collectors()): ?>
