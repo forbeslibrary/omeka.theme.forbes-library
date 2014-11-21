@@ -1387,8 +1387,11 @@ ul.tags li {
 .exhibit-item {
 
 	overflow:hidden;
-
 	}
+
+.gallery-thumbnails .exhibit-item {
+	height:23em;
+}
 
 .exhibit-item a {
 
