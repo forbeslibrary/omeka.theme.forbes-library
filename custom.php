@@ -233,7 +233,7 @@ function forbes_theme_display_random_featured_item() {
 			}
 			echo link_to_item('<h3>'.$title.'</h3>');
 			echo link_to_item('<img alt='.$title.' src='.$file_uri.'>');
-			echo metadata('item', array('Dublin Core', 'Description'));
+			echo '<p>' . metadata('item', array('Dublin Core', 'Description')) . '</p>';
     } else {
         echo __('<p>No featured item found</p>');
     }
