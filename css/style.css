@@ -28,12 +28,12 @@ img {
 }
 .menu_bar li {
 	float: left;
-	position: relative;
 	padding: 0 10px;
 	line-height: 38px;
 }
 
 .navigation-label,
+.nav-jump-to-content,
 .hidden  {
 	position:absolute;
 	left:-10000px;
