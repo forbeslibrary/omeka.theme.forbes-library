@@ -10,17 +10,20 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
   <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
 	<header id="page-header">
 	  <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-        <nav id="top-level-nav">
-            <h2 class="navigation-label"><a href="<?php echo url('?nav=True');?>"><?php echo __('Navigation'); ?></a></h2>
-									<ul class="navigation">
-                    <li class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></li>
-                    <?php echo forbes_theme_public_header_nav(); ?>
-                    <?php if (get_theme_option('main_site_title')):?>
-                    <li><a href="<?php echo get_theme_option('main_site_url');?>"><?php echo get_theme_option('main_site_title');?></a></li>
-                    <?php endif; ?>
-		</ul>
+	  
+		
+		<nav id="top-level-nav" class="menu_bar">
+			<h2 class="navigation-label"><a href="<?php echo url('?nav=True');?>"><?php echo __('Navigation'); ?></a></h2>
+			<ul class="navigation">
+				<li class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></li>
+				<?php echo forbes_theme_public_header_nav(); ?>
+				<?php if (get_theme_option('main_site_title')):?>
+					<!-- including title of related/main site in top menu -->
+					<li><a href="<?php echo get_theme_option('main_site_url');?>"><?php echo get_theme_option('main_site_title');?></a></li>
+				<?php endif; ?>
+			</ul>
 		</nav>
-        		
+    
 		<?php if (!in_array(current_url(),array(url('/'),url('/items/advanced-search')))): ?>
 		<form id="simple-search" action="<?php echo url('items/browse'); ?>" method="get">		
 			<input type="search" name="search" id="search" value="" class="textinput">

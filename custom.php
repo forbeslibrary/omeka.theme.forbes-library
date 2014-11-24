@@ -198,11 +198,19 @@ function forbes_theme_display_random_featured_exhibit() {
             __('No featured exhibits found');
         return;
     }
+    
+    $items=get_records('item', array('hasImage'=>true, 'exhibit'=>$featuredExhibit, 'featured'=>true),$num=1);
+    $files = $items[0]->Files;
+		foreach($files as $file) {
+			$file_uri = file_display_url($file);
+			break;
+		}
     echo '<header>',
         '<h2>', __('Featured Exhibit'), '</h2>',
         '<h3>', exhibit_builder_link_to_exhibit($featuredExhibit), '</h3>'."\n",
         '</header>',
-        '<p>', snippet_by_word_count(metadata($featuredExhibit, 'Description'), 100), '</p>',
+        '<img src="'.$file_uri.'">',
+        '<p>', snippet_by_word_count(metadata($featuredExhibit, 'Description', array('no_escape' => true)), 100), '</p>',
         '<a id="link-from-feature-to-exhibits" href="', url('exhibits'), '">See all exhibits</a>';
 }
 
@@ -210,32 +218,24 @@ function forbes_theme_display_random_featured_exhibit() {
  * Displays a random featured item.
  */
 function forbes_theme_display_random_featured_item() {
+    echo '<h2>', __('Featured Item'), '</h2>';
     $item_array = get_random_featured_items(1);
     $item = $item_array[0];
     if ($item) {
-        set_current_record('item',$item);
-        $title = metadata('item', array('Dublin Core', 'Title'));
-        $description = forbes_theme_snippet_with_new_lines(metadata('item', array('Dublin Core', 'Description')),0, 300);
-		if ($creator = metadata('item', array('Dublin Core', 'Creator'))) {
-				$creator =  '<p>' . __('Creator: %s.', $creator) . '</p>';
-		}
-		$files = $item->Files;
-		foreach($files as $file) {
-		  $file_uri = file_display_url($file);
-		  break;
-		}
-		$style = "background-image:url($file_uri); height:400px; background-size:cover; background-position:center; margin:0;";
-        echo '<header>',
-            '<h2>', __('Featured Item'), '</h2>',
-            '<h3>', link_to_item($title), '</h3>',
-            '</header>',
-            link_to_item('<figure style="'. $style. '"></figure>'),
-            metadata('item', array('Dublin Core', 'Format')),
-            $creator,
-            '<p class="description">', $description, '</p>';
+			set_current_record('item',$item);
+			$title = metadata('item', array('Dublin Core', 'Title'));
+			if ($creator = metadata('item', array('Dublin Core', 'Creator'))) {
+					$creator =  '<p>' . __('Creator: %s.', $creator) . '</p>';
+			}
+			$files = $item->Files;
+			foreach($files as $file) {
+				$file_uri = file_display_url($file);
+				break;
+			}
+			echo link_to_item('<h3>'.$title.'</h3>');
+			echo link_to_item('<img alt='.$title.' src='.$file_uri.'>');
     } else {
-        echo '<h2>', __('Featured Item'), '</h2>',
-            __('<p>No featured item found</p>');
+        echo __('<p>No featured item found</p>');
     }
 }
 

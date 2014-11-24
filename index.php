@@ -23,7 +23,9 @@
     <?php endif; ?>
 
     <?php if (get_theme_option('Display Featured Exhibit') !== '0'): ?>
-        <section id="featured-exhibit"><?php forbes_theme_display_random_featured_exhibit(); ?></section>
+        <section id="featured-exhibit">
+        	<?php forbes_theme_display_random_featured_exhibit(); ?>
+        </section>
     <?php endif; ?>
 </div>
 
