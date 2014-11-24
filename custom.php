@@ -199,7 +199,7 @@ function forbes_theme_display_random_featured_exhibit() {
         return;
     }
     
-    $items=get_records('item', array('hasImage'=>true, 'exhibit'=>$featuredExhibit, 'featured'=>true),$num=1);
+    $items=get_records('item', array('hasImage'=>true, 'exhibit'=>$featuredExhibit),$num=1);
     $files = $items[0]->Files;
 		foreach($files as $file) {
 			$file_uri = file_display_url($file);
@@ -210,8 +210,7 @@ function forbes_theme_display_random_featured_exhibit() {
         '<h3>', exhibit_builder_link_to_exhibit($featuredExhibit), '</h3>'."\n",
         '</header>',
         '<img src="'.$file_uri.'">',
-        '<p>', snippet_by_word_count(metadata($featuredExhibit, 'Description', array('no_escape' => true)), 100), '</p>',
-        '<a id="link-from-feature-to-exhibits" href="', url('exhibits'), '">See all exhibits</a>';
+        '<p>', snippet_by_word_count(metadata($featuredExhibit, 'Description', array('no_escape' => true)), 100), '</p>';
 }
 
 /**
@@ -234,6 +233,7 @@ function forbes_theme_display_random_featured_item() {
 			}
 			echo link_to_item('<h3>'.$title.'</h3>');
 			echo link_to_item('<img alt='.$title.' src='.$file_uri.'>');
+			echo metadata('item', array('Dublin Core', 'Description'));
     } else {
         echo __('<p>No featured item found</p>');
     }
