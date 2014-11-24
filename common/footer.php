@@ -14,16 +14,16 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 		</div>
 
 		<?php
-		plugin_footer();
+		fire_plugin_hook('public_footer', array('view'=>$this));
         
         // provide links to turn css on and off
         $params = $_GET;
         if ($forbesThemeSession->useCss) {
             $params['use_css'] = 'false';
-            echo 'Having trouble using this site? Try using the <a href="' . current_uri($params) . '">simple style</a>.';
+            echo 'Having trouble using this site? Try using the <a href="' . current_url($params) . '">simple style</a>.';
         } else {
             $params['use_css'] = 'true';
-            echo 'You are using the simple style. You may return to the <a href="' . current_uri($params) . '">styled site</a> at any time.';
+            echo 'You are using the simple style. You may return to the <a href="' . current_url($params) . '">styled site</a> at any time.';
         }
         ?>
 	</footer>

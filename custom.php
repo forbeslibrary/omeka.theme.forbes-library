@@ -14,7 +14,7 @@ function forbes_theme_on_search_results_page() {
  * Displays the main site navigation.
  *
  * A slightly modified custom_public_nav_header(), this version uses forbes_theme_nav()
- * throughout and gives plugins the change to modify the nav array. Furthermore, it will
+ * throughout and gives plugins the chance to modify the nav array. Furthermore, it will
  * have at most one entry with with class="current". (Omeka's public_header_nav would
  * often have multiple entries with class="current" and didn't always give plugins the
  * opportunity to filter the navigation array.)
@@ -187,22 +187,22 @@ function forbes_theme_snippet_with_new_lines($text, $startPos, $endPos, $append=
  */
 function forbes_theme_display_random_featured_exhibit() {
     if (!plugin_is_active('ExhibitBuilder')) {
-        echo '<hgroup><h2>', __('Featured Exhbit'), '</h2></hgroup>',
+        echo '<h2>', __('Featured Exhbit'), '</h2>',
             __('The "Display Featured Exhibit" option requires the ExhibitBuilder plugin.'),
             __('Please make sure the ExhbitBuilder plugin is installed and enabled.');
         return;
     }
     $featuredExhibit = exhibit_builder_random_featured_exhibit();
     if (!$featuredExhibit) {
-        echo '<hgroup><h2>', __('Featured Exhibit'), '</h2></hgroup>',
+        echo '<h2>', __('Featured Exhibit'), '</h2>',
             __('No featured exhibits found');
         return;
     }
-    echo '<hgroup>',
+    echo '<header>',
         '<h2>', __('Featured Exhibit'), '</h2>',
         '<h3>', exhibit_builder_link_to_exhibit($featuredExhibit), '</h3>'."\n",
-        '</hgroup>',
-        '<p>', snippet_by_word_count(exhibit('description', array(), $featuredExhibit), 100), '</p>',
+        '</header>',
+        '<p>', snippet_by_word_count(metadata($featuredExhibit, 'Description'), 100), '</p>',
         '<a id="link-from-feature-to-exhibits" href="', url('exhibits'), '">See all exhibits</a>';
 }
 
@@ -219,17 +219,18 @@ function forbes_theme_display_random_featured_item() {
 		if ($creator = metadata('item', array('Dublin Core', 'Creator'))) {
 				$creator =  '<p>' . __('Creator: %s.', $creator) . '</p>';
 		}
-		while(loop_files_for_item()) {
-		  $file_uri = item_file('uri');
+		$files = $item->Files;
+		foreach($files as $file) {
+		  $file_uri = file_display_url($file);
 		  break;
 		}
 		$style = "background-image:url($file_uri); height:400px; background-size:cover; background-position:center; margin:0;";
-        echo '<hgroup>',
+        echo '<header>',
             '<h2>', __('Featured Item'), '</h2>',
             '<h3>', link_to_item($title), '</h3>',
-            '</hgroup>',
+            '</header>',
             link_to_item('<figure style="'. $style. '"></figure>'),
-            $format,
+            metadata('item', array('Dublin Core', 'Format')),
             $creator,
             '<p class="description">', $description, '</p>';
     } else {
@@ -242,16 +243,16 @@ function forbes_theme_display_random_featured_item() {
  * Displays a random featured collection.
  */
 function forbes_theme_display_random_featured_collection() {
-    $collection = random_featured_collection();
+    $collection = get_random_featured_collection();
+    set_current_record('collection', $collection);
     if ($collection) {
-        set_current_collection($collection);
-        $title = collection('Name');
-        $description = snippet_by_word_count(collection('Description'), 100);
+        $title = metadata($collection, array('Dublin Core', 'Title'));
+        $description = snippet_by_word_count(metadata($collection, array('Dublin Core', 'Description')), 100);
         $image_uris = forbes_theme_collection_image_uris();
-        echo '<hgroup>',
+        echo '<header>',
             '<h2>', __('Featured Collection'), '</h2>',
             '<h3>', link_to_collection($title), '</h3>',
-            '</hgroup>',
+            '</header>',
             '<figure style="margin:0;">',
             link_to_collection(			
 			  '<div style="float:left; border-right:solid black 1px; box-sizing:border-box; width:33%;  height:400px; background-position:center; background-size:cover; background-image:url(' . $image_uris[0] . ');"></div>' .
@@ -287,17 +288,19 @@ function forbes_theme_collection_thumbnail() {
  * Returns the first 3 available item image uris from the items in the current collection.
  */
 function forbes_theme_collection_image_uris() {
+        $collection = get_current_record('collection');
         $db = get_db();
         $select = $db->select()
             ->from(array('i' =>'omeka_items'),'id')
             ->join(array('f' =>'omeka_files'),'f.item_id = i.id', array())
-            ->where('f.has_derivative_image = 1 AND i.collection_id = ?', collection('id'));
+            ->where('f.has_derivative_image = 1 AND i.collection_id = ?', metadata($collection, 'id'));
         $results = $db->query($select)->fetchAll();
         $image_uris = array();
         foreach ($results as $result) {  
-            set_current_record('item',get_record_by_id('item', $result['id']));
-            while(loop_files_for_item()) {
-				       $image_uris[] = item_file('uri');
+            $item = get_record_by_id('item', $result['id']);
+            $files = $item->Files;
+            foreach ($files as $file) {
+				       $image_uris[] = metadata($file, 'uri');
 				       break;
 				    }
 				    if (count($image_uris)==3) { break; }

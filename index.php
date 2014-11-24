@@ -1,4 +1,4 @@
-<?php head(array('bodyid'=>'home')); ?>
+<?php echo head(array('bodyid'=>'home')); ?>
 
 <h1 id="site-title"><?php echo link_to_home_page(); ?></h1>
 
@@ -13,7 +13,7 @@
 </form>
 <?php endif; ?>
 
-<section id="featured-content" class="<?php echo forbes_theme_featured_content_class(); ?>">
+<div id="featured-content" class="<?php echo forbes_theme_featured_content_class(); ?>">
     <?php if (get_theme_option('Display Featured Item') !== '0'): ?>
         <section id="featured-item"><?php forbes_theme_display_random_featured_item(); ?></section>
         <?php endif; ?>
@@ -25,6 +25,6 @@
     <?php if (get_theme_option('Display Featured Exhibit') !== '0'): ?>
         <section id="featured-exhibit"><?php forbes_theme_display_random_featured_exhibit(); ?></section>
     <?php endif; ?>
-</section>
+</div>
 
-<?php foot(); ?>
+<?php echo foot(); ?>
