@@ -1,11 +1,3 @@
-<?php if (in_array(strtolower($_GET['nav']), array('1','true'))) {
-    common('head');
-    echo '<body><div id="content">';
-    common('site_map');
-    foot();
-    return;
-} ?>
-
 <?php head(array('bodyid'=>'home')); ?>
 
 <h1 id="site-title"><?php echo link_to_home_page(); ?></h1>

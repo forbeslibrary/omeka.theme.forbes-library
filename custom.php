@@ -32,14 +32,14 @@ function forbes_theme_public_header_nav()
                     $link = trim($pairArray[0]);
                     $url = trim($pairArray[1]); 
                     if (strncmp($url, 'http://', 7) && strncmp($url, 'https://', 8)){                        
-                        $url = uri($url);
+                        $url = url($url);
                     }
                 }
                 $navArray[$link] = $url;
             }
         }
     } else {
-        $navArray = array(__('Browse Items') => uri('items'), __('Browse Collections') =>uri('collections'));
+        $navArray = array(__('Browse Items') => url('items'), __('Browse Collections') =>url('collections'));
     }
     return forbes_theme_nav($navArray, 'main');
 }
@@ -69,7 +69,7 @@ function forbes_theme_nav(array $links, $navType=Null)
     
     // determine which link should get class="current"
     $bestMatch = '';
-    $currentUri = current_uri();
+    $currentUri = current_url();
     foreach ($links as $text => $uri) {
         if (strlen($uri) > strlen($bestMatch) && strpos($currentUri, $uri)!==False) {
             $bestMatch = $uri;
@@ -203,19 +203,20 @@ function forbes_theme_display_random_featured_exhibit() {
         '<h3>', exhibit_builder_link_to_exhibit($featuredExhibit), '</h3>'."\n",
         '</hgroup>',
         '<p>', snippet_by_word_count(exhibit('description', array(), $featuredExhibit), 100), '</p>',
-        '<a id="link-from-feature-to-exhibits" href="', uri('exhibits'), '">See all exhibits</a>';
+        '<a id="link-from-feature-to-exhibits" href="', url('exhibits'), '">See all exhibits</a>';
 }
 
 /**
  * Displays a random featured item.
  */
 function forbes_theme_display_random_featured_item() {
-    $item = random_featured_item();
+    $item_array = get_random_featured_items(1);
+    $item = $item_array[0];
     if ($item) {
-        set_current_item($item);
-        $title = item('Dublin Core', 'Title');
-        $description = forbes_theme_snippet_with_new_lines(item('Dublin Core', 'Description'),0, 300);
-		if ($creator = item('Dublin Core', 'Creator')) {
+        set_current_record('item',$item);
+        $title = metadata('item', array('Dublin Core', 'Title'));
+        $description = forbes_theme_snippet_with_new_lines(metadata('item', array('Dublin Core', 'Description')),0, 300);
+		if ($creator = metadata('item', array('Dublin Core', 'Creator'))) {
 				$creator =  '<p>' . __('Creator: %s.', $creator) . '</p>';
 		}
 		while(loop_files_for_item()) {
@@ -277,7 +278,7 @@ function forbes_theme_collection_thumbnail() {
             ->limit(1);
         $result = $db->query($select)->fetch();
         if ($result) {  
-            set_current_item(get_item_by_id($result['id']));
+            set_current_record('item',get_item_by_id($result['id']));
             return item_thumbnail();
         }
 }
@@ -294,7 +295,7 @@ function forbes_theme_collection_image_uris() {
         $results = $db->query($select)->fetchAll();
         $image_uris = array();
         foreach ($results as $result) {  
-            set_current_item(get_item_by_id($result['id']));
+            set_current_record('item',get_record_by_id('item', $result['id']));
             while(loop_files_for_item()) {
 				       $image_uris[] = item_file('uri');
 				       break;
@@ -317,7 +318,7 @@ function forbes_theme_favicon_link_tag()
 
         if ($favicon) {
             $storage = Zend_Registry::get('storage');
-            $uri = $storage->getUri($storage->getPathByType($favicon, 'theme_uploads'));
+            $uri = $storage->geturl($storage->getPathByType($favicon, 'theme_uploads'));
             return '<link rel="icon" sizes="16x16" href="'.$uri.'" />';
         }
     }
@@ -338,7 +339,7 @@ function forbes_theme_largeicon_link_tag()
 
         if ($largeicon) {
             $storage = Zend_Registry::get('storage');
-            $uri = $storage->getUri($storage->getPathByType($largeicon, 'theme_uploads'));
+            $uri = $storage->geturl($storage->getPathByType($largeicon, 'theme_uploads'));
             return '<link rel="icon" sizes="'.$size.'" href="'.$uri.'" />'.
                 '<link rel="apple-touch-icon-precomposed" sizes="'.$size.'" href="'.$uri.'" />';
         }
