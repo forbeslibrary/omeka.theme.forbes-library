@@ -2,8 +2,8 @@
 <ul class="navigation">
 <?php
 $navArray = array(
-    __('Browse All') => uri('items'), 
-    __('View Tags') => uri('items/tags')
+    __('Browse All') => url('items'), 
+    __('View Tags') => url('items/tags')
 );
 echo forbes_theme_nav($navArray, 'items');
 ?>
