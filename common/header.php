@@ -14,14 +14,8 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 		
 		<nav id="top-level-nav" class="menu_bar">
 			<h2 class="navigation-label"><a href="<?php echo url('?nav=True');?>"><?php echo __('Navigation'); ?></a></h2>
-			<ul class="navigation">
-				<li class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></li>
-				<?php echo forbes_theme_public_header_nav(); ?>
-				<?php if (get_theme_option('main_site_title')):?>
-					<!-- including title of related/main site in top menu -->
-					<li><a href="<?php echo get_theme_option('main_site_url');?>"><?php echo get_theme_option('main_site_title');?></a></li>
-				<?php endif; ?>
-			</ul>
+			<span class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></span>
+			<?php echo public_nav_main(); ?>
 		</nav>
     
 		<?php if (!in_array(current_url(),array(url('/'),url('/items/advanced-search')))): ?>
