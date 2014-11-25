@@ -410,17 +410,3 @@ function fobres_theme_link_to_items_in_collection(
  
     return link_to('items', $action, $text, $props, $queryParams);
 }
-
-/**
- * Outputs HTML for the specified metadata elements.
- */
-function forbes_theme_get_metadata_html($record, $elements) {
-  $result = '';
-  foreach ($elements as $element) {
-	  if ($value = metadata($record, $element)) {
-			  $element_name = ($element[0] || $element);
-				$result = $result . "$elment_name: $value";
-		}
-	}
-	return $result;
-}
