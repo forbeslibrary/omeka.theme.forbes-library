@@ -9,21 +9,29 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
   <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
 	<header id="page-header">
-	  <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>
-	  
+	  <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>  
 		
+		<!-- front matter (includes site title, quick links, and search -->
+		
+		<?php theme_logo(); ?>
+		
+    <!-- custom navigation links as defined in the theme configuration -->
+		<div id="header-buttons">
+		  <?php echo forbes_theme_public_header_nav(); ?>
+		</div>
+		
+		<!-- simple search form -->
+		<form id="simple-search" action="<?php echo url('items/browse'); ?>" method="get">		
+			<input type="search" name="search" id="search" value="" class="textinput">
+			<input type="submit" name="submit_search" id="submit_search" value="Search">		
+		</form>
+		
+		<!-- menu bar -->
 		<nav id="top-level-nav" class="menu_bar">
 			<h2 class="navigation-label"><a href="<?php echo url('?nav=True');?>"><?php echo __('Navigation'); ?></a></h2>
 			<span class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></span>
 			<?php echo public_nav_main(); ?>
 		</nav>
-    
-		<?php if (!in_array(current_url(),array(url('/'),url('/items/advanced-search')))): ?>
-		<form id="simple-search" action="<?php echo url('items/browse'); ?>" method="get">		
-			<input type="search" name="search" id="search" value="" class="textinput">
-			<input type="submit" name="submit_search" id="submit_search" value="Search">		
-		</form>
-		<?php endif; ?>
 	</header>
 
 	<div id="content">

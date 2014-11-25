@@ -11,13 +11,7 @@ function forbes_theme_on_search_results_page() {
 }
 
 /**
- * Displays the main site navigation.
- *
- * A slightly modified custom_public_nav_header(), this version uses forbes_theme_nav()
- * throughout and gives plugins the chance to modify the nav array. Furthermore, it will
- * have at most one entry with with class="current". (Omeka's public_header_nav would
- * often have multiple entries with class="current" and didn't always give plugins the
- * opportunity to filter the navigation array.)
+ * Creates a menu based on the custom_header_navigation theme option.
  */
 function forbes_theme_public_header_nav()
 {    
@@ -35,58 +29,11 @@ function forbes_theme_public_header_nav()
                         $url = url($url);
                     }
                 }
-                $navArray[$link] = $url;
+                $navArray[] = array('label' => $link, 'uri' => $url);
             }
         }
-    } else {
-        $navArray = array(__('Browse Items') => url('items'), __('Browse Collections') =>url('collections'));
     }
-    return forbes_theme_nav($navArray, 'main');
-}
-
-/*
- * Generate an unordered list of navigation links with class "current" for the link which
- * best matches the current page.
- *
- * This differs from Omeka's nav() function in that it always has a depth of 0 (sub menus
- * are respected but not shown) and that it will never give more than one entry the class
- * "current".
- *
- * In order to allow plugins to modify the navigation, this function also takes a $navType
- * argument, similar to Omeka's public_nav() function.
- */
-function forbes_theme_nav(array $links, $navType=Null)
-{
-    // apply any defined plugin filters so that plugins may modify the array
-    if ($navType) {
-        $filterName = 'public_navigation_' . $navType;
-        $links = apply_filters($filterName, $links);
-    }
-    
-    // flatten array by getting single link from any subarrays
-    $lambda = create_function('$value', 'if (is_array($value)) { return (string) $value["uri"]; } return $value;');
-    $links = array_map($lambda, $links);
-    
-    // determine which link should get class="current"
-    $bestMatch = '';
-    $currentUri = current_url();
-    foreach ($links as $text => $uri) {
-        if (strlen($uri) > strlen($bestMatch) && strpos($currentUri, $uri)!==False) {
-            $bestMatch = $uri;
-        }
-    }
-    
-    $nav = '';
-    foreach ($links as $text => $uri) {
-        $class = text_to_id($text, 'nav');
-        if ($uri === $bestMatch) {
-           $class .= ' current';
-        }
-        $nav .= '<li class="' . $class . '">' ;
-        $nav .= '<a href="' . html_escape($uri) . '">' . html_escape($text) . '</a>';
-        $nav .= '</li>' . "\n";
-    }
-    return $nav;
+    return nav($navArray);
 }
 
 /**
