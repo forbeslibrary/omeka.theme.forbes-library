@@ -1,10 +1,10 @@
 <section class="items-show-in-browse">
 	<!-- item section header -->
 	<h2><?php
-		$title = metadata($item, array('Dublin Core', 'Title'), array('snippet'=>50));
-		$id = metadata($item, array('Dublin Core', 'Identifier'));
-		$line = $title ? $id.': '.$title : $id; 
-		echo link_to_item($line, array('class'=>'permalink'));
+		echo link_to_item(
+		  metadata($item, array('Dublin Core', 'Title')),
+			array('class'=>'permalink')
+			);
 	?></h2>
 	
 	<!-- item section thumbnail -->
