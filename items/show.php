@@ -32,7 +32,7 @@ $description = metadata($item, array('Dublin Core', 'Description'));
 <div id="item-metadata-wrapper">
 	<h2 id="item-metadata-button" class="_toggle_button">Image Details</h2>
 	<div id="item-metadata" class="_toggle">
-		<?php echo custom_show_item_metadata(); ?>
+    <?php echo all_element_texts($item); ?>
 	</div>
 </div>
 <!-- The following prints a citation for this item. -->
