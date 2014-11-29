@@ -13,27 +13,28 @@ function forbes_theme_on_search_results_page() {
 /**
  * Creates a menu based on the custom_header_navigation theme option.
  */
-function forbes_theme_public_header_nav()
-{    
-    if ($customHeaderNavigation = get_theme_option('custom_header_navigation')) {
-        $navArray = array();
-        $customLinkPairs = explode("\n", $customHeaderNavigation);
-        foreach ($customLinkPairs as $pair) {
-            $pair = trim($pair);
-            if ($pair != '') {
-                $pairArray = explode('|', $pair, 2);
-                if (count($pairArray) == 2) {
-                    $link = trim($pairArray[0]);
-                    $url = trim($pairArray[1]); 
-                    if (strncmp($url, 'http://', 7) && strncmp($url, 'https://', 8)){                        
-                        $url = url($url);
-                    }
-                }
-                $navArray[] = array('label' => $link, 'uri' => $url);
-            }
-        }
-    }
-    return nav($navArray);
+function forbes_theme_public_header_nav() {
+  $navArray = array();
+  if ($customHeaderNavigation = get_theme_option('custom_header_navigation')) {
+      
+      $customLinkPairs = explode("\n", $customHeaderNavigation);
+      foreach ($customLinkPairs as $pair) {
+          $pair = trim($pair);
+          if ($pair != '') {
+              $pairArray = explode('|', $pair, 2);
+              if (count($pairArray) == 2) {
+                  $link = trim($pairArray[0]);
+                  $url = trim($pairArray[1]); 
+                  if (strncmp($url, 'http://', 7) && strncmp($url, 'https://', 8)){                        
+                      $url = url($url);
+                  }
+              }
+              $navArray[] = array('label' => $link, 'uri' => $url);
+          }
+      }
+  }
+
+  return nav($navArray);
 }
 
 /**
