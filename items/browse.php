@@ -17,7 +17,7 @@ if (!forbes_theme_on_search_results_page()) {
     echo common('browse-navigation', array(), 'items');
 } else {
     echo common('search-warnings', array(), 'items');
-    echo common('search-summary', array(), 'items');
+    echo common('search-summary', array('total_results' => $total_results), 'items');
 }
 ?>
 <div id="pagination-top" class="pagination"><?php echo pagination_links(); ?></div>

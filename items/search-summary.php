@@ -85,9 +85,11 @@ if ($tag = Zend_Controller_Front::getInstance()->getRequest()->getParam('tag')) 
 		);	
 }
 if (isset($limits)): ?>
-<?php echo __('%1$s %2$s your search for items %3$s.'
-,   total_results()
-,   (total_results()==1 ? __('item matches') : __('items match'))
+<?php
+echo __('%1$s %2$s your search for items %3$s.'
+,   $total_results
+,   ($total_results==1 ? __('item matches') : __('items match'))
 ,   implode(__(' AND '), $limits)
-); ?>
+);
+?>
 <?php endif; ?>
