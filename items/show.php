@@ -50,7 +50,7 @@ if ($pluginAdditions) {
 <div id="items-show-tags">
 	<h3><?php echo __('Tags'); ?></h3>
 	<?php
-	$tags = get_records('Tag', array('sort' => 'alpha', 'record' => $item ), null);
+	$tags = get_records('Tag', array('sort_field' => 'name', 'record' => $item ), null);
 	echo tag_cloud($tags, 'items/browse');
 	?>
 </div>
