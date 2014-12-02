@@ -223,12 +223,12 @@ function forbes_theme_collection_thumbnail() {
         $select = $db->select()
             ->from(array('i' =>'omeka_items'),'id')
             ->join(array('f' =>'omeka_files'),'f.item_id = i.id', array())
-            ->where('f.has_derivative_image = 1 AND i.collection_id = ?', collection('id'))
+            ->where('f.has_derivative_image = 1 AND i.collection_id = ?', metadata('collection', 'id'))
             ->limit(1);
         $result = $db->query($select)->fetch();
         if ($result) {  
-            set_current_record('item',get_item_by_id($result['id']));
-            return item_thumbnail();
+            set_current_record('item',get_record_by_id('item', $result['id']));
+            return item_image('thumbnail');
         }
 }
 

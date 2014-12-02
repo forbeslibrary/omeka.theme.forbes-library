@@ -7,13 +7,14 @@ head(array('title'=>$pageTitle,'bodyid'=>'collections','bodyclass' => 'browse'))
 <?php
 // We will include all collections on this page, sorted by collection name
 // We have sacrificed easy pagination in order to allow for easy sorting
-set_collections_for_loop(get_collections(array ('sort_field'=>'name')));
+set_loop_records('collections', get_records('collection', array ('sort_field'=>'name')));
 ?>
 
 <ul class="collections-browse-collection-list">
-<?php while (loop_collections()): ?>
+<?php foreach (loop('collections') as $collection): ?>
+    <?php set_current_record('collection', $collection); ?>
     <li class="collections-browse-collection-entry">
-        <?php echo link_to_collection('<h2>'.collection('Name').'</h2>'); ?>
+        <?php echo link_to_collection('<h2>'.metadata('collection', array('Dublin Core', 'Title')).'</h2>'); ?>
         <?php if ($thumbnail = forbes_theme_collection_thumbnail()): ?> 
             <figure><?php echo link_to_collection($thumbnail);?></figure>
         <?php endif; ?>
@@ -38,7 +39,7 @@ set_collections_for_loop(get_collections(array ('sort_field'=>'name')));
         <?php echo plugin_append_to_collections_browse_each(); ?>
         <?php echo link_to_collection(__('More on this collection.')); ?>
     </li>
-<?php endwhile; ?>
+<?php endforeach; ?>
 </ul>
 
 <?php echo plugin_append_to_collections_browse(); ?>
