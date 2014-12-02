@@ -49,13 +49,10 @@ if ($pluginAdditions) {
 <?php if (metadata($item, 'has tags')): ?>
 <div id="items-show-tags">
 	<h3><?php echo __('Tags'); ?></h3>
-	<ul>
-	<?php $tags = get_tags(array('sort' => 'alpha', 'record' => $item ), 20);
-	$link_base = uri('items/browse/tag/');
-	foreach ($tags as $tag) {
-		echo '<li><a href="'.$link_base.urlencode($tag).'">'.html_escape($tag).'</a></li>';
-	} ?>
-	</ul>
+	<?php
+	$tags = get_records('Tag', array('sort' => 'alpha', 'record' => $item ), null);
+	echo tag_cloud($tags, 'items/browse');
+	?>
 </div>
 <?php endif;
 echo foot();
