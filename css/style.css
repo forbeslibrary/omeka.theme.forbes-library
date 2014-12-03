@@ -53,6 +53,11 @@ img {
 	overflow:hidden; /* expand section to fit content */
 }
 
+#wrapper {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
 @media (min-width: 62em) { /* put featured content in a row on large screens */
 
 	#featured-content.two-sections>section {

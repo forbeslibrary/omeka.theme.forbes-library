@@ -15,5 +15,6 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 
 		<?php fire_plugin_hook('public_footer', array('view'=>$this)); ?>
 	</footer>
+  </div>
 </body>
 </html>

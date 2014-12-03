@@ -7,8 +7,11 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 <?php echo common('head'); ?>
 
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
+  <!-- plugin hook 'public_body' -->
   <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
+  <div id="wrapper">
 	<header id="page-header">
+    <!-- plugin hook 'public_header' -->
 	  <?php fire_plugin_hook('public_header', array('view'=>$this)); ?>  
 		
 		<!-- front matter (includes site title, quick links, and search -->
