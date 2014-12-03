@@ -43,6 +43,10 @@ img {
 	overflow:hidden;
 }
 
+#content {
+	clear:both;
+}
+
 #featured-content {
 	margin:5ex 0 2ex 0;
 	width:100%;
@@ -53,9 +57,29 @@ img {
 	overflow:hidden; /* expand section to fit content */
 }
 
+#header-buttons {
+	position: absolute;
+	right: 0;
+	top: 0;
+	display: block;
+	white-space: nowrap;
+}
+
+#header-buttons li {
+	padding: 0 0.5em;
+  display: inline-block;
+}
+
+#simple-search {
+	display: inline-block;
+	float: right;
+	margin: 40px 0 20px 20px;
+}
+
 #wrapper {
 	max-width: 1200px;
 	margin: 0 auto;
+	position:relative;
 }
 
 @media (min-width: 62em) { /* put featured content in a row on large screens */
