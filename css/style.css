@@ -43,6 +43,10 @@ img {
 	overflow:hidden;
 }
 
+#banner {
+	min-height: 60px;
+}
+
 #content {
 	clear:both;
 }
@@ -72,8 +76,9 @@ img {
 
 #simple-search {
 	display: inline-block;
-	float: right;
-	margin: 40px 0 20px 20px;
+	position: absolute;
+	right: 0;
+	top: 30px;
 }
 
 #wrapper {

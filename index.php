@@ -1,15 +1,13 @@
 <?php echo head(array('bodyid'=>'home')); ?>
 
-<h1 id="site-title"><?php echo link_to_home_page(); ?></h1>
-
 <?php if (get_theme_option('Homepage Text')): ?>
 <div id="home-page-text"><?php echo get_theme_option('Homepage Text'); ?></div>
 <?php endif; ?>
 
 <?php if (get_theme_option('Homepage Search')): ?>
-<form id="simple-search" action="<?php echo uri(array('controller'=>'items', 'action'=>'browse'))?>" method="get">      
+<form id="simple-search" action="<?php echo uri(array('controller'=>'items', 'action'=>'browse'))?>" method="get">
     <input type="search" name="search" id="search" value="" class="textinput">
-    <input type="submit" name="submit_search" id="submit_search" value="Search">        
+    <input type="submit" name="submit_search" id="submit_search" value="Search">
 </form>
 <?php endif; ?>
 
