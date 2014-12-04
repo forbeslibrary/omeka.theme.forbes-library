@@ -1,5 +1,5 @@
 <?php
-$pageTitle = __('View Tags');
+$pageTitle = __('View Item Tags');
 echo head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass'=>'tags'));
 ?>
 <h1><?php echo $pageTitle;?></h1>
