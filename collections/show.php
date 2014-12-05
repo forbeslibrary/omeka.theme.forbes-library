@@ -1,7 +1,7 @@
 <?php 
-head(array('title'=>collection('Name'), 'bodyid'=>'collections', 'bodyclass' => 'show'));
+echo head(array('title'=>metadata('collection', array('Dublin Core', 'Title')), 'bodyid'=>'collections', 'bodyclass' => 'show'));
 
-$total_items = total_items_in_collection();
+$total_items = get_record('collection')->totalItems();
 
 $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
     __('See all %s items', $total_items),
@@ -19,7 +19,7 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
     <div class="element-text"><?php
     // we get the description this way so that HTML will not be escaped
     // Note that the HTML is not sanitized either!
-    echo nls2p(get_current_collection()->description);
+    echo text_to_paragraphs(get_current_collection()->description);
    ?></div>
 </section>
 
@@ -34,8 +34,7 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
     
 <section id="collections-show-item-list">
     <h2><?php echo __('Items in this Collection'); ?></h2>
-    <?php
-    if ($total_items > 5): ?>
+    <?php if ($total_items > 5): ?>
         <div class="collections-show-more-items-line">
             <?php echo __('Showing first five items in this collection.'); ?>
             <?php echo $link_to_all_items_in_collection; ?>
@@ -46,7 +45,7 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
             <?php common("show-in-browse", $vars = array(), $dir = 'items') ?>
         <?php endwhile; ?>
     </ul>
-    <? if ($total_items > 5): ?>
+    <?php if($total_items > 5): ?>
         <div class="collections-show-more-items-line">
             <?php echo __('Showing first five items in this collection.');?>
             <?php echo $link_to_all_items_in_collection; ?>
@@ -55,5 +54,5 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
 </section>
 
 <?php
-echo plugin_append_to_collections_show();
-foot();
+echo fire_plugin_hook('append_to_collections_show');
+echo foot();
