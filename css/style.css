@@ -32,43 +32,27 @@ img {
 	line-height: 38px;
 }
 
+.pagination,
+.item-pagination {
+	font-size:.9em;
+	width:auto;
+	padding:0;
+	clear:both;
+}
+.pagination li,
+.item-pagination li {
+		display:inline;
+		padding:0 .25em;
+}
+.pagination a,
+.pagination ul {
+	display:inline;
+	margin: 0;
+	padding: 0;
+}
+
 .navigation-label,
 .nav-jump-to-content,
-.pagination,
-
-.item-pagination {
-
-	font-size:.9em;
-
-	width:auto;
-
-	padding:0;
-
-	clear:both;
-
-}
-
-	.pagination li,
-
-	.item-pagination li {
-
-		display:inline;
-
-		padding:0 .25em;
-
-	}
-
-	.pagination a,
-
-.pagination ul {
-
-	display:inline;
-
-	margin: 0;
-
-	padding: 0;
-
-}
 .hidden  {
 	position:absolute;
 	left:-10000px;
