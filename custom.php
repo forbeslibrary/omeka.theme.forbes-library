@@ -310,7 +310,7 @@ function forbes_theme_largeicon_link_tag()
  ***/
 function forbes_theme_loop_items_in_collection($num = 10, $options = array())
 {
-    $options = array_merge($options, array('collection'=>get_current_collection()->id));
+    $options = array_merge($options, array('collection'=>get_record('collection')->id));
     
     // Cache this so we don't end up calling the DB query over and over again
     // inside the loop.
@@ -347,7 +347,7 @@ function fobres_theme_link_to_items_in_collection(
     )
 {
     if (!$collectionObj) {
-        $collectionObj = get_current_collection();
+        $collectionObj = get_record('collection');
     }
  
     $queryParams['collection'] = $collectionObj->id;
