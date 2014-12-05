@@ -17,8 +17,15 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 		<!-- front matter (includes site title, quick links, and search -->
 
 		<div id="banner">
-      <?php theme_logo(); ?>
-      <h1 id="site-title"><?php echo link_to_home_page(); ?></h1>
+      <h1 id="site-title">
+			  <?php
+				if (theme_logo()) {
+				  echo link_to_home_page(theme_logo()); 
+				} else {
+				  echo link_to_home_page();
+				}
+				?>
+			</h1>
     </div>
 
     <!-- custom navigation links as defined in the theme configuration -->
