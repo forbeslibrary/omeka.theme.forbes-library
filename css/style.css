@@ -63,7 +63,7 @@ img {
 }
 
 #banner {
-	min-height: 60px;
+	min-height: 100px;
 }
 
 #content {
@@ -99,6 +99,10 @@ img {
 	position: absolute;
 	right: 0;
 	top: 30px;
+}
+
+#site-title {
+	padding: 1em;
 }
 
 #wrapper {
