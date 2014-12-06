@@ -1,4 +1,4 @@
-<?php 
+<?php
 echo head(array('title'=>metadata('collection', array('Dublin Core', 'Title')), 'bodyid'=>'collections', 'bodyclass' => 'show'));
 
 $total_items = get_record('collection')->totalItems();
@@ -12,26 +12,27 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
 );
 ?>
 
-<h1><?php echo __('Collection: ') . collection('Name'); ?></h1>
+<h1><?php echo __('Collection: ') . metadata('collection', array('Dublin Core','Title')); ?></h1>
 <section>
     <h2><?php echo __('Description'); ?></h2>
- 
+
     <div class="element-text"><?php
     // we get the description this way so that HTML will not be escaped
     // Note that the HTML is not sanitized either!
-    echo text_to_paragraphs(get_current_collection()->description);
+    echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description')));
    ?></div>
 </section>
 
-<?php if (collection_has_collectors()): ?>
+<?php $collectors = metadata('collection', array('Dublin Core', 'Contributor')); ?>
+<?php if ($collectors): ?>
 <section>
     <h2><?php echo __('Collector(s)'); ?></h2>
     <ul>
-        <li><?php echo collection('Collectors', array('delimiter'=>'</li><li>')); ?></li>
+        <li><?php echo $collectors; ?></li>
     </ul>
 </section>
 <?php endif; ?>
-    
+
 <section id="collections-show-item-list">
     <h2><?php echo __('Items in this Collection'); ?></h2>
     <?php if ($total_items > 5): ?>
