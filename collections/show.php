@@ -41,10 +41,11 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
             <?php echo $link_to_all_items_in_collection; ?>
         </div>
     <?php endif; ?>
+    <?php $items = get_records('item', array('sort_field' => 'Dublin Core,Identifier'), 5); ?>
     <ul>
-        <?php while (forbes_theme_loop_items_in_collection(5, array('sort_field' => 'Dublin Core,Identifier'))): ?>
-            <?php common("show-in-browse", $vars = array(), $dir = 'items') ?>
-        <?php endwhile; ?>
+        <?php foreach (loop('items', $items) as $item): ?>
+            <?php echo common("show-in-browse", array('item' => $item), 'items') ?>
+        <?php endforeach; ?>
     </ul>
     <?php if($total_items > 5): ?>
         <div class="collections-show-more-items-line">
