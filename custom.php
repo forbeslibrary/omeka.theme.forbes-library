@@ -195,19 +195,11 @@ function forbes_theme_display_random_featured_collection() {
     set_current_record('collection', $collection);
     if ($collection) {
         $title = metadata($collection, array('Dublin Core', 'Title'));
-        $description = snippet_by_word_count(metadata($collection, array('Dublin Core', 'Description')), 100);
-        $image_uris = forbes_theme_collection_image_uris();
+        $description = metadata($collection, array('Dublin Core', 'Description'));
         echo '<header>',
             '<h2>', __('Featured Collection'), '</h2>',
             '<h3>', link_to_collection($title), '</h3>',
             '</header>',
-            '<figure style="margin:0;">',
-            link_to_collection(			
-			  '<div style="float:left; border-right:solid black 1px; box-sizing:border-box; width:33%;  height:400px; background-position:center; background-size:cover; background-image:url(' . $image_uris[0] . ');"></div>' .
-			  '<div style="float:left; border-right:solid black 1px; box-sizing:border-box; width:32%; height:400px; background-position:center; background-size:cover; background-image:url(' . $image_uris[1] . ');"></div>' .
-			  '<div style="float:left; box-sizing:border-box; width:33%;  height:400px; background-position:center; background-size:cover; background-image:url(' . $image_uris[2] . ');"></div>'
-			),
-            '</figure>',
             '<p class="description">', $description, '</p>';
     } else {
         echo '<h2>', __('Featured Collection'), '</h2>',
@@ -230,30 +222,6 @@ function forbes_theme_collection_thumbnail() {
             set_current_record('item',get_record_by_id('item', $result['id']));
             return item_image('thumbnail');
         }
-}
-
-/**
- * Returns the first 3 available item image uris from the items in the current collection.
- */
-function forbes_theme_collection_image_uris() {
-        $collection = get_current_record('collection');
-        $db = get_db();
-        $select = $db->select()
-            ->from(array('i' =>'omeka_items'),'id')
-            ->join(array('f' =>'omeka_files'),'f.item_id = i.id', array())
-            ->where('f.has_derivative_image = 1 AND i.collection_id = ?', metadata($collection, 'id'));
-        $results = $db->query($select)->fetchAll();
-        $image_uris = array();
-        foreach ($results as $result) {  
-            $item = get_record_by_id('item', $result['id']);
-            $files = $item->Files;
-            foreach ($files as $file) {
-				       $image_uris[] = metadata($file, 'uri');
-				       break;
-				    }
-				    if (count($image_uris)==3) { break; }
-        }
-        return $image_uris;
 }
 
 /**
