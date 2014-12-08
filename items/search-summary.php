@@ -27,12 +27,12 @@ if (isset($_GET['range']) && $_GET['range']!='') {
 }
 if (isset($_GET['collection']) && $_GET['collection']!='') {
 	$collection_id = $_GET['collection'];
-	if (is_numeric($collection_id) and ($collection = get_collection_by_id($collection_id))) {
-		set_current_collection($collection);
+	if (is_numeric($collection_id) and ($collection = get_record_by_id('collection', $collection_id))) {
+		set_current_record('collection', $collection);
 	    $limits[] = __(
 	    	'in the collection <a href="%1$s">%2$s</a>',
-	    	uri('collections/show/'.$collection_id),
-	    	collection('Name')
+	    	url('collections/show/'.$collection_id),
+	    	metadata('collection', array('Dublin Core', 'Title'))
 	    	);
 	} elseif ($collection_id !='') {
 	    $limits[] = __('in the collection with id %s (collection does not exist).', html_escape($collection_id));  
