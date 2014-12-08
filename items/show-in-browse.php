@@ -13,11 +13,14 @@
 	
 	<!-- item section metadata -->
 	<div class="items-show-in-browse-details">
+		<?php if ($identifier = metadata($item, array('Dublin Core', 'Identifier'))) {
+				echo __('Identifier: %s.<br>', $identifier);
+		} ?>
 		<?php if ($format = metadata($item, array('Dublin Core', 'Format'))) {
-				echo __('Format: %s.', $format);
+				echo __('Format: %s.<br>', $format);
 		} ?>
 		<?php if ($creator = metadata($item, array('Dublin Core', 'Creator'))) {
-				echo __('Creator: %s.', $creator);
+				echo __('Creator: %s.<br>', $creator);
 		} ?>
 
 		<div class="items-show-in-browse-description">
