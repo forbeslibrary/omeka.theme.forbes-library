@@ -157,8 +157,8 @@ function forbes_theme_display_random_featured_exhibit() {
         '<h2>', __('Featured Exhibit'), '</h2>',
         '<h3>', exhibit_builder_link_to_exhibit($featuredExhibit), '</h3>'."\n",
         '</header>',
-        '<img src="'.$file_uri.'">',
-        '<p>', snippet_by_word_count(metadata($featuredExhibit, 'Description', array('no_escape' => true)), 100), '</p>';
+        //'<img src="'.$file_uri.'">',
+        '<div>', metadata($featuredExhibit, 'Description', array('no_escape' => true)), '</div>';
 }
 
 /**
