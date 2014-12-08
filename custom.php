@@ -150,7 +150,7 @@ function forbes_theme_display_random_featured_exhibit() {
         '<h2>', __('Featured Exhibit'), '</h2>',
         '<h3>', exhibit_builder_link_to_exhibit($featuredExhibit), '</h3>'."\n",
         '</header>',
-        '<div>', metadata($featuredExhibit, 'Description', array('no_escape' => true)), '</div>';
+        '<div>', forbes_theme_summary(metadata($featuredExhibit, 'Description', array('no_escape' => true))), '</div>';
 }
 
 /**
@@ -173,7 +173,7 @@ function forbes_theme_display_random_featured_item() {
 			}
 			echo link_to_item('<h3>'.$title.'</h3>');
 			echo link_to_item('<img alt='.$title.' src='.$file_uri.'>');
-			echo '<p>' . metadata('item', array('Dublin Core', 'Description')) . '</p>';
+			echo '<p>' . forbes_theme_summary(metadata('item', array('Dublin Core', 'Description'))) . '</p>';
     } else {
         echo __('<p>No featured item found</p>');
     }
@@ -192,7 +192,7 @@ function forbes_theme_display_random_featured_collection() {
             '<h2>', __('Featured Collection'), '</h2>',
             '<h3>', link_to_collection($title), '</h3>',
             '</header>',
-            '<p class="description">', $description, '</p>';
+            '<p class="description">', forbes_theme_summary($description), '</p>';
     } else {
         echo '<h2>', __('Featured Collection'), '</h2>',
             __('<p>No featured collection found</p>');
@@ -317,4 +317,17 @@ function fobres_theme_link_to_items_in_collection(
     }
  
     return link_to('items', $action, $text, $props, $queryParams);
+}
+
+/**
+ * Truncates text at the wordpress style <!-- more --> tag.
+ */
+function forbes_theme_summary($html) {
+	$pattern = '/^(.*)<!--\s*more/is';
+	preg_match($pattern, $html, $matches);
+	if (isset ($matches[1])) {
+	  return $matches[1];
+	} else {
+	  return $html;
+	}
 }
