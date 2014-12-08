@@ -141,9 +141,16 @@ img {
 	display: block;
 }
 
-.collections-browse-collection-entry img {
+.description img {
+	max-width: 33%;
 	float: left;
 	margin: 0.5em 1em 1em 1em;
+}
+
+#featured-content .description img {
+	max-width: 100%;
+	float: none;
+	margin: 0;
 }
 
 .featured-item img {

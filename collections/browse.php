@@ -15,7 +15,9 @@ set_loop_records('collections', get_records('collection', array ('sort_field'=>'
     <?php set_current_record('collection', $collection); ?>
     <li class="collections-browse-collection-entry">
       <?php echo link_to_collection('<h2>'.metadata('collection', array('Dublin Core', 'Title')).'</h2>'); ?>
-      <?php echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description'))); ?>
+      <div class="element-text description">
+        <?php echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description'))); ?>
+       </div>
       <?php echo fire_plugin_hook('append_to_collections_browse_each'); ?>
       <?php echo link_to_collection(__('More on this collection.')); ?>
     </li>

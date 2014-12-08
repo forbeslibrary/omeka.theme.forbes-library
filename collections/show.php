@@ -16,7 +16,7 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
 <section>
     <h2><?php echo __('Description'); ?></h2>
 
-    <div class="element-text"><?php
+    <div class="element-text description"><?php
     // we get the description this way so that HTML will not be escaped
     // Note that the HTML is not sanitized either!
     echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description')));

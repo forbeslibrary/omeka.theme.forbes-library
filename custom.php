@@ -150,7 +150,7 @@ function forbes_theme_display_random_featured_exhibit() {
         '<h2>', __('Featured Exhibit'), '</h2>',
         '<h3>', exhibit_builder_link_to_exhibit($featuredExhibit), '</h3>'."\n",
         '</header>',
-        '<div>', forbes_theme_summary(metadata($featuredExhibit, 'Description', array('no_escape' => true))), '</div>';
+        '<div class="description">', forbes_theme_summary(metadata($featuredExhibit, 'Description', array('no_escape' => true))), '</div>';
 }
 
 /**
@@ -173,7 +173,7 @@ function forbes_theme_display_random_featured_item() {
 			}
 			echo link_to_item('<h3>'.$title.'</h3>');
 			echo link_to_item('<img alt='.$title.' src='.$file_uri.'>');
-			echo '<p>' . forbes_theme_summary(metadata('item', array('Dublin Core', 'Description'))) . '</p>';
+			echo '<div class="description">' . forbes_theme_summary(metadata('item', array('Dublin Core', 'Description'))) . '</div>';
     } else {
         echo __('<p>No featured item found</p>');
     }
@@ -192,7 +192,7 @@ function forbes_theme_display_random_featured_collection() {
             '<h2>', __('Featured Collection'), '</h2>',
             '<h3>', link_to_collection($title), '</h3>',
             '</header>',
-            '<p class="description">', forbes_theme_summary($description), '</p>';
+            '<div class="description">', forbes_theme_summary($description), '</div>';
     } else {
         echo '<h2>', __('Featured Collection'), '</h2>',
             __('<p>No featured collection found</p>');
