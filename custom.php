@@ -146,18 +146,10 @@ function forbes_theme_display_random_featured_exhibit() {
             __('No featured exhibits found');
         return;
     }
-    
-    $items=get_records('item', array('hasImage'=>true, 'exhibit'=>$featuredExhibit),$num=1);
-    $files = $items[0]->Files;
-		foreach($files as $file) {
-			$file_uri = file_display_url($file);
-			break;
-		}
     echo '<header>',
         '<h2>', __('Featured Exhibit'), '</h2>',
         '<h3>', exhibit_builder_link_to_exhibit($featuredExhibit), '</h3>'."\n",
         '</header>',
-        //'<img src="'.$file_uri.'">',
         '<div>', metadata($featuredExhibit, 'Description', array('no_escape' => true)), '</div>';
 }
 
