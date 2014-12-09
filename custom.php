@@ -146,12 +146,15 @@ function forbes_theme_display_random_featured_exhibit() {
             __('No featured exhibits found');
         return;
     }
-    echo '<header>',
-        '<h2>', __('Featured Exhibit'), '</h2>',
-        '<h3>', exhibit_builder_link_to_exhibit($featuredExhibit), '</h3>'."\n",
-        '</header>',
-        '<div class="description">', forbes_theme_summary(metadata($featuredExhibit, 'Description', array('no_escape' => true))), '</div>';
-}
+    $html = '<header>' .
+        '<h2>' . __('Featured Exhibit') . '</h2>' .
+        '<h3>' . metadata($featuredExhibit, 'Title') . '</h3>'."\n" .
+        '</header>' .
+        '<div class="description">' .
+        forbes_theme_summary(metadata($featuredExhibit, 'Description', array('no_escape' => true))) .
+        '</div>';
+    echo exhibit_builder_link_to_exhibit($featuredExhibit, $html);
+} 
 
 /**
  * Displays a random featured item.
@@ -171,9 +174,10 @@ function forbes_theme_display_random_featured_item() {
 				$file_uri = file_display_url($file);
 				break;
 			}
-			echo link_to_item('<h3>'.$title.'</h3>');
-			echo link_to_item('<img alt='.$title.' src='.$file_uri.'>');
-			echo '<div class="description">' . forbes_theme_summary(metadata('item', array('Dublin Core', 'Description'))) . '</div>';
+			$html = '<h3>' . $title . '</h3>' .
+        '<img alt=' . $title . ' src=' . $file_uri . '>' .
+        '<div class="description">' . forbes_theme_summary(metadata('item', array('Dublin Core', 'Description'))) . '</div>';
+      echo link_to_item($html);
     } else {
         echo __('<p>No featured item found</p>');
     }
@@ -188,11 +192,12 @@ function forbes_theme_display_random_featured_collection() {
     if ($collection) {
         $title = metadata($collection, array('Dublin Core', 'Title'));
         $description = metadata($collection, array('Dublin Core', 'Description'));
-        echo '<header>',
-            '<h2>', __('Featured Collection'), '</h2>',
-            '<h3>', link_to_collection($title), '</h3>',
-            '</header>',
-            '<div class="description">', forbes_theme_summary($description), '</div>';
+        $html = '<header>' .
+            '<h2>' . __('Featured Collection') . '</h2>' .
+            '<h3>' . $title . '</h3>' .
+            '</header>' .
+            '<div class="description">' . forbes_theme_summary($description) . '</div>';
+        echo link_to_collection($html);
     } else {
         echo '<h2>', __('Featured Collection'), '</h2>',
             __('<p>No featured collection found</p>');

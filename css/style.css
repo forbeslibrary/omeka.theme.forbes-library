@@ -81,6 +81,22 @@ img {
 	overflow:hidden; /* expand section to fit content */
 }
 
+#featured-content a,
+#featured-content a:active,
+#featured-content a:hover,
+#featured-content a:visited {
+	text-decoration: none;
+  color: black;
+}
+
+#featured-content h2 {
+  margin: 0.25em 0;
+}
+#featured-content a h3 {
+  text-decoration:underline;
+  margin: 0.25em 0;
+}
+
 #header-buttons {
 	position: absolute;
 	right: 0;
