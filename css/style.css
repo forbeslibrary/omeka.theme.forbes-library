@@ -163,6 +163,10 @@ img {
 	margin: 0.5em 1em 1em 1em;
 }
 
+#featured-content .description {
+	margin-top: 0.5em;
+}
+
 #featured-content .description img {
 	max-width: 100%;
 	float: none;
