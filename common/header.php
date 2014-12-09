@@ -44,7 +44,15 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
     <nav id="top-level-nav" class="menu_bar">
       <h2 class="navigation-label"><a href="<?php echo url('?nav=True');?>"><?php echo __('Navigation'); ?></a></h2>
       <span class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></span>
-      <?php echo public_nav_main(); ?>
+      <input type="checkbox" id="toggle" />
+      <div>
+        <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
+        <?php
+        $menu = public_nav_main();
+        $menu->setUlClass('menu');
+        echo $menu;
+        ?>
+      </div>
     </nav>
   </header>
 
