@@ -1,6 +1,8 @@
 /*
 Table of Contents
 =================
+-- Normalize.css
+-- Mixins
 -- General HTML Elements
 -- Global
 -- Navigation
@@ -13,6 +15,16 @@ Table of Contents
 */
 /* !-- Normalize.css ----------------------------------------------------- */
 @import (inline) 'normalize.css';
+
+/* !-- Mixins ------------------------------------------------------------ */
+.accessible-hide() {
+    position:absolute;
+    left:-10000px;
+    top:auto;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
 
 /* !-- General HTML Elements --------------------------------------------- */
 body {
@@ -54,14 +66,8 @@ img {
     }
 }
 .navigation-label,
-.nav-jump-to-content,
-.hidden  {
-    position:absolute;
-    left:-10000px;
-    top:auto;
-    width:1px;
-    height:1px;
-    overflow:hidden;
+.nav-jump-to-content {
+    .accessible-hide();
 }
 /* !-- Header ------------------------------------------------------------ */
 .menu_bar {
@@ -112,6 +118,7 @@ img {
 #content {
     clear:both;
     font-size: 133%;
+    margin: 0 5px;
 }
 /* !-- Home Page --------------------------------------------------------- */
 #featured-content {

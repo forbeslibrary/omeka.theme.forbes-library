@@ -1,6 +1,8 @@
 /*
 Table of Contents
 =================
+-- Normalize.css
+-- Mixins
 -- General HTML Elements
 -- Global
 -- Navigation
@@ -440,6 +442,7 @@ th {
   padding: 0;
 }
 
+/* !-- Mixins ------------------------------------------------------------ */
 /* !-- General HTML Elements --------------------------------------------- */
 body {
   font-family: 'Lato', Georgia, Times, Serif;
@@ -482,8 +485,7 @@ img {
   padding: 0;
 }
 .navigation-label,
-.nav-jump-to-content,
-.hidden {
+.nav-jump-to-content {
   position: absolute;
   left: -10000px;
   top: auto;
@@ -539,6 +541,7 @@ img {
 #content {
   clear: both;
   font-size: 133%;
+  margin: 0 5px;
 }
 /* !-- Home Page --------------------------------------------------------- */
 #featured-content {
