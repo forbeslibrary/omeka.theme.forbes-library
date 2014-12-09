@@ -234,7 +234,7 @@ function forbes_theme_favicon_link_tag()
 
         if ($favicon) {
             $storage = Zend_Registry::get('storage');
-            $uri = $storage->geturl($storage->getPathByType($favicon, 'theme_uploads'));
+            $uri = $storage->getUri($storage->getPathByType($favicon, 'theme_uploads'));
             return '<link rel="icon" sizes="16x16" href="'.$uri.'" />';
         }
     }
@@ -255,7 +255,7 @@ function forbes_theme_largeicon_link_tag()
 
         if ($largeicon) {
             $storage = Zend_Registry::get('storage');
-            $uri = $storage->geturl($storage->getPathByType($largeicon, 'theme_uploads'));
+            $uri = $storage->getUri($storage->getPathByType($largeicon, 'theme_uploads'));
             return '<link rel="icon" sizes="'.$size.'" href="'.$uri.'" />'.
                 '<link rel="apple-touch-icon-precomposed" sizes="'.$size.'" href="'.$uri.'" />';
         }
