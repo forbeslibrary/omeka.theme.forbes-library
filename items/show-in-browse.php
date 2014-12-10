@@ -1,4 +1,4 @@
-<section class="items-show-in-browse">
+<li class="items-show-in-browse">
 	<!-- item section header -->
 	<h2><?php
 		echo link_to_item(
@@ -33,4 +33,4 @@
 	
 	<!-- link to item -->
 	<?php echo link_to_item(__('More information'), array('class'=>'items-show-in-browse-details')); ?>
-</section>
+</li>

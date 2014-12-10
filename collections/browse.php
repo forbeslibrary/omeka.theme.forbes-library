@@ -14,7 +14,9 @@ set_loop_records('collections', get_records('collection', array ('sort_field'=>'
 <?php foreach (loop('collections') as $collection): ?>
     <?php set_current_record('collection', $collection); ?>
     <li class="collections-browse-collection-entry">
-      <?php echo link_to_collection('<h2>'.metadata('collection', array('Dublin Core', 'Title')).'</h2>'); ?>
+      <h2>
+          <?php echo link_to_collection(metadata('collection', array('Dublin Core', 'Title'))); ?>
+      </h2>
       <div class="element-text description">
         <?php echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description'))); ?>
        </div>

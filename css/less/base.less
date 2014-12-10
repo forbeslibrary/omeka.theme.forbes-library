@@ -1,8 +1,8 @@
 /*
 Table of Contents
 =================
--- Imports
 -- Global Variables
+-- Library Imports
 -- Mixins
 -- General HTML Elements
 -- Global
@@ -12,18 +12,14 @@ Table of Contents
 -- Content
 -- Home Page
 -- Exhibits
--- Media Queries
+-- Other Imports
 */
-/* !-- Imports ----------------------------------------------------------- */
-@import (inline) 'normalize.css';
-@import (inline) 'navigataur.css';
-
 /* !-- Global Variables -------------------------------------------------- */
-// Background Colors/Images
+// Background Colors
 @body-background: #FFFAF0;
 @background: #FFFFFF;
 
-// Foreground Collors
+// Foreground Colors
 @main-color:     #333333;
 @accent-color:   #722327;
 @contrast-color: #006C64;
@@ -33,6 +29,9 @@ Table of Contents
 // they may be overridden as appropriate for other screen sizes
 @content-margin: 5px;
 
+/* !--  Library Imports -------------------------------------------------- */
+@import (inline) 'normalize.css';
+
 /* !-- Mixins ------------------------------------------------------------ */
 .accessible-hide() {
     position:absolute;
@@ -41,6 +40,15 @@ Table of Contents
     width:1px;
     height:1px;
     overflow:hidden;
+}
+.fancy-heading() {
+    clear: both;
+    color: @contrast-color;
+    border-bottom: 1px solid @contrast-color;
+    a {
+        color: @contrast-color;
+        text-decoration: none;
+    }
 }
 
 /* !-- General HTML Elements --------------------------------------------- */
@@ -84,6 +92,34 @@ h6 {
 }
 
 /* !-- Navigation -------------------------------------------------------- */
+// The toogle 
+.toggle:after {
+    color: @accent-color;
+		content: attr(data-open);
+		display: block;
+		width: 100%;
+		padding: 10px 50px;
+		-webkit-border-radius: 2px;
+		border-radius: 2px;
+		text-align: center;
+		-webkit-transition: all 0.5s linear;
+		-moz-transition: all 0.5s linear;
+		-o-transition: all 0.5s linear;
+		transition: all 0.5s linear;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box; 
+	}
+	
+	.toggle:hover:after{
+		background: average(@contrast-color, @background);
+	}
+	
+	#toggle:checked + div .toggle:after{
+		content: attr(data-close);
+    background: average(@contrast-color, @background);
+	}
+  
 .pagination,
 .item-pagination {
     font-size:.9em;
@@ -172,7 +208,7 @@ h6 {
     
     h2 {
         margin: 0.25em 0;
-        border-bottom: 1px solid @contrast-color;
+        .fancy-heading();
     }
     
     .description {
@@ -192,8 +228,30 @@ h6 {
   display: block;
 }
 /* !-- Collections Browse ------------------------------------------------ */
+.collections-browse-collection-list {
+    padding: 0;
+    li {
+        list-style: none;
+    }
+}
 .collections-browse-collection-entry  {
     display: block;
+    h2 {
+        .fancy-heading();
+    }
+}
+/* !-- Items Browse ------------------------------------------------------ */
+.items-browse-items-list {
+    padding: 0;
+    li {
+        list-style: none;
+    }
+}
+.items-show-in-browse {
+    margin: 0 0 3em 0;
+    h2 {
+        .fancy-heading();
+    }
 }
 /* !-- Exhibits ---------------------------------------------------------- */
 #exhibit-pages .exhibit-page-nav,
@@ -212,5 +270,7 @@ h6 {
 #exhibit-pages .exhibit-page-nav .exhibit-title {
     font-size: xx-large;
 }
-/* !--Media Queries ------------------------------------------------------ */
+/* !--Other Imports ------------------------------------------------------ */
 @import 'screen.less' screen and (min-width: 800px);
+@import 'navigataur.less';
+

@@ -6,7 +6,7 @@ if (isset($_GET['search'])) {
 } elseif (isset($_GET['collection'])) {
 	$pageTitle = __('Browse Collection');
 } else {
-	$pageTitle = __('Browse Items');
+	$pageTitle = __('Items');
 }
 echo head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 ?>
@@ -21,11 +21,11 @@ if (!forbes_theme_on_search_results_page()) {
 }
 ?>
 <div id="pagination-top" class="pagination"><?php echo pagination_links(); ?></div>
-<div id="items-browse-loop">
+<ul class="items-browse-items-list">
 	<?php foreach (loop('items') as $item): ?>
 		<?php echo common("show-in-browse", array('item' => $item), 'items') ?>
 	<?php endforeach; ?>
-</div>
+</ul>
 <div id="pagination-bottom" class="pagination"><?php echo pagination_links(); ?></div>
 
 <?php echo fire_plugin_hook('append_to_items_browse'); ?>
