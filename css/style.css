@@ -604,9 +604,24 @@ body {
   font-size: 11px;
   line-height: 1.5;
   background: #fffaf0;
+  color: #333333;
 }
 img {
   max-width: 100%;
+}
+a {
+  color: #722327;
+}
+a:hover {
+  color: #006c64;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #006c64;
 }
 /* !-- Global ------------------------------------------------------------ */
 #wrapper {
@@ -699,26 +714,24 @@ img {
   margin: 0 5px;
 }
 /* !-- Home Page --------------------------------------------------------- */
+#home-page-text {
+  padding: 0.5em 0;
+}
 #featured-content {
-  margin: 5ex 0 2ex 0;
   width: 100%;
 }
-#featured-content a,
-#featured-content a:active,
-#featured-content a:hover,
-#featured-content a:visited {
+#featured-content a {
   text-decoration: none;
-  color: black;
+  color: #333333;
 }
-#featured-content a h3,
-#featured-content a:active h3,
-#featured-content a:hover h3,
-#featured-content a:visited h3 {
+#featured-content a h3 {
   text-decoration: underline;
+  color: #333333;
   margin: 0.25em 0;
 }
 #featured-content h2 {
   margin: 0.25em 0;
+  border-bottom: 1px solid #006c64;
 }
 #featured-content .description {
   margin-top: 0.5em;

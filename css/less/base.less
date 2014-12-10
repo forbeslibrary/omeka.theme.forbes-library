@@ -23,6 +23,11 @@ Table of Contents
 @body-background: #FFFAF0;
 @background: #FFFFFF;
 
+// Foreground Collors
+@main-color:     #333333;
+@accent-color:   #722327;
+@contrast-color: #006C64;
+
 // Dimensions
 // dimensions given hear should be for mobile site-title
 // they may be overridden as appropriate for other screen sizes
@@ -44,10 +49,26 @@ body {
     font-size: 11px;
     line-height: 1.5;
     background: @body-background;
+    color: @main-color;
 }
 img {
     max-width: 100%;
 }
+a {
+    color: @accent-color;
+    &:hover {
+        color: @contrast-color;
+    }
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: @contrast-color;
+}
+
 /* !-- Global ------------------------------------------------------------ */
 #wrapper {
     max-width: 1200px;
@@ -133,24 +154,25 @@ img {
     margin: 0 5px;
 }
 /* !-- Home Page --------------------------------------------------------- */
+#home-page-text {
+    padding: 0.5em 0;
+}
 #featured-content {
-    margin:5ex 0 2ex 0;
     width:100%;
     
-    a,
-    a:active,
-    a:hover,
-    a:visited {
+    a {
         text-decoration: none;
-        color: black;
+        color: @main-color;
         h3 {
           text-decoration:underline;
+          color: @main-color;
           margin: 0.25em 0;
         }
     }
     
     h2 {
         margin: 0.25em 0;
+        border-bottom: 1px solid @contrast-color;
     }
     
     .description {
