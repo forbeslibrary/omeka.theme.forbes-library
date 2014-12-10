@@ -6,12 +6,12 @@
 
 /*
  	Notes:
- 
- 	- Media queries should be edited in both style sections if you require 
+
+ 	- Media queries should be edited in both style sections if you require
 	  a different breakpoint for your navigation.
-	  
-	- Toggle class & menu anchor tags in list items have box-sizing: border-box 
-	  style property to allow padding inside the container without conflicting with layout.	
+
+	- Toggle class & menu anchor tags in list items have box-sizing: border-box
+	  style property to allow padding inside the container without conflicting with layout.
 
 */
 
@@ -30,8 +30,8 @@
 
 @media only screen and (max-width: 768px){
 	.menu { display: none; opacity: 0; width: 100%; position: absolute; right: 0; }
-	.menu > li { display: block; width: 100%; margin: 0; }
-	.menu > li > a { display: block; width: 100%; text-decoration: none; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+	.menu li { display: block; margin: 0; }
+	.menu li > a { text-decoration: none; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
 	.toggle { display: block; position: relative; cursor: pointer; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
 	#toggle:checked + div .menu { display: block; opacity: 1; position:relative; }
 }
@@ -57,13 +57,13 @@
 		transition: all 0.5s linear;
 		-webkit-box-sizing: border-box;
 		-moz-box-sizing: border-box;
-		box-sizing: border-box; 
+		box-sizing: border-box;
 	}
-	
+
 	.toggle:hover:after{
 		background: average(@contrast-color, @background);
 	}
-	
+
 	#toggle:checked + div .toggle:after{
 		content: attr(data-close);
     background: average(@contrast-color, @background);
@@ -71,13 +71,13 @@
 }
 
 /*@media only screen and (max-width: 479px){
-	.header > h1 { 
+	.header > h1 {
 		text-align: center;
 	}
-	.header > h1, .nav, .toggle:after{ 
-		float: none; 
+	.header > h1, .nav, .toggle:after{
+		float: none;
 	}
-	.toggle:after { 
-		text-align: center; width: 100%; 
+	.toggle:after {
+		text-align: center; width: 100%;
 	}
 }*/

@@ -484,30 +484,6 @@ h6 {
   margin: 0.5em 1em 1em 1em;
 }
 /* !-- Navigation -------------------------------------------------------- */
-.toggle:after {
-  color: #722327;
-  content: attr(data-open);
-  display: block;
-  width: 100%;
-  padding: 10px 50px;
-  -webkit-border-radius: 2px;
-  border-radius: 2px;
-  text-align: center;
-  -webkit-transition: all 0.5s linear;
-  -moz-transition: all 0.5s linear;
-  -o-transition: all 0.5s linear;
-  transition: all 0.5s linear;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-.toggle:hover:after {
-  background: #80b5b2;
-}
-#toggle:checked + div .toggle:after {
-  content: attr(data-close);
-  background: #80b5b2;
-}
 .pagination,
 .item-pagination {
   font-size: .9em;
@@ -538,6 +514,30 @@ h6 {
   overflow: hidden;
 }
 /* !-- Header ------------------------------------------------------------ */
+.toggle:after {
+  color: #722327;
+  content: attr(data-open);
+  display: block;
+  width: 100%;
+  padding: 10px 50px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  text-align: center;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.toggle:hover:after {
+  background: #80b5b2;
+}
+#toggle:checked + div .toggle:after {
+  content: attr(data-close);
+  background: #80b5b2;
+}
 .menu_bar {
   font-weight: 700;
   font-size: 120%;
@@ -557,9 +557,7 @@ h6 {
   padding: 0;
 }
 .menu_bar li {
-  float: left;
-  padding: 0 10px;
-  line-height: 38px;
+  padding: 5px 20px;
 }
 #banner {
   min-height: 100px;
@@ -689,6 +687,11 @@ h6 {
   #site-title {
     padding: 1em;
   }
+  .menu_bar li {
+    float: left;
+    padding: 0 10px;
+    line-height: 38px;
+  }
   #featured-content.two-sections > section {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -730,12 +733,12 @@ h6 {
  */
 /*
  	Notes:
- 
- 	- Media queries should be edited in both style sections if you require 
+
+ 	- Media queries should be edited in both style sections if you require
 	  a different breakpoint for your navigation.
-	  
-	- Toggle class & menu anchor tags in list items have box-sizing: border-box 
-	  style property to allow padding inside the container without conflicting with layout.	
+
+	- Toggle class & menu anchor tags in list items have box-sizing: border-box
+	  style property to allow padding inside the container without conflicting with layout.
 
 */
 /*--------------------------------
@@ -769,14 +772,11 @@ h6 {
     position: absolute;
     right: 0;
   }
-  .menu > li {
+  .menu li {
     display: block;
-    width: 100%;
     margin: 0;
   }
-  .menu > li > a {
-    display: block;
-    width: 100%;
+  .menu li > a {
     text-decoration: none;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -825,14 +825,3 @@ h6 {
     background: #80b5b2;
   }
 }
-/*@media only screen and (max-width: 479px){
-	.header > h1 { 
-		text-align: center;
-	}
-	.header > h1, .nav, .toggle:after{ 
-		float: none; 
-	}
-	.toggle:after { 
-		text-align: center; width: 100%; 
-	}
-}*/

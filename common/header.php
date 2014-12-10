@@ -17,22 +17,11 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
       <!-- front matter (includes site title, quick links, and search -->
       <div id="banner">
 
-      <!-- custom navigation links as defined in the theme configuration -->
-      <div id="header-buttons">
-        <?php echo forbes_theme_public_header_nav(); ?>
-      </div>
-
-      <!-- simple search form -->
-      <form id="simple-search" action="<?php echo url('items/browse'); ?>" method="get">
-        <input type="search" name="search" id="search" value="" class="textinput">
-        <input type="submit" name="submit_search" id="submit_search" value="Search">
-      </form>
-
       <!-- site title and logo -->
       <h1 id="site-title">
         <?php
         if (theme_logo()) {
-          echo link_to_home_page(theme_logo()); 
+          echo link_to_home_page(theme_logo());
         } else {
           echo link_to_home_page();
         }
@@ -40,18 +29,32 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
       </h1>
     </div>
 
-    <!-- menu bar -->
+    <!-- navigation -->
     <nav id="top-level-nav" class="menu_bar">
       <h2 class="navigation-label"><a href="<?php echo url('?nav=True');?>"><?php echo __('Navigation'); ?></a></h2>
       <span class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></span>
       <input type="checkbox" id="toggle" />
       <div>
         <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
+
+        <!-- custom navigation links as defined in the theme configuration -->
+        <div class="menu">
+        <div id="header-buttons">
+          <?php echo forbes_theme_public_header_nav(); ?>
+        </div>
+
+        <!-- simple search form -->
+        <form id="simple-search" action="<?php echo url('items/browse'); ?>" method="get">
+          <input type="search" name="search" id="search" value="" class="textinput">
+          <input type="submit" name="submit_search" id="submit_search" value="Search">
+        </form>
+
+        <!-- main menu -->
         <?php
         $menu = public_nav_main();
-        $menu->setUlClass('menu');
         echo $menu;
         ?>
+        </div>
       </div>
     </nav>
   </header>

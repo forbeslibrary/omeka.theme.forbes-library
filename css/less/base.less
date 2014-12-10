@@ -92,34 +92,6 @@ h6 {
 }
 
 /* !-- Navigation -------------------------------------------------------- */
-// The toogle 
-.toggle:after {
-    color: @accent-color;
-		content: attr(data-open);
-		display: block;
-		width: 100%;
-		padding: 10px 50px;
-		-webkit-border-radius: 2px;
-		border-radius: 2px;
-		text-align: center;
-		-webkit-transition: all 0.5s linear;
-		-moz-transition: all 0.5s linear;
-		-o-transition: all 0.5s linear;
-		transition: all 0.5s linear;
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box; 
-	}
-	
-	.toggle:hover:after{
-		background: average(@contrast-color, @background);
-	}
-	
-	#toggle:checked + div .toggle:after{
-		content: attr(data-close);
-    background: average(@contrast-color, @background);
-	}
-  
 .pagination,
 .item-pagination {
     font-size:.9em;
@@ -142,6 +114,32 @@ h6 {
     .accessible-hide();
 }
 /* !-- Header ------------------------------------------------------------ */
+.toggle:after {
+  color: @accent-color;
+  content: attr(data-open);
+  display: block;
+  width: 100%;
+  padding: 10px 50px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  text-align: center;
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.toggle:hover:after{
+  background: average(@contrast-color, @background);
+}
+
+#toggle:checked + div .toggle:after{
+  content: attr(data-close);
+  background: average(@contrast-color, @background);
+}
 .menu_bar {
     font-weight: 700;
     font-size: 120%;
@@ -161,9 +159,7 @@ h6 {
     padding: 0;
 }
 .menu_bar li {
-    float: left;
-    padding: 0 10px;
-    line-height: 38px;
+  padding: 5px 20px;
 }
 #banner {
     min-height: 100px;
@@ -195,7 +191,7 @@ h6 {
 }
 #featured-content {
     width:100%;
-    
+
     a {
         text-decoration: none;
         color: @main-color;
@@ -205,12 +201,12 @@ h6 {
           margin: 0.25em 0;
         }
     }
-    
+
     h2 {
         margin: 0.25em 0;
         .fancy-heading();
     }
-    
+
     .description {
         margin-top: 0.5em;
         img {
@@ -273,4 +269,3 @@ h6 {
 /* !--Other Imports ------------------------------------------------------ */
 @import 'screen.less' screen and (min-width: 800px);
 @import 'navigataur.less';
-
