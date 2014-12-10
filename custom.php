@@ -160,7 +160,6 @@ function forbes_theme_display_random_featured_exhibit() {
  * Displays a random featured item.
  */
 function forbes_theme_display_random_featured_item() {
-    echo '<h2>', __('Featured Item'), '</h2>';
     $item_array = get_random_featured_items(1);
     $item = $item_array[0];
     if ($item) {
@@ -174,7 +173,8 @@ function forbes_theme_display_random_featured_item() {
 				$file_uri = file_display_url($file);
 				break;
 			}
-			$html = '<h3>' . $title . '</h3>' .
+			$html = '<h2>' . __('Featured Item') . '</h2>' .
+        '<h3>' . $title . '</h3>' .
         '<img alt=' . $title . ' src=' . $file_uri . '>' .
         '<div class="description">' . forbes_theme_summary(metadata('item', array('Dublin Core', 'Description'))) . '</div>';
       echo link_to_item($html);
