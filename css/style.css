@@ -2,6 +2,7 @@
 Table of Contents
 =================
 -- Imports
+-- Global Variables
 -- Mixins
 -- General HTML Elements
 -- Global
@@ -595,12 +596,14 @@ th {
 		text-align: center; width: 100%; 
 	}
 }
+/* !-- Global Variables -------------------------------------------------- */
 /* !-- Mixins ------------------------------------------------------------ */
 /* !-- General HTML Elements --------------------------------------------- */
 body {
   font-family: 'Lato', Georgia, Times, Serif;
   font-size: 11px;
   line-height: 1.5;
+  background: #fffaf0;
 }
 img {
   max-width: 100%;
@@ -608,8 +611,10 @@ img {
 /* !-- Global ------------------------------------------------------------ */
 #wrapper {
   max-width: 1200px;
+  padding: 0 5px;
   margin: 0 auto;
   position: relative;
+  background: #ffffff;
 }
 .description img {
   max-width: 33%;
@@ -683,9 +688,6 @@ img {
 #simple-search {
   margin: 1em;
 }
-#site-title {
-  padding: 1em;
-}
 .navigation {
   padding: 0;
 }
@@ -757,6 +759,12 @@ img {
 }
 /* !--Media Queries ------------------------------------------------------ */
 @media screen and (min-width: 800px) {
+  #wrapper {
+    padding: 0.5in;
+  }
+  #site-title {
+    padding: 1em;
+  }
   #featured-content.two-sections > section {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -779,15 +787,15 @@ img {
   }
   #header-buttons {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 0.5in;
+    top: 0.5in;
     display: block;
     white-space: nowrap;
   }
   #simple-search {
     display: inline-block;
     position: absolute;
-    right: 0;
-    top: 30px;
+    right: 0.5in;
+    top: 0.8125in;
   }
 }

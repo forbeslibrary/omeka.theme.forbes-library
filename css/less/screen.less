@@ -1,3 +1,13 @@
+@content-margin: 0.5in;
+
+#wrapper {
+  padding: @content-margin;
+}
+
+#site-title {
+    padding: 1em;
+}
+
 #featured-content.two-sections>section {
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -22,8 +32,8 @@
 
 #header-buttons {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: @content-margin;
+    top: @content-margin;
     display: block;
     white-space: nowrap;
 }
@@ -31,6 +41,6 @@
 #simple-search {
     display: inline-block;
     position: absolute;
-    right: 0;
-    top: 30px;
+    right: @content-margin;
+    top: @content-margin + 30px;
 }

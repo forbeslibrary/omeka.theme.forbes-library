@@ -2,6 +2,7 @@
 Table of Contents
 =================
 -- Imports
+-- Global Variables
 -- Mixins
 -- General HTML Elements
 -- Global
@@ -16,6 +17,16 @@ Table of Contents
 /* !-- Imports ----------------------------------------------------------- */
 @import (inline) 'normalize.css';
 @import (inline) 'navigataur.css';
+
+/* !-- Global Variables -------------------------------------------------- */
+// Background Colors/Images
+@body-background: #FFFAF0;
+@background: #FFFFFF;
+
+// Dimensions
+// dimensions given hear should be for mobile site-title
+// they may be overridden as appropriate for other screen sizes
+@content-margin: 5px;
 
 /* !-- Mixins ------------------------------------------------------------ */
 .accessible-hide() {
@@ -32,6 +43,7 @@ body {
     font-family: 'Lato', Georgia, Times, Serif;
     font-size: 11px;
     line-height: 1.5;
+    background: @body-background;
 }
 img {
     max-width: 100%;
@@ -39,8 +51,10 @@ img {
 /* !-- Global ------------------------------------------------------------ */
 #wrapper {
     max-width: 1200px;
+    padding: 0 @content-margin;
     margin: 0 auto;
     position:relative;
+    background: @background;
 }
 .description img {
     max-width: 33%;
@@ -106,9 +120,6 @@ img {
 }
 #simple-search {
   margin: 1em;
-}
-#site-title {
-    padding: 1em;
 }
 
 .navigation {
