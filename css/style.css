@@ -538,25 +538,6 @@ th {
 }*/
 
 @media only screen and (max-width: 768px){
-	.menu{
-		background: #FFFFFF;
-		border-top: 1px solid #51C1F1;
-	}
-	
-	.menu, .menu > li, .menu > li > a{
-		height: auto;
-	}
-	
-	.menu > li > a{
-		padding: 15px 15px;
-	}
-	
-	.menu > li > a:hover, .menu > li > a:focus{
-		background: #F2F2F2;
-		box-shadow: inset 5px 0px #51C1F1;
-		padding: 15px 15px 15px 25px;
-	}
-	
 	.toggle:after {
 		content: attr(data-open);
 		display: block;
