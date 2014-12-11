@@ -21,7 +21,7 @@ if (!forbes_theme_on_search_results_page()) {
 }
 ?>
 <div id="pagination-top" class="pagination"><?php echo pagination_links(); ?></div>
-<ul class="items-browse-items-list">
+<ul class="records-list items-list">
 	<?php foreach (loop('items') as $item): ?>
 		<?php echo common("show-in-browse", array('item' => $item), 'items') ?>
 	<?php endforeach; ?>

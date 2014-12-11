@@ -10,7 +10,7 @@ echo head(array('title'=>$pageTitle,'bodyid'=>'exhibits','bodyclass' => 'browse'
 set_loop_records('exhibits', get_records('exhibit', array ('sort_field'=>'name')));
 ?>
 
-<ul class="exhibits-browse-exhibit-list">
+<ul class="records-list exhibits-list">
 <?php foreach (loop('exhibits') as $exhibit): ?>
     <?php set_current_record('exhibit', $exhibit); ?>
     <li class="exhibits-browse-exhibit-entry">

@@ -483,6 +483,24 @@ h6 {
   float: left;
   margin: 0.5em 1em 1em 1em;
 }
+.records-list {
+  padding: 0;
+}
+.records-list li {
+  list-style: none;
+}
+.records-list .record {
+  margin: 0 0 3em 0;
+}
+.records-list .record h2 {
+  clear: both;
+  color: #006c64;
+  border-bottom: 1px solid #006c64;
+}
+.records-list .record h2 a {
+  color: #006c64;
+  text-decoration: none;
+}
 /* !-- Navigation -------------------------------------------------------- */
 .pagination,
 .item-pagination {
@@ -624,63 +642,7 @@ h6 {
 .featured-item img {
   display: block;
 }
-/* !-- Collections Browse ------------------------------------------------ */
-.collections-browse-collection-list {
-  padding: 0;
-}
-.collections-browse-collection-list li {
-  list-style: none;
-}
-.collections-browse-collection-entry {
-  display: block;
-}
-.collections-browse-collection-entry h2 {
-  clear: both;
-  color: #006c64;
-  border-bottom: 1px solid #006c64;
-}
-.collections-browse-collection-entry h2 a {
-  color: #006c64;
-  text-decoration: none;
-}
-/* !-- Items Browse ------------------------------------------------------ */
-.items-browse-items-list {
-  padding: 0;
-}
-.items-browse-items-list li {
-  list-style: none;
-}
-.items-show-in-browse {
-  margin: 0 0 3em 0;
-}
-.items-show-in-browse h2 {
-  clear: both;
-  color: #006c64;
-  border-bottom: 1px solid #006c64;
-}
-.items-show-in-browse h2 a {
-  color: #006c64;
-  text-decoration: none;
-}
 /* !-- Exhibits ---------------------------------------------------------- */
-.exhibits-browse-exhibit-list {
-  padding: 0;
-}
-.exhibits-browse-exhibit-list li {
-  list-style: none;
-}
-.exhibits-browse-exhibit-entry {
-  display: block;
-}
-.exhibits-browse-exhibit-entry h2 {
-  clear: both;
-  color: #006c64;
-  border-bottom: 1px solid #006c64;
-}
-.exhibits-browse-exhibit-entry h2 a {
-  color: #006c64;
-  text-decoration: none;
-}
 #exhibit-pages .exhibit-page-nav,
 #exhibit-pages .exhibit-page-nav ul {
   padding: 0;

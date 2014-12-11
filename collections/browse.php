@@ -10,10 +10,10 @@ echo head(array('title'=>$pageTitle,'bodyid'=>'collections','bodyclass' => 'brow
 set_loop_records('collections', get_records('collection', array ('sort_field'=>'name')));
 ?>
 
-<ul class="collections-browse-collection-list">
+<ul class="records-list collections-list">
 <?php foreach (loop('collections') as $collection): ?>
     <?php set_current_record('collection', $collection); ?>
-    <li class="collections-browse-collection-entry">
+    <li class="record collect">
       <h2>
           <?php echo link_to_collection(metadata('collection', array('Dublin Core', 'Title'))); ?>
       </h2>

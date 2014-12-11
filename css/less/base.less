@@ -90,7 +90,18 @@ h6 {
     float: left;
     margin: 0.5em 1em 1em 1em;
 }
-
+.records-list {
+  padding: 0;
+  li {
+    list-style: none;
+  }
+  .record {
+    margin: 0 0 3em 0;
+    h2 {
+      .fancy-heading();
+    }
+  }
+}
 /* !-- Navigation -------------------------------------------------------- */
 .pagination,
 .item-pagination {
@@ -223,45 +234,7 @@ h6 {
 .featured-item img {
   display: block;
 }
-/* !-- Collections Browse ------------------------------------------------ */
-.collections-browse-collection-list {
-    padding: 0;
-    li {
-        list-style: none;
-    }
-}
-.collections-browse-collection-entry  {
-    display: block;
-    h2 {
-        .fancy-heading();
-    }
-}
-/* !-- Items Browse ------------------------------------------------------ */
-.items-browse-items-list {
-    padding: 0;
-    li {
-        list-style: none;
-    }
-}
-.items-show-in-browse {
-    margin: 0 0 3em 0;
-    h2 {
-        .fancy-heading();
-    }
-}
 /* !-- Exhibits ---------------------------------------------------------- */
-.exhibits-browse-exhibit-list {
-  padding: 0;
-  li {
-    list-style: none;
-  }
-}
-.exhibits-browse-exhibit-entry  {
-  display: block;
-  h2 {
-    .fancy-heading();
-  }
-}
 #exhibit-pages .exhibit-page-nav,
 #exhibit-pages .exhibit-page-nav ul {
     padding: 0;

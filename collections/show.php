@@ -33,7 +33,7 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
 </section>
 <?php endif; ?>
 
-<section id="collections-show-item-list">
+<section>
     <h2><?php echo __('Items in this Collection'); ?></h2>
     <?php if ($total_items > 5): ?>
         <div class="collections-show-more-items-line">
@@ -42,7 +42,7 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
         </div>
     <?php endif; ?>
     <?php $items = get_records('item', array('sort_field' => 'Dublin Core,Identifier'), 5); ?>
-    <ul>
+    <ul class="records-list items-list">
         <?php foreach (loop('items', $items) as $item): ?>
             <?php echo common("show-in-browse", array('item' => $item), 'items') ?>
         <?php endforeach; ?>

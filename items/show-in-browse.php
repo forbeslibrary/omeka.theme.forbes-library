@@ -1,4 +1,4 @@
-<li class="items-show-in-browse">
+<li class="item record">
 	<!-- item section header -->
 	<h2><?php
 		echo link_to_item(
@@ -6,11 +6,11 @@
 			array('class'=>'permalink')
 			);
 	?></h2>
-	
+
 	<!-- item section thumbnail -->
   <?php $thumbnail = (metadata($item, 'has thumbnail') ? item_image('thumbnail', array('class'=>'thumbnail')) :  '<img src="'.img('image-not-available.png').'">' ); ?>
 	<?php echo link_to_item($thumbnail); ?>
-	
+
 	<!-- item section metadata -->
 	<div class="items-show-in-browse-details">
 		<?php if ($identifier = metadata($item, array('Dublin Core', 'Identifier'))) {
@@ -27,10 +27,10 @@
 				<?php echo forbes_theme_snippet_with_new_lines(metadata($item, array('Dublin Core', 'Description')),0,200); ?>
 		</div>
 	</div>
-	
+
 	<!-- plugin hook append_to_items_browse_each -->
 	<?php echo fire_plugin_hook('append_to_items_browse_each'); ?>
-	
+
 	<!-- link to item -->
 	<?php echo link_to_item(__('More information'), array('class'=>'items-show-in-browse-details')); ?>
 </li>
