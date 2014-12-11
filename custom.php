@@ -16,7 +16,7 @@ function forbes_theme_on_search_results_page() {
 function forbes_theme_public_header_nav() {
   $navArray = array();
   if ($customHeaderNavigation = get_theme_option('custom_header_navigation')) {
-      
+
       $customLinkPairs = explode("\n", $customHeaderNavigation);
       foreach ($customLinkPairs as $pair) {
           $pair = trim($pair);
@@ -24,8 +24,8 @@ function forbes_theme_public_header_nav() {
               $pairArray = explode('|', $pair, 2);
               if (count($pairArray) == 2) {
                   $link = trim($pairArray[0]);
-                  $url = trim($pairArray[1]); 
-                  if (strncmp($url, 'http://', 7) && strncmp($url, 'https://', 8)){                        
+                  $url = trim($pairArray[1]);
+                  if (strncmp($url, 'http://', 7) && strncmp($url, 'https://', 8)){
                       $url = url($url);
                   }
               }
@@ -39,14 +39,14 @@ function forbes_theme_public_header_nav() {
 
 /**
  * Returns an array of item-type id-name pairs suitable for use with
- * select() in html forms. Only item-types in use will be returned. 
+ * select() in html forms. Only item-types in use will be returned.
  */
 function forbes_theme_item_type_pairs_for_select() {
     $select = get_db()->select()
         ->distinct()
         ->from(array('T'=>'omeka_item_types'), array('id', 'name'))
         ->join(array('I'=>'omeka_items'),'T.id=I.item_type_id', array());
-    
+
     $pairs = get_db()->fetchPairs($select);
     asort($pairs);
     return $pairs;
@@ -54,14 +54,14 @@ function forbes_theme_item_type_pairs_for_select() {
 
 /**
  * Returns an array of element id-name pairs suitable for use with
- * select() in html forms. Only elements in use will be returned. 
+ * select() in html forms. Only elements in use will be returned.
  */
 function forbes_theme_element_pairs_for_select() {
     $select = get_db()->select()
         ->distinct()
         ->from(array('T'=>'omeka_elements'), array('id', 'name'))
         ->join(array('I'=>'omeka_element_texts'),'T.id=I.element_id', array());
-    
+
     $pairs = get_db()->fetchPairs($select);
     asort($pairs);
     return $pairs;
@@ -74,10 +74,10 @@ function forbes_theme_element_pairs_for_select() {
  * Returns 'one-section', 'two-sections', or
  * 'three-sections' according to the number of selection in the theme
  * settings 'Display Featured Item', 'Display Featured Collection', and
- * 'Display Featured Exhibit'. 
+ * 'Display Featured Exhibit'.
  */
 function forbes_theme_featured_content_class() {
-    $count = (int)(bool)get_theme_option('Display Featured Item');  
+    $count = (int)(bool)get_theme_option('Display Featured Item');
     $count += (int)(bool)get_theme_option('Display Featured Collection');
     $count += (int)(bool)get_theme_option('Display Featured Exhibit');
     switch ($count) {
@@ -89,7 +89,7 @@ function forbes_theme_featured_content_class() {
 }
 
 /**
- * Processes $file as a php file and queues the output to be inserted 
+ * Processes $file as a php file and queues the output to be inserted
  * into the <head> as an embedded style.
  */
 function forbes_theme_queue_generated_css($file) {
@@ -107,7 +107,7 @@ function forbes_theme_queue_generated_css($file) {
  * The Omeka snippet function strips all html formatting. This function
  * first converts p and br tags to a pillcrow or a specified string before
  * passing it to Omeka's snippet.
- * 
+ *
  * @param string $text Text to take snippet of
  * @param int $startPos Starting position of snippet in string
  * @param int $endPos Maximum length of snippet
@@ -123,7 +123,7 @@ function forbes_theme_queue_generated_css($file) {
 
 /**
  * Like forbes_theme_snippet() except html new lines (from <p> or <br>) will
- * are preserved. (Though <p> will be converted to <br>.) 
+ * are preserved. (Though <p> will be converted to <br>.)
  */
 function forbes_theme_snippet_with_new_lines($text, $startPos, $endPos, $append='&#8230;') {
     $text = forbes_theme_snippet($text, $startPos, $endPos, $append, "\f");
@@ -139,20 +139,35 @@ function forbes_theme_display_random_featured_exhibit() {
             __('The "Display Featured Exhibit" option requires the ExhibitBuilder plugin.') .
             __('Please make sure the ExhbitBuilder plugin is installed and enabled.');
     }
-    $featuredExhibit = exhibit_builder_random_featured_exhibit();
-    if (!$featuredExhibit) {
+    $exhibit = exhibit_builder_random_featured_exhibit();
+    if (!$exhibit) {
         return '<h2>' . __('Featured Exhibit') . '</h2>' .
             __('No featured exhibits found');
     }
     $html = '<header>' .
         '<h2>' . __('Featured Exhibit') . '</h2>' .
-        '<h3>' . metadata($featuredExhibit, 'Title') . '</h3>'."\n" .
+        '<h3>' . metadata($exhibit, 'Title') . '</h3>'."\n" .
         '</header>' .
         '<div class="description">' .
-        forbes_theme_summary(metadata($featuredExhibit, 'Description', array('no_escape' => true))) .
+        forbes_theme_summary(metadata($exhibit, 'Description', array('no_escape' => true))) .
         '</div>';
-    return exhibit_builder_link_to_exhibit($featuredExhibit, $html);
-} 
+    $html = exhibit_builder_link_to_exhibit($exhibit, $html);
+
+    $featured_exhibits = get_records('exhibit', array('featured' => true));
+
+    if (count($featured_exhibits) > 1) {
+      $html .= '<h3>' . __('More Featured Collections') . '</h3><ul>';
+      foreach ($featured_exhibits as $e) {
+        if ($e->id == $exhibit->id) {
+          continue; // skip this record
+        }
+        $html .= '<li>' . exhibit_builder_link_to_exhibit($e) . '</li>';
+      }
+      $html .= '</ul>';
+    }
+
+    return $html;
+}
 
 /**
  * Displays a random featured item.
@@ -175,10 +190,26 @@ function forbes_theme_display_random_featured_item() {
         '<h3>' . $title . '</h3>' .
         '<img alt=' . $title . ' src=' . $file_uri . '>' .
         '<div class="description">' . forbes_theme_summary(metadata('item', array('Dublin Core', 'Description'))) . '</div>';
-      return link_to_item($html);
-    } else {
-        return __('<p>No featured item found</p>');
+
+      $html = link_to_item($html);
+
+      $featured_items = get_records('item', array('featured' => true));
+
+      if (count($featured_items) > 1) {
+        $html .= '<h3>' . __('More Featured Items') . '</h3><ul>';
+        foreach ($featured_items as $i) {
+          if ($i->id == $item->id) {
+            continue; // skip this record
+          }
+          set_current_record('item',$i);
+          $html .= '<li>' . link_to_item() . '</li>';
+        }
+        $html .= '</ul>';
+      }
+
+      return $html;
     }
+    return __('<p>No featured item found</p>');
 }
 
 /**
@@ -195,11 +226,27 @@ function forbes_theme_display_random_featured_collection() {
             '<h3>' . $title . '</h3>' .
             '</header>' .
             '<div class="description">' . forbes_theme_summary($description) . '</div>';
-        return link_to_collection($html);
-    } else {
-        return '<h2>' . __('Featured Collection') . '</h2>' .
-            __('<p>No featured collection found</p>');
+        $html =  link_to_collection($html);
+
+        $featured_collections = get_records('collection', array('featured' => true));
+
+        if (count($featured_collections) > 1) {
+          $html .= '<h3>' . __('More Featured Collections') . '</h3><ul>';
+          foreach ($featured_collections as $c) {
+            if ($c->id == $collection->id) {
+              continue; // skip this record
+            }
+            set_current_record('collection',$c);
+            $html .= '<li>' . link_to_collection() . '</li>';
+          }
+          $html .= '</ul>';
+        }
+
+        return $html;
     }
+
+    return '<h2>' . __('Featured Collection') . '</h2>' .
+      __('<p>No featured collection found</p>');
 }
 
 /**
@@ -213,7 +260,7 @@ function forbes_theme_collection_thumbnail() {
             ->where('f.has_derivative_image = 1 AND i.collection_id = ?', metadata('collection', 'id'))
             ->limit(1);
         $result = $db->query($select)->fetch();
-        if ($result) {  
+        if ($result) {
             set_current_record('item',get_record_by_id('item', $result['id']));
             return item_image('thumbnail');
         }
@@ -227,7 +274,7 @@ function forbes_theme_collection_thumbnail() {
 function forbes_theme_favicon_link_tag()
 {
     if(function_exists('get_theme_option')) {
-    
+
         $favicon = get_theme_option('favicon');
 
         if ($favicon) {
@@ -247,7 +294,7 @@ function forbes_theme_favicon_link_tag()
 function forbes_theme_largeicon_link_tag()
 {
     if(function_exists('get_theme_option')) {
-    
+
         $largeicon = get_theme_option('largeicon');
         $size = get_theme_option('largeiconsize');
 
@@ -266,26 +313,26 @@ function forbes_theme_largeicon_link_tag()
  *
  * This is identical to Omeka's built in loop_items_in_collection except that it actually
  * uses the option parameter (which is ignored due to a bug in omeka 1.3).
- * 
- * @param integer $num 
+ *
+ * @param integer $num
  * @param array $options Optional
  * @return Item|null
  ***/
 function forbes_theme_loop_items_in_collection($num = 10, $options = array())
 {
     $options = array_merge($options, array('collection'=>get_record('collection')->id));
-    
+
     // Cache this so we don't end up calling the DB query over and over again
     // inside the loop.
     static $loopIsRun = false;
-    
+
     if (!$loopIsRun) {
         // Retrieve a limited # of items based on the collection given.
         $items = get_items($options, $num);
         set_items_for_loop($items);
         $loopIsRun = true;
     }
-    
+
     $item = loop_items();
     if (!$item) {
         $loopIsRun = false;
@@ -312,13 +359,13 @@ function fobres_theme_link_to_items_in_collection(
     if (!$collectionObj) {
         $collectionObj = get_record('collection');
     }
- 
+
     $queryParams['collection'] = $collectionObj->id;
-    
+
     if ($text === null) {
         $text = $collectionObj->totalItems();
     }
- 
+
     return link_to('items', $action, $text, $props, $queryParams);
 }
 
