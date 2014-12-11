@@ -663,6 +663,24 @@ h6 {
   text-decoration: none;
 }
 /* !-- Exhibits ---------------------------------------------------------- */
+.exhibits-browse-exhibit-list {
+  padding: 0;
+}
+.exhibits-browse-exhibit-list li {
+  list-style: none;
+}
+.exhibits-browse-exhibit-entry {
+  display: block;
+}
+.exhibits-browse-exhibit-entry h2 {
+  clear: both;
+  color: #006c64;
+  border-bottom: 1px solid #006c64;
+}
+.exhibits-browse-exhibit-entry h2 a {
+  color: #006c64;
+  text-decoration: none;
+}
 #exhibit-pages .exhibit-page-nav,
 #exhibit-pages .exhibit-page-nav ul {
   padding: 0;
