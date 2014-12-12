@@ -738,6 +738,22 @@ body.exhibits #content h1 a {
 }
 /* !--Other Imports ------------------------------------------------------ */
 @media screen and (min-width: 600px) {
+  #wrapper {
+    padding: 0.25in;
+  }
+  #header-buttons {
+    position: absolute;
+    right: 0.25in;
+    top: 0.25in;
+    display: block;
+    white-space: nowrap;
+  }
+  #simple-search {
+    display: inline-block;
+    position: absolute;
+    right: 0.25in;
+    top: 0.5625in;
+  }
   .toggle {
     display: none;
   }
@@ -746,19 +762,6 @@ body.exhibits #content h1 a {
     display: block;
     opacity: 1;
     position: static;
-  }
-  #header-buttons {
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    display: block;
-    white-space: nowrap;
-  }
-  #simple-search {
-    display: inline-block;
-    position: absolute;
-    right: 5px;
-    top: 35px;
   }
   .menu_bar li {
     float: left;
@@ -769,6 +772,14 @@ body.exhibits #content h1 a {
 @media screen and (min-width: 800px) {
   #wrapper {
     padding: 0.5in;
+  }
+  #header-buttons {
+    right: 0.5in;
+    top: 0.5in;
+  }
+  #simple-search {
+    right: 0.5in;
+    top: 0.8125in;
   }
   #site-title {
     padding: 1em;
@@ -792,24 +803,6 @@ body.exhibits #content h1 a {
     padding-right: 1%;
     vertical-align: top;
     width: 33%;
-  }
-  #header-buttons {
-    position: absolute;
-    right: 0.5in;
-    top: 0.5in;
-    display: block;
-    white-space: nowrap;
-  }
-  #simple-search {
-    display: inline-block;
-    position: absolute;
-    right: 0.5in;
-    top: 0.8125in;
-  }
-  .menu_bar li {
-    float: left;
-    padding: 0 10px;
-    line-height: 38px;
   }
 }
 /*
@@ -842,29 +835,31 @@ body.exhibits #content h1 a {
 /*--------------------------------
  Presentation Styles (Editable)
 ---------------------------------*/
-@media only screen and (max-width: 768px) {
-  .toggle:after {
-    color: #722327;
-    content: attr(data-open);
-    display: block;
-    width: 100%;
-    padding: 10px 50px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    text-align: center;
-    -webkit-transition: all 0.5s linear;
-    -moz-transition: all 0.5s linear;
-    -o-transition: all 0.5s linear;
-    transition: all 0.5s linear;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  .toggle:hover:after {
-    background: #80b5b2;
-  }
-  #toggle:checked + div .toggle:after {
-    content: attr(data-close);
-    background: #80b5b2;
-  }
-}
+/*@media only screen and (max-width: 768px){
+	.toggle:after {
+    color: @accent-color;
+		content: attr(data-open);
+		display: block;
+		width: 100%;
+		padding: 10px 50px;
+		-webkit-border-radius: 2px;
+		border-radius: 2px;
+		text-align: center;
+		-webkit-transition: all 0.5s linear;
+		-moz-transition: all 0.5s linear;
+		-o-transition: all 0.5s linear;
+		transition: all 0.5s linear;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+	.toggle:hover:after{
+		background: average(@contrast-color, @background);
+	}
+
+	#toggle:checked + div .toggle:after{
+		content: attr(data-close);
+    background: average(@contrast-color, @background);
+	}
+}*/

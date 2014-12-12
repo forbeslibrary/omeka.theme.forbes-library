@@ -1,11 +1,6 @@
-.toggle {
-  display: none; // hide menu toggle
-}
-.menu,
-#toggle + div .menu {
-  display: block; // always show menu
-  opacity: 1;
-  position:static; // ignore when positioning children
+@content-margin: 0.25in;
+#wrapper {
+  padding: @content-margin;
 }
 
 #header-buttons {
@@ -21,6 +16,16 @@
   position: absolute;
   right: @content-margin;
   top: @content-margin + 30px;
+}
+
+.toggle {
+  display: none; // hide menu toggle
+}
+.menu,
+#toggle + div .menu {
+  display: block; // always show menu
+  opacity: 1;
+  position:static; // ignore when positioning children
 }
 
 .menu_bar li {
