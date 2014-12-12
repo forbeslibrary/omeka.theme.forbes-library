@@ -643,21 +643,43 @@ h6 {
   display: block;
 }
 /* !-- Exhibits ---------------------------------------------------------- */
-#exhibit-pages .exhibit-page-nav,
-#exhibit-pages .exhibit-page-nav ul {
+.exhibit-page-nav a {
+  text-decoration: none;
+}
+.exhibit-page-nav li {
+  list-style: none;
+  display: inline-block;
+  margin: 0 1em 0 0;
+}
+.exhibit-page-nav ul {
   padding: 0;
   margin: 0;
 }
-#exhibit-pages .exhibit-page-nav li {
-  list-style: none;
-  display: inline-block;
-}
-#exhibit-pages .exhibit-page-nav > li {
+.exhibit-page-nav > li {
   display: block;
-  margin-left: 1em;
+  margin: 0;
 }
-#exhibit-pages .exhibit-page-nav .exhibit-title {
-  font-size: xx-large;
+.exhibit-page-nav > li ul {
+  border-bottom: 1px solid #722327;
+}
+.exhibit-page-nav li.current {
+  font-weight: bold;
+}
+.exhibit-page-nav .exhibit-title {
+  font-size: 130%;
+  font-weight: bold;
+  width: 100%;
+  display: block;
+  clear: both;
+  color: #006c64;
+  border-bottom: 1px solid #006c64;
+}
+.exhibit-page-nav .exhibit-title a {
+  color: #006c64;
+  text-decoration: none;
+}
+#exhibit-pages ul {
+  margin: 0;
 }
 /* !--Other Imports ------------------------------------------------------ */
 @media screen and (min-width: 800px) {
