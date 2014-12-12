@@ -125,6 +125,14 @@ h6 {
     .accessible-hide();
 }
 /* !-- Header ------------------------------------------------------------ */
+.header { position: relative; }
+#toggle, .toggle { display: none; }
+.menu > li { list-style: none; float:left;	}
+.menu { display: none; opacity: 0; width: 100%; position: absolute; right: 0; }
+.menu li { display: block; margin: 0; }
+.menu li > a { text-decoration: none; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+.toggle { display: block; position: relative; cursor: pointer; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+#toggle:checked + div .menu { display: block; opacity: 1; position:relative; }
 .toggle:after {
   color: @accent-color;
   content: attr(data-open);
@@ -280,5 +288,6 @@ body.exhibits #content h1 {
   margin: 0;
 }
 /* !--Other Imports ------------------------------------------------------ */
-@import 'screen.less' screen and (min-width: 800px);
+@import 'screen-medium.less' screen and (min-width: 600px);
+@import 'screen-large.less' screen and (min-width: 800px);
 @import 'navigataur.less';

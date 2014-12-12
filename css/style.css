@@ -532,6 +532,47 @@ h6 {
   overflow: hidden;
 }
 /* !-- Header ------------------------------------------------------------ */
+.header {
+  position: relative;
+}
+#toggle,
+.toggle {
+  display: none;
+}
+.menu > li {
+  list-style: none;
+  float: left;
+}
+.menu {
+  display: none;
+  opacity: 0;
+  width: 100%;
+  position: absolute;
+  right: 0;
+}
+.menu li {
+  display: block;
+  margin: 0;
+}
+.menu li > a {
+  text-decoration: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.toggle {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+#toggle:checked + div .menu {
+  display: block;
+  opacity: 1;
+  position: relative;
+}
 .toggle:after {
   color: #722327;
   content: attr(data-open);
@@ -696,6 +737,35 @@ body.exhibits #content h1 a {
   margin: 0;
 }
 /* !--Other Imports ------------------------------------------------------ */
+@media screen and (min-width: 600px) {
+  .toggle {
+    display: none;
+  }
+  .menu,
+  #toggle + div .menu {
+    display: block;
+    opacity: 1;
+    position: static;
+  }
+  #header-buttons {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    display: block;
+    white-space: nowrap;
+  }
+  #simple-search {
+    display: inline-block;
+    position: absolute;
+    right: 5px;
+    top: 35px;
+  }
+  .menu_bar li {
+    float: left;
+    padding: 0 10px;
+    line-height: 38px;
+  }
+}
 @media screen and (min-width: 800px) {
   #wrapper {
     padding: 0.5in;
@@ -760,17 +830,6 @@ body.exhibits #content h1 a {
 /*--------------------------------
  Functional Styles (Required)
 ---------------------------------*/
-.header {
-  position: relative;
-}
-#toggle,
-.toggle {
-  display: none;
-}
-.menu > li {
-  list-style: none;
-  float: left;
-}
 /* Nicolas Gallagher micro clearfix */
 .clearfix:before,
 .clearfix:after {
@@ -779,38 +838,6 @@ body.exhibits #content h1 a {
 }
 .clearfix:after {
   clear: both;
-}
-@media only screen and (max-width: 768px) {
-  .menu {
-    display: none;
-    opacity: 0;
-    width: 100%;
-    position: absolute;
-    right: 0;
-  }
-  .menu li {
-    display: block;
-    margin: 0;
-  }
-  .menu li > a {
-    text-decoration: none;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
-  .toggle {
-    display: block;
-    position: relative;
-    cursor: pointer;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    user-select: none;
-  }
-  #toggle:checked + div .menu {
-    display: block;
-    opacity: 1;
-    position: relative;
-  }
 }
 /*--------------------------------
  Presentation Styles (Editable)

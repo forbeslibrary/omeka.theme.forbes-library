@@ -13,7 +13,7 @@ set_loop_records('exhibits', get_records('exhibit', array ('sort_field'=>'name')
 <ul class="records-list exhibits-list">
 <?php foreach (loop('exhibits') as $exhibit): ?>
     <?php set_current_record('exhibit', $exhibit); ?>
-    <li class="exhibits-browse-exhibit-entry">
+    <li class="exhibit record">
       <h2>
           <?php echo link_to_exhibit(metadata('exhibit', 'Title')); ?>
       </h2>

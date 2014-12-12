@@ -20,22 +20,9 @@
  Functional Styles (Required)
 ---------------------------------*/
 
-.header { position: relative; }
-#toggle, .toggle { display: none; }
-.menu > li { list-style: none; float:left;	}
-
 /* Nicolas Gallagher micro clearfix */
 .clearfix:before, .clearfix:after { display: table; content: ""; }
 .clearfix:after { clear: both; }
-
-@media only screen and (max-width: 768px){
-	.menu { display: none; opacity: 0; width: 100%; position: absolute; right: 0; }
-	.menu li { display: block; margin: 0; }
-	.menu li > a { text-decoration: none; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-	.toggle { display: block; position: relative; cursor: pointer; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
-	#toggle:checked + div .menu { display: block; opacity: 1; position:relative; }
-}
-
 
 /*--------------------------------
  Presentation Styles (Editable)
