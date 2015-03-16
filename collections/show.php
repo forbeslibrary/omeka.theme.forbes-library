@@ -1,7 +1,11 @@
 <?php
-echo head(array('title'=>metadata('collection', array('Dublin Core', 'Title')), 'bodyid'=>'collections', 'bodyclass' => 'show'));
+echo head(array(
+  'title' => metadata('collection', array('Dublin Core', 'Title')),
+  'bodyid' => 'collections',
+  'bodyclass' => 'show'
+  ));
 
-$total_items = get_record('collection')->totalItems();
+$total_items = get_current_record('collection')->totalItems();
 
 $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
     __('See all %s items', $total_items),
@@ -41,7 +45,15 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
             <?php echo $link_to_all_items_in_collection; ?>
         </div>
     <?php endif; ?>
-    <?php $items = get_records('item', array('sort_field' => 'Dublin Core,Identifier'), 5); ?>
+    <?php
+    $items = get_records(
+      'item',
+      array(
+        'sort_field' => 'Dublin Core, Identifier',
+        'collection' => get_current_record('collection')->id
+        ),
+      5);
+    ?>
     <ul class="records-list items-list">
         <?php foreach (loop('items', $items) as $item): ?>
             <?php echo common("show-in-browse", array('item' => $item), 'items') ?>

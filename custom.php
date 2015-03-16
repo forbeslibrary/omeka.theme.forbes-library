@@ -357,7 +357,7 @@ function fobres_theme_link_to_items_in_collection(
     )
 {
     if (!$collectionObj) {
-        $collectionObj = get_record('collection');
+        $collectionObj = get_current_record('collection');
     }
 
     $queryParams['collection'] = $collectionObj->id;
