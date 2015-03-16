@@ -29,6 +29,7 @@ $description = metadata($item, array('Dublin Core', 'Description'));
 	<?php endif; ?>
 	<div id="items-show-description"><?php echo $description; ?></div>
 </div>
+<!-- Display all item metadata -->
 <div id="item-metadata-wrapper">
 	<h2 id="item-metadata-button" class="_toggle_button">Image Details</h2>
 	<div id="item-metadata" class="_toggle">
