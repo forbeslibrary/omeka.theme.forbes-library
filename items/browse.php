@@ -6,27 +6,25 @@ if (isset($_GET['search'])) {
 } elseif (isset($_GET['collection'])) {
 	$pageTitle = __('Browse Collection');
 } else {
-	$pageTitle = __('Browse Items');
+	$pageTitle = __('Items');
 }
-head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
+echo head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 ?>
 
 <h1><?php echo $pageTitle;?></h1>
 <?php
-if (!forbes_theme_on_search_results_page()) {
-    common('browse-navigation', array(), 'items');
-} else {
-    common('search-warnings', array(), 'items');
-    common('search-summary', array(), 'items');
+if (forbes_theme_on_search_results_page()) {
+    echo common('search-warnings', array(), 'items');
+    echo common('search-summary', array('total_results' => $total_results), 'items');
 }
 ?>
 <div id="pagination-top" class="pagination"><?php echo pagination_links(); ?></div>
-<div id="items-browse-loop">
-	<?php while (loop_items()): ?>
-		<?php common("show-in-browse", array(), 'items') ?>
-	<?php endwhile; ?>
-</div>
+<ul class="records-list items-list">
+	<?php foreach (loop('items') as $item): ?>
+		<?php echo common("show-in-browse", array('item' => $item), 'items') ?>
+	<?php endforeach; ?>
+</ul>
 <div id="pagination-bottom" class="pagination"><?php echo pagination_links(); ?></div>
 
-<?php echo plugin_append_to_items_browse(); ?>
-<?php foot();?>
+<?php echo fire_plugin_hook('append_to_items_browse'); ?>
+<?php echo foot();?>

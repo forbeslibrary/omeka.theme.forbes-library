@@ -1,29 +1,23 @@
 <?php
 $pageTitle = __('Advanced Search');
-if (!$isPartial):
-    head(array('title' => $pageTitle,
+echo head(array('title' => $pageTitle,
                'bodyclass' => 'advanced-search',
                'bodyid' => 'advanced-search-page'));
 ?>
 <h1><?php echo $pageTitle; ?></h1>
-<?php endif; ?>
 
-<?php if ($formActionUri):
-    $formAttributes['action'] = $formActionUri;
-else:
-    $formAttributes['action'] = uri(array('controller'=>'items',
-                                          'action'=>'browse'));
-endif;
+<?php if (isset($formActionUri)) {
+  $formAttributes['action'] = $formActionUri;
+} else {
+  $formAttributes['action'] = url(array('controller'=>'items',
+                                        'action'=>'browse'));
+}
 $formAttributes['method'] = 'GET'; ?>
-    <form <?php echo _tag_attributes($formAttributes); ?>>
+    <form <?php echo tag_attributes($formAttributes); ?>>
         <fieldset id="search-keywords" class="field">
-            <?php echo label('keyword-search', __('Search for Keywords')); ?>
+            <?php echo $this->formLabel('keyword-search', __('Search for Keywords')); ?>
             <div class="inputs">
-            <?php echo text(array(
-                    'name' => 'search',
-                    'size' => '40',
-                    'id' => 'keyword-search',
-                    'class' => 'textinput'), @$_REQUEST['search']); ?>
+            <?php echo $this->formText('search', @$_REQUEST['search'], array('size'=>'40', 'id'=>'keyword-search', 'class'=>'textinput')); ?>
             </div>
         </fieldset>
         
@@ -49,12 +43,12 @@ $formAttributes['method'] = 'GET'; ?>
                     //[type] = 'contains'
                     //[terms] = 'foobar'
                     //etc
-                    echo __v()->formSelect(array(
+                    echo $this->formSelect(array(
 			'name'=>"advanced[$i][element_id]",
 			'value'=>@$rows['element_id'],
 			'options'=>(array(''=>__('Select Field')) + forbes_theme_element_pairs_for_select())
 			));
-                    echo __v()->formSelect(array(
+                    echo $this->formSelect(array(
 			'name'=>"advanced[$i][type]",
 			'value'=>@$rows['type'],
 			'options'=>array('contains' => __('contains'),
@@ -63,10 +57,8 @@ $formAttributes['method'] = 'GET'; ?>
                               'is empty' => __('is empty'),
                               'is not empty' => __('is not empty'))
 			));
-                    echo text(
-                        array('name' => "advanced[$i][terms]",
-                              'size' => 20),
-                        @$rows['terms']); ?>
+                    echo $this->formText("advanced[$i][terms]", @$rows['terms'], array('size'=>'20'));
+                    ?>
                     <button type="button" class="remove_search" disabled="disabled" style="display: none;">-</button>
                 </div>
             <?php endforeach; ?>
@@ -78,22 +70,22 @@ $formAttributes['method'] = 'GET'; ?>
         <fieldset id="search-by-range" class="field">
             <label for="range"><?php echo __('Search by a range of ID#s (example: 1-4, 156, 79)'); ?></label>
             <div class="inputs">
-            <?php echo text(
-                    array('name' => 'range',
-                          'size' => '40',
-                          'class' => 'textinput'),
-                    @$_GET['range']); ?>
+            <?php echo $this->formText('range', @$_GET['range'], array('size'=>'40', 'class'=>'textinput')); ?>
             </div>
         </fieldset>
         <?php endif; ?>
 
 		<fieldset id="search-by-collection" class="field">
-			<?php echo label('collection-search', __('Search By Collection')); ?>
-			<div class="inputs"><?php
-				echo select_collection(array(
-					'name' => 'collection',
-					'id' => 'collection-search'
-				), @$_REQUEST['collection']); ?>
+			<?php echo $this->formLabel('collections-search', __('Search by Collection')); ?>
+			<div class="inputs">
+      <?php
+            echo $this->formSelect(
+                'collection',
+                @$_REQUEST['collection'],
+                array('id' => 'collection-search'),
+                get_table_options('Collection')
+            );
+        ?>
 			</div>
 		</fieldset>
 
@@ -103,7 +95,7 @@ $formAttributes['method'] = 'GET'; ?>
 		<fieldset id="search-by-type" class="field">
 			<?php echo label('item-type-search', __('Search By Type')); ?>
 			<div class="inputs"><?php
-				echo __v()->formSelect(array(
+				echo $this->formSelect(array(
 					'name'=>'type',
 					'id'=>'item-type-search',
 					'options'=>(array(''=>__('Any Type')) + $usedItemTypes),
@@ -144,7 +136,7 @@ $formAttributes['method'] = 'GET'; ?>
         <fieldset id="search-by-public-private-status" class="field items-advanced-search-special-permissions">
             <?php echo label('public', __('Public/Non-Public')); ?>
             <div class="inputs">
-                <?php echo __v()->formSelect(array(
+                <?php echo $this->formSelect(array(
 			'name'=>'public',
 			'value'=>@$_REQUEST['public'],
 			'options'=>array(
@@ -161,7 +153,7 @@ $formAttributes['method'] = 'GET'; ?>
         <fieldset id="search-by-featured-status" class="field">
             <?php echo label('featured', __('Featured/Non-Featured')); ?>
             <div class="inputs">
-                <?php echo __v()->formSelect(array(
+                <?php echo $this->formSelect(array(
                         'name'=>'featured',
                         'value'=>@$_REQUEST['featured'],
                         'options'=>array(
@@ -185,6 +177,4 @@ $formAttributes['method'] = 'GET'; ?>
     });
 </script>
 
-<?php if (!$isPartial): ?>
-<?php foot(); ?>
-<?php endif; ?>
+<?php echo foot(); ?>

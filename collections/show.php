@@ -1,7 +1,11 @@
-<?php 
-head(array('title'=>collection('Name'), 'bodyid'=>'collections', 'bodyclass' => 'show'));
+<?php
+echo head(array(
+  'title' => metadata('collection', array('Dublin Core', 'Title')),
+  'bodyid' => 'collections',
+  'bodyclass' => 'show'
+  ));
 
-$total_items = total_items_in_collection();
+$total_items = get_current_record('collection')->totalItems();
 
 $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
     __('See all %s items', $total_items),
@@ -12,41 +16,61 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
 );
 ?>
 
-<h1><?php echo __('Collection: ') . collection('Name'); ?></h1>
+<h1><?php echo __('Collection: ') . metadata('collection', array('Dublin Core','Title')); ?></h1>
 <section>
     <h2><?php echo __('Description'); ?></h2>
- 
-    <div class="element-text"><?php
+
+    <div class="element-text description"><?php
     // we get the description this way so that HTML will not be escaped
     // Note that the HTML is not sanitized either!
-    echo nls2p(get_current_collection()->description);
+    echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description')));
    ?></div>
 </section>
 
-<?php if (collection_has_collectors()): ?>
+<?php $collectors = metadata('collection', array('Dublin Core', 'Contributor')); ?>
+<?php if ($collectors): ?>
 <section>
     <h2><?php echo __('Collector(s)'); ?></h2>
     <ul>
-        <li><?php echo collection('Collectors', array('delimiter'=>'</li><li>')); ?></li>
+        <li><?php echo $collectors; ?></li>
     </ul>
 </section>
 <?php endif; ?>
-    
-<section id="collections-show-item-list">
+
+<section>
     <h2><?php echo __('Items in this Collection'); ?></h2>
-    <?php
-    if ($total_items > 5): ?>
+    <?php if ($total_items > 5): ?>
         <div class="collections-show-more-items-line">
             <?php echo __('Showing first five items in this collection.'); ?>
             <?php echo $link_to_all_items_in_collection; ?>
         </div>
     <?php endif; ?>
-    <ul>
-        <?php while (forbes_theme_loop_items_in_collection(5, array('sort_field' => 'Dublin Core,Identifier'))): ?>
-            <?php common("show-in-browse", $vars = array(), $dir = 'items') ?>
-        <?php endwhile; ?>
+    <?php
+    // Retrieve the items to show on this page.
+    // We use options from the default sort plugin if they are set
+    $sort_field = 'Dublin Core,Identifier';
+    $sort_dir = 'a';
+    if (get_option('defaultsort_items_option')) {
+      $sort_field = get_option('defaultsort_items_option');
+    }
+    if (get_option('defaultsort_items_direction')) {
+      $sort_dir = get_option('defaultsort_items_direction');
+    }
+    $items = get_records(
+      'item',
+      array(
+        'sort_field' => $sort_field,
+        'sort_dir' => $sort_dir,
+        'collection' => get_current_record('collection')->id
+        ),
+      5);
+    ?>
+    <ul class="records-list items-list">
+        <?php foreach (loop('items', $items) as $item): ?>
+            <?php echo common("show-in-browse", array('item' => $item), 'items') ?>
+        <?php endforeach; ?>
     </ul>
-    <? if ($total_items > 5): ?>
+    <?php if($total_items > 5): ?>
         <div class="collections-show-more-items-line">
             <?php echo __('Showing first five items in this collection.');?>
             <?php echo $link_to_all_items_in_collection; ?>
@@ -55,5 +79,5 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
 </section>
 
 <?php
-echo plugin_append_to_collections_show();
-foot();
+echo fire_plugin_hook('append_to_collections_show');
+echo foot();

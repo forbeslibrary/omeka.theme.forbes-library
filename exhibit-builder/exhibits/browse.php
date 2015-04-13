@@ -1,31 +1,30 @@
 <?php
-$title = __('Browse Exhibits');
-head(array('title'=>$title, 'bodyid' => 'exhibit', 'bodyclass'=>'browse'));
+$pageTitle = __('Exhibits');
+echo head(array('title'=>$pageTitle,'bodyid'=>'exhibits','bodyclass' => 'browse'));
 ?>
-    <h1><?php echo $title; ?> <?php echo __('(%s total)', $total_records); ?></h1>
-	<?php if (count($exhibits) > 0): ?>
-	
-	<nav class="navigation" id="secondary-nav">
-	    <?php echo nav(array(__('Browse All') => uri('exhibits'), __('Browse by Tag') => uri('exhibits/tags'))); ?>
-    </nav>	
-	
-    <div class="pagination"><?php echo pagination_links(); ?></div>
-	
-    <div id="exhibits">	
-    <?php $exhibitCount = 0; ?>
-    <?php while(loop_exhibits()): ?>
-    	<?php $exhibitCount++; ?>
-    	<div class="exhibit <?php if ($exhibitCount%2==1) echo ' even'; else echo ' odd'; ?>">
-    		<h2><?php echo link_to_exhibit(); ?></h2>
-    		<div class="description"><?php echo exhibit('description'); ?></div>
-    		<p class="tags"><?php echo tag_string(get_current_exhibit(), uri('exhibits/browse/tag/')); ?></p>
-    	</div>
-    <?php endwhile; ?>
-    </div>
-    
-    <div class="pagination"><?php echo pagination_links(); ?></div>
+<h1><?php echo $pageTitle; ?></h1>
 
-    <?php else: ?>
-	<p><?php echo __('There are no exhibits available yet.'); ?></p>
-	<?php endif; ?>
-<?php foot(); ?>
+<?php
+// We will include all exhibits on this page, sorted by exhibit name
+// We have sacrificed easy pagination in order to allow for easy sorting
+set_loop_records('exhibits', get_records('exhibit', array ('sort_field'=>'name')));
+?>
+
+<ul class="records-list exhibits-list">
+<?php foreach (loop('exhibits') as $exhibit): ?>
+    <?php set_current_record('exhibit', $exhibit); ?>
+    <li class="exhibit record">
+      <h2>
+          <?php echo link_to_exhibit(metadata('exhibit', 'Title')); ?>
+      </h2>
+      <div class="element-text description">
+        <?php echo text_to_paragraphs(metadata('exhibit', 'Description', array('no_escape' => true))); ?>
+       </div>
+      <?php echo fire_plugin_hook('append_to_exhibits_browse_each'); ?>
+      <?php echo link_to_exhibit(__('More on this exhibit.')); ?>
+    </li>
+<?php endforeach; ?>
+</ul>
+
+<?php echo fire_plugin_hook('append_to_exhibits_browse'); ?>
+<?php echo foot(); ?>
