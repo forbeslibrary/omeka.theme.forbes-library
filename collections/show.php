@@ -46,10 +46,21 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
         </div>
     <?php endif; ?>
     <?php
+    // Retrieve the items to show on this page.
+    // We use options from the default sort plugin if they are set
+    $sort_field = 'Dublin Core,Identifier';
+    $sort_dir = 'a';
+    if (get_option('defaultsort_items_option')) {
+      $sort_field = get_option('defaultsort_items_option');
+    }
+    if (get_option('defaultsort_items_direction')) {
+      $sort_dir = get_option('defaultsort_items_direction');
+    }
     $items = get_records(
       'item',
       array(
-        'sort_field' => 'Dublin Core, Identifier',
+        'sort_field' => $sort_field,
+        'sort_dir' => $sort_dir,
         'collection' => get_current_record('collection')->id
         ),
       5);
