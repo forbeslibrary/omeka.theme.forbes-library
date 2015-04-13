@@ -28,6 +28,14 @@
 		</div>
 	</div>
 
+	<?php if (is_allowed($item, 'edit')): ?>
+    <div class="edit-link">
+			<a href="<?php echo admin_url('items/edit/' . metadata('item', 'id')); ?>">
+				<?php echo __('edit item'); ?>
+			</a>
+		</div>
+	<?php endif; ?>
+
 	<!-- plugin hook append_to_items_browse_each -->
 	<?php echo fire_plugin_hook('append_to_items_browse_each'); ?>
 
