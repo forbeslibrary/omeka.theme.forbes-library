@@ -5,9 +5,26 @@ echo head(array('title'=>$pageTitle,'bodyid'=>'collections','bodyclass' => 'brow
 <h1><?php echo $pageTitle; ?></h1>
 
 <?php
-// We will include all collections on this page, sorted by collection name
-// We have sacrificed easy pagination in order to allow for easy sorting
-set_loop_records('collections', get_records('collection', array ('sort_field'=>'name')));
+// Retrieve the collections to show on this page.
+// We use options from the default sort plugin if they are set
+$sort_field = 'Dublin Core,Title';
+$sort_dir = 'a';
+if (get_option('defaultsort_collections_option')) {
+  $sort_field = get_option('defaultsort_collections_option');
+}
+if (get_option('defaultsort_collections_direction')) {
+  $sort_dir = get_option('defaultsort_collections_direction');
+}
+set_loop_records(
+  'collections',
+  get_records(
+    'collection',
+    array(
+      'sort_field' => $sort_field,
+      'sort_dir' => $sort_dir
+    )
+  )
+);
 ?>
 
 <ul class="records-list collections-list">

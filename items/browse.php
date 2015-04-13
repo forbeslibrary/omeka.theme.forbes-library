@@ -14,7 +14,6 @@ echo head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass' => 'browse'));
 <h1><?php echo $pageTitle;?></h1>
 <?php
 if (forbes_theme_on_search_results_page()) {
-    echo common('search-warnings', array(), 'items');
     echo common('search-summary', array('total_results' => $total_results), 'items');
 }
 ?>
