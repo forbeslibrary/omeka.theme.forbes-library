@@ -35,8 +35,8 @@ $description = metadata($item, array('Dublin Core', 'Description'));
 </div>
 <!-- The following prints a citation for this item. -->
 <div id="item-citation-wrapper">
-	<h3 id="item-citation-button" class="_toggle_button"><?php echo __('Citation'); ?></h3>
-	<div class="toggle"><?php echo metadata($item, 'citation', array('no_escape' => True)); ?></div>
+	<h3><?php echo __('Citation'); ?></h3>
+	<div><?php echo metadata($item, 'citation', array('no_escape' => True)); ?></div>
 </div>
 <?php $pluginAdditions = fire_plugin_hook('append_to_items_show');
 if ($pluginAdditions) {
