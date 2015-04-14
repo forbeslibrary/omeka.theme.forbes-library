@@ -7,13 +7,8 @@ echo head(array(
 
 $total_items = get_current_record('collection')->totalItems();
 
-$link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
-    __('See all %s items', $total_items),
-    null,
-    null,
-    null,
-    array('sort_field' => 'Dublin Core,Identifier')
-);
+$link_to_all_items_in_collection =
+  link_to_items_in_collection(__('See all %s items', $total_items));
 ?>
 
 <h1><?php echo __('Collection: ') . metadata('collection', array('Dublin Core','Title')); ?></h1>

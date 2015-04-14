@@ -340,35 +340,6 @@ function forbes_theme_loop_items_in_collection($num = 10, $options = array())
     return $item;
 }
 
-
-/**
- * Creates a link to the items in a collection, using the current collection if none is
- * specified.
- *
- * This function is identical to the built in link_to_items_in_collection() accept that it
- * accepts a queryParams argument.
- */
-function fobres_theme_link_to_items_in_collection(
-    $text = null,
-    $props = array(),
-    $action = 'browse',
-    $collectionObj = null,
-    $queryParams = array()
-    )
-{
-    if (!$collectionObj) {
-        $collectionObj = get_current_record('collection');
-    }
-
-    $queryParams['collection'] = $collectionObj->id;
-
-    if ($text === null) {
-        $text = $collectionObj->totalItems();
-    }
-
-    return link_to('items', $action, $text, $props, $queryParams);
-}
-
 /**
  * Truncates text at the wordpress style <!-- more --> tag.
  */
