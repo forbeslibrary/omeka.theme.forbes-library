@@ -12,6 +12,7 @@ Table of Contents
 -- Content
 -- Home Page
 -- Exhibits
+-- Items
 -- Other Imports
 */
 /* !-- Global Variables -------------------------------------------------- */
@@ -469,6 +470,7 @@ h4,
 h5,
 h6 {
   color: #006c64;
+  margin-bottom: 0;
 }
 /* !-- Global ------------------------------------------------------------ */
 #wrapper {
@@ -501,7 +503,7 @@ h6 {
   list-style: none;
 }
 .records-list .record {
-  margin: 0 0 3em 0;
+  margin: 0 0 1em 0;
 }
 .records-list .record h2 {
   clear: both;
@@ -754,6 +756,19 @@ body.exhibits #content h1 a {
 }
 #exhibit-pages ul {
   margin: 0;
+}
+/* !--Items -------------------------------------------------------------- */
+.items-more-info-link {
+  background-color: #006c64;
+  border-radius: 3px;
+  color: #ffffff;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
+}
+.items-more-info-link:hover {
+  background-color: #009f93;
+  color: #ffffff;
 }
 /* !--Other Imports ------------------------------------------------------ */
 @media screen and (min-width: 600px) {

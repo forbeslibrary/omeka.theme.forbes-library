@@ -40,5 +40,5 @@
 	<?php echo fire_plugin_hook('append_to_items_browse_each'); ?>
 
 	<!-- link to item -->
-	<?php echo link_to_item(__('More information'), array('class'=>'items-show-in-browse-details')); ?>
+	<?php echo link_to_item(__('More information'), array('class'=>'items-more-info-link')); ?>
 </li>

@@ -12,6 +12,7 @@ Table of Contents
 -- Content
 -- Home Page
 -- Exhibits
+-- Items
 -- Other Imports
 */
 /* !-- Global Variables -------------------------------------------------- */
@@ -40,6 +41,18 @@ Table of Contents
     width:1px;
     height:1px;
     overflow:hidden;
+}
+.button() {
+  background-color: @contrast-color;
+  border-radius: 3px;
+  color: @background;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
+  &:hover {
+    background-color: lighten(@contrast-color, 10%);
+    color: @background;
+  }
 }
 .fancy-heading() {
     clear: both;
@@ -75,6 +88,7 @@ h4,
 h5,
 h6 {
     color: @contrast-color;
+    margin-bottom: 0;
 }
 
 /* !-- Global ------------------------------------------------------------ */
@@ -107,7 +121,7 @@ h6 {
     list-style: none;
   }
   .record {
-    margin: 0 0 3em 0;
+    margin: 0 0 1em 0;
     h2 {
       .fancy-heading();
     }
@@ -305,6 +319,10 @@ body.exhibits #content h1 {
 // the following rules overide Exhibit Builder defaults
 #exhibit-pages ul {
   margin: 0;
+}
+/* !--Items -------------------------------------------------------------- */
+.items-more-info-link {
+  .button();
 }
 /* !--Other Imports ------------------------------------------------------ */
 @import 'screen-medium.less' screen and (min-width: 600px);
