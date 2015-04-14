@@ -539,6 +539,9 @@ h6 {
   background-color: #009f93;
   color: #ffffff;
 }
+.hTagcloud ul {
+  margin-top: 0;
+}
 .records-list {
   padding: 0;
 }
@@ -562,7 +565,18 @@ h6 {
   font-weight: bold;
 }
 .element-set {
+  border: solid #006c64 1px;
   margin-bottom: 1em;
+}
+.element-set td,
+.element-set th {
+  padding: 1px 5px;
+}
+.element-set-name {
+  text-align: left;
+  color: #ffffff;
+  background: #006c64;
+  padding: 0 2px;
 }
 /* !-- Navigation -------------------------------------------------------- */
 .pagination,

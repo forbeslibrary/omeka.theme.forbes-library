@@ -148,6 +148,9 @@ h6 {
   .button();
   float: right;
 }
+.hTagcloud ul {
+  margin-top: 0;
+}
 .records-list {
   padding: 0;
   li {
@@ -166,7 +169,17 @@ h6 {
   font-weight: bold;
 }
 .element-set {
+  border: solid @contrast-color 1px;
   margin-bottom: 1em;
+  td, th {
+    padding: 1px 5px;
+  }
+}
+.element-set-name {
+  text-align: left;
+  color: @background;
+  background: @contrast-color;
+  padding: 0 2px;
 }
 /* !-- Navigation -------------------------------------------------------- */
 .pagination,
