@@ -483,18 +483,61 @@ h6 {
 #site-title {
   margin: 0;
 }
+.block-link {
+  padding: 2px;
+  display: block;
+  color: inherit;
+  text-decoration: inherit;
+  clear: both;
+  transition: all 0.2s;
+}
+.block-link h1,
+.block-link h2,
+.block-link h3,
+.block-link h4,
+.block-link h5,
+.block-link h6 {
+  margin: -2px;
+  padding: 2px;
+}
+.block-link > *:first-child {
+  margin-top: 0;
+}
+.block-link:hover,
+.block-link:visited {
+  color: inherit;
+  text-decoration: inherit;
+}
+.block-link:hover {
+  background-color: #ebebeb;
+}
+.block-link:hover h1,
+.block-link:hover h2,
+.block-link:hover h3,
+.block-link:hover h4,
+.block-link:hover h5,
+.block-link:hover h6 {
+  transition: all 0.2s;
+  color: #ffffff;
+  background: #006c64;
+}
 .description img {
   max-width: 33%;
   float: left;
   margin: 0.5em 1em 1em 1em;
 }
-.edit-link {
-  background: #eee;
+.edit-link a {
+  background-color: #006c64;
   border-radius: 3px;
-  color: #555;
+  color: #ffffff;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
   float: right;
-  text-decoration: none;
-  padding: 0 8px;
+}
+.edit-link a:hover {
+  background-color: #009f93;
+  color: #ffffff;
 }
 .records-list {
   padding: 0;
@@ -507,7 +550,6 @@ h6 {
 }
 .records-list .record h2 {
   clear: both;
-  color: #006c64;
   border-bottom: 1px solid #006c64;
 }
 .records-list .record h2 a {
@@ -681,7 +723,6 @@ h6 {
 #featured-content h2 {
   margin: 0.25em 0;
   clear: both;
-  color: #006c64;
   border-bottom: 1px solid #006c64;
 }
 #featured-content h2 a {
@@ -733,7 +774,6 @@ h6 {
   width: 100%;
   display: block;
   clear: both;
-  color: #006c64;
   border-bottom: 1px solid #006c64;
 }
 .exhibit-page-nav .exhibit-title a {
@@ -747,7 +787,6 @@ h6 {
 }
 body.exhibits #content h1 {
   clear: both;
-  color: #006c64;
   border-bottom: 1px solid #006c64;
 }
 body.exhibits #content h1 a {

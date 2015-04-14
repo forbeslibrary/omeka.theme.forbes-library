@@ -31,14 +31,15 @@ set_loop_records(
 <?php foreach (loop('collections') as $collection): ?>
     <?php set_current_record('collection', $collection); ?>
     <li class="record collect">
-      <h2>
-          <?php echo link_to_collection(metadata('collection', array('Dublin Core', 'Title'))); ?>
-      </h2>
-      <div class="element-text description">
-        <?php echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description'))); ?>
-       </div>
+      <a href="<?php echo record_url($collection); ?>" class="block-link">
+        <h2>
+            <?php echo metadata('collection', array('Dublin Core', 'Title')); ?>
+        </h2>
+        <div class="element-text description">
+          <?php echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description'))); ?>
+        </div>
+      </a>
       <?php echo fire_plugin_hook('append_to_collections_browse_each'); ?>
-      <?php echo link_to_collection(__('More on this collection.')); ?>
 
       <?php if (is_allowed($collection, 'edit')): ?>
         <div class="edit-link">
