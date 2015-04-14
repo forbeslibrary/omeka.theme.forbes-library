@@ -759,6 +759,28 @@ h6 {
 .featured-item img {
   display: block;
 }
+/* !-- Collections ------------------------------------------------------- */
+.collection-items-heading {
+  clear: both;
+  border-bottom: 1px solid #006c64;
+}
+.collection-items-heading a {
+  color: #006c64;
+  text-decoration: none;
+}
+.collections-show-more-items-line a {
+  background-color: #006c64;
+  border-radius: 3px;
+  color: #ffffff;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
+  display: block;
+}
+.collections-show-more-items-line a:hover {
+  background-color: #009f93;
+  color: #ffffff;
+}
 /* !-- Exhibits ---------------------------------------------------------- */
 .exhibit-page-nav a {
   text-decoration: none;
