@@ -12,6 +12,7 @@ Table of Contents
 -- Content
 -- Home Page
 -- Exhibits
+-- Items
 -- Other Imports
 */
 /* !-- Global Variables -------------------------------------------------- */
@@ -41,9 +42,21 @@ Table of Contents
     height:1px;
     overflow:hidden;
 }
+.button() {
+  background-color: @contrast-color;
+  border-radius: 3px;
+  color: @background;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
+  &:hover {
+    background-color: lighten(@contrast-color, 10%);
+    color: @background;
+  }
+}
 .fancy-heading() {
     clear: both;
-    color: @contrast-color;
+    //color: @contrast-color;
     border-bottom: 1px solid @contrast-color;
     a {
         color: @contrast-color;
@@ -75,6 +88,7 @@ h4,
 h5,
 h6 {
     color: @contrast-color;
+    margin-bottom: 0;
 }
 
 /* !-- Global ------------------------------------------------------------ */
@@ -88,18 +102,54 @@ h6 {
 #site-title {
   margin:0;
 }
+.block-link {
+  padding: 2px;
+  display: block;
+  color: inherit;
+  text-decoration: inherit;
+  clear: both;
+  transition: all 0.2s;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: -2px;
+    padding: 2px;
+  }
+  &>*:first-child {
+    margin-top: 0;
+  }
+  &:hover, &:visited {
+    color: inherit;
+    text-decoration: inherit;
+  }
+  &:hover {
+    background-color: mix(@background, @main-color, 90%);
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      transition: all 0.2s;
+      color: @background;
+      background: @contrast-color;
+    }
+  }
+}
 .description img {
     max-width: 33%;
     float: left;
     margin: 0.5em 1em 1em 1em;
 }
-.edit-link {
-  background: #eee;
-  border-radius: 3px;
-  color: #555;
+.edit-link a {
+  .button();
   float: right;
-  text-decoration: none;
-  padding: 0 8px;
+}
+.hTagcloud ul {
+  margin-top: 0;
 }
 .records-list {
   padding: 0;
@@ -107,7 +157,7 @@ h6 {
     list-style: none;
   }
   .record {
-    margin: 0 0 3em 0;
+    margin: 0 0 1em 0;
     h2 {
       .fancy-heading();
     }
@@ -119,7 +169,17 @@ h6 {
   font-weight: bold;
 }
 .element-set {
+  border: solid @contrast-color 1px;
   margin-bottom: 1em;
+  td, th {
+    padding: 1px 5px;
+  }
+}
+.element-set-name {
+  text-align: left;
+  color: @background;
+  background: @contrast-color;
+  padding: 0 2px;
 }
 /* !-- Navigation -------------------------------------------------------- */
 .pagination,
@@ -261,6 +321,14 @@ h6 {
 .featured-item img {
   display: block;
 }
+/* !-- Collections ------------------------------------------------------- */
+.collection-items-heading {
+  .fancy-heading();
+}
+.collections-show-more-items-line a {
+  .button();
+  display: block;
+}
 /* !-- Exhibits ---------------------------------------------------------- */
 .exhibit-page-nav {
   a {
@@ -305,6 +373,10 @@ body.exhibits #content h1 {
 // the following rules overide Exhibit Builder defaults
 #exhibit-pages ul {
   margin: 0;
+}
+/* !--Items -------------------------------------------------------------- */
+.items-more-info-link {
+  .button();
 }
 /* !--Other Imports ------------------------------------------------------ */
 @import 'screen-medium.less' screen and (min-width: 600px);

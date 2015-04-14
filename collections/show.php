@@ -7,12 +7,9 @@ echo head(array(
 
 $total_items = get_current_record('collection')->totalItems();
 
-$link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
-    __('See all %s items', $total_items),
-    null,
-    null,
-    null,
-    array('sort_field' => 'Dublin Core,Identifier')
+$link_to_all_items_in_collection = link_to_items_in_collection(
+  __('See all %s items in this collection',
+  $total_items)
 );
 ?>
 
@@ -38,12 +35,12 @@ $link_to_all_items_in_collection = fobres_theme_link_to_items_in_collection(
 <?php endif; ?>
 
 <section>
-    <h2><?php echo __('Items in this Collection'); ?></h2>
+    <h2 class="collection-items-heading"><?php echo __('Items in this Collection'); ?></h2>
     <?php if ($total_items > 5): ?>
         <div class="collections-show-more-items-line">
-            <?php echo __('Showing first five items in this collection.'); ?>
             <?php echo $link_to_all_items_in_collection; ?>
-        </div>
+            <?php echo __('Showing first five items in this collection.'); ?>
+          </div>
     <?php endif; ?>
     <?php
     // Retrieve the items to show on this page.

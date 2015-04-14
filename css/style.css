@@ -12,6 +12,7 @@ Table of Contents
 -- Content
 -- Home Page
 -- Exhibits
+-- Items
 -- Other Imports
 */
 /* !-- Global Variables -------------------------------------------------- */
@@ -469,6 +470,7 @@ h4,
 h5,
 h6 {
   color: #006c64;
+  margin-bottom: 0;
 }
 /* !-- Global ------------------------------------------------------------ */
 #wrapper {
@@ -481,18 +483,64 @@ h6 {
 #site-title {
   margin: 0;
 }
+.block-link {
+  padding: 2px;
+  display: block;
+  color: inherit;
+  text-decoration: inherit;
+  clear: both;
+  transition: all 0.2s;
+}
+.block-link h1,
+.block-link h2,
+.block-link h3,
+.block-link h4,
+.block-link h5,
+.block-link h6 {
+  margin: -2px;
+  padding: 2px;
+}
+.block-link > *:first-child {
+  margin-top: 0;
+}
+.block-link:hover,
+.block-link:visited {
+  color: inherit;
+  text-decoration: inherit;
+}
+.block-link:hover {
+  background-color: #ebebeb;
+}
+.block-link:hover h1,
+.block-link:hover h2,
+.block-link:hover h3,
+.block-link:hover h4,
+.block-link:hover h5,
+.block-link:hover h6 {
+  transition: all 0.2s;
+  color: #ffffff;
+  background: #006c64;
+}
 .description img {
   max-width: 33%;
   float: left;
   margin: 0.5em 1em 1em 1em;
 }
-.edit-link {
-  background: #eee;
+.edit-link a {
+  background-color: #006c64;
   border-radius: 3px;
-  color: #555;
+  color: #ffffff;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
   float: right;
-  text-decoration: none;
-  padding: 0 8px;
+}
+.edit-link a:hover {
+  background-color: #009f93;
+  color: #ffffff;
+}
+.hTagcloud ul {
+  margin-top: 0;
 }
 .records-list {
   padding: 0;
@@ -501,11 +549,10 @@ h6 {
   list-style: none;
 }
 .records-list .record {
-  margin: 0 0 3em 0;
+  margin: 0 0 1em 0;
 }
 .records-list .record h2 {
   clear: both;
-  color: #006c64;
   border-bottom: 1px solid #006c64;
 }
 .records-list .record h2 a {
@@ -518,7 +565,18 @@ h6 {
   font-weight: bold;
 }
 .element-set {
+  border: solid #006c64 1px;
   margin-bottom: 1em;
+}
+.element-set td,
+.element-set th {
+  padding: 1px 5px;
+}
+.element-set-name {
+  text-align: left;
+  color: #ffffff;
+  background: #006c64;
+  padding: 0 2px;
 }
 /* !-- Navigation -------------------------------------------------------- */
 .pagination,
@@ -679,7 +737,6 @@ h6 {
 #featured-content h2 {
   margin: 0.25em 0;
   clear: both;
-  color: #006c64;
   border-bottom: 1px solid #006c64;
 }
 #featured-content h2 a {
@@ -701,6 +758,28 @@ h6 {
 }
 .featured-item img {
   display: block;
+}
+/* !-- Collections ------------------------------------------------------- */
+.collection-items-heading {
+  clear: both;
+  border-bottom: 1px solid #006c64;
+}
+.collection-items-heading a {
+  color: #006c64;
+  text-decoration: none;
+}
+.collections-show-more-items-line a {
+  background-color: #006c64;
+  border-radius: 3px;
+  color: #ffffff;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
+  display: block;
+}
+.collections-show-more-items-line a:hover {
+  background-color: #009f93;
+  color: #ffffff;
 }
 /* !-- Exhibits ---------------------------------------------------------- */
 .exhibit-page-nav a {
@@ -731,7 +810,6 @@ h6 {
   width: 100%;
   display: block;
   clear: both;
-  color: #006c64;
   border-bottom: 1px solid #006c64;
 }
 .exhibit-page-nav .exhibit-title a {
@@ -745,7 +823,6 @@ h6 {
 }
 body.exhibits #content h1 {
   clear: both;
-  color: #006c64;
   border-bottom: 1px solid #006c64;
 }
 body.exhibits #content h1 a {
@@ -754,6 +831,19 @@ body.exhibits #content h1 a {
 }
 #exhibit-pages ul {
   margin: 0;
+}
+/* !--Items -------------------------------------------------------------- */
+.items-more-info-link {
+  background-color: #006c64;
+  border-radius: 3px;
+  color: #ffffff;
+  padding: 4px 8px;
+  margin: 8px 0;
+  display: inline-block;
+}
+.items-more-info-link:hover {
+  background-color: #009f93;
+  color: #ffffff;
 }
 /* !--Other Imports ------------------------------------------------------ */
 @media screen and (min-width: 600px) {
