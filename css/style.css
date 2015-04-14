@@ -486,6 +486,14 @@ h6 {
   float: left;
   margin: 0.5em 1em 1em 1em;
 }
+.edit-link {
+  background: #eee;
+  border-radius: 3px;
+  color: #555;
+  float: right;
+  text-decoration: none;
+  padding: 0 8px;
+}
 .records-list {
   padding: 0;
 }

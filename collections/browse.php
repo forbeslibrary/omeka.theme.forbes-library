@@ -39,6 +39,15 @@ set_loop_records(
        </div>
       <?php echo fire_plugin_hook('append_to_collections_browse_each'); ?>
       <?php echo link_to_collection(__('More on this collection.')); ?>
+
+      <?php if (is_allowed($collection, 'edit')): ?>
+        <div class="edit-link">
+          <a href="<?php echo admin_url('collections/edit/' . metadata('collection', 'id')); ?>">
+            <?php echo __('edit collection'); ?>
+          </a>
+        </div>
+      <?php endif; ?>
+
     </li>
 <?php endforeach; ?>
 </ul>
