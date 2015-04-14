@@ -4,18 +4,15 @@ $identifier  = metadata($item, array('Dublin Core', 'Identifier'));
 $description = metadata($item, array('Dublin Core', 'Description'));
 ?>
 <?php echo head(array('title' => $title, 'bodyid'=>'items','bodyclass' => 'show')); ?>
-<div id="items-show-id">
-    <?php
-    if ($title) {
-        echo $title, '. ';
-    } ?>
-    Image ID: <?php echo $identifier;
-    if (function_exists('forbes_purchase_form_public_append_to_items_show')) {
-	    echo ' (';
-	    forbes_purchase_form_public_append_to_items_show();
-	    echo ')';
-    }?>
-</div>
+<?php if ($title): ?>
+  <h2><?php echo $title; ?></h2>
+  Image ID: <?php echo $identifier; ?>
+<?php else: ?>
+  <h2>Image ID: <?php echo $identifier; ?></h2>
+<?php endif; ?>
+<?php if (function_exists('forbes_purchase_form_public_append_to_items_show')): ?>
+  <?php echo forbes_purchase_form_public_append_to_items_show(); ?>
+<?php endif; ?>
 <div id="files-container">
 	<!-- The following returns all of the files associated with an item. -->
 	<div><?php echo files_for_item(array('imageSize' => 'fullsize')); ?></div>
@@ -31,14 +28,14 @@ $description = metadata($item, array('Dublin Core', 'Description'));
 </div>
 <!-- Display all item metadata -->
 <div id="item-metadata-wrapper">
-	<h2 id="item-metadata-button" class="_toggle_button">Image Details</h2>
+	<h3 id="item-metadata-button" class="_toggle_button">Image Details</h3>
 	<div id="item-metadata" class="_toggle">
     <?php echo all_element_texts($item); ?>
 	</div>
 </div>
 <!-- The following prints a citation for this item. -->
 <div id="item-citation-wrapper">
-	<h2 id="item-citation-button" class="_toggle_button"><?php echo __('Citation'); ?></h2>
+	<h3 id="item-citation-button" class="_toggle_button"><?php echo __('Citation'); ?></h3>
 	<div class="toggle"><?php echo metadata($item, 'citation', array('no_escape' => True)); ?></div>
 </div>
 <?php $pluginAdditions = fire_plugin_hook('append_to_items_show');
