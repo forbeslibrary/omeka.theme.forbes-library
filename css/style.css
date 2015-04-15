@@ -497,7 +497,6 @@ h6 {
 .block-link h4,
 .block-link h5,
 .block-link h6 {
-  margin: -2px;
   padding: 2px;
 }
 .block-link > *:first-child {
@@ -558,6 +557,9 @@ h6 {
 .records-list .record h2 a {
   color: #006c64;
   text-decoration: none;
+}
+.thumbnail {
+  margin: 5px 5px 5px 0;
 }
 .element-name {
   padding-right: 1em;
