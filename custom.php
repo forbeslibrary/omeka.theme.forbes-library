@@ -38,36 +38,6 @@ function forbes_theme_public_header_nav() {
 }
 
 /**
- * Returns an array of item-type id-name pairs suitable for use with
- * select() in html forms. Only item-types in use will be returned.
- */
-function forbes_theme_item_type_pairs_for_select() {
-    $select = get_db()->select()
-        ->distinct()
-        ->from(array('T'=>'omeka_item_types'), array('id', 'name'))
-        ->join(array('I'=>'omeka_items'),'T.id=I.item_type_id', array());
-
-    $pairs = get_db()->fetchPairs($select);
-    asort($pairs);
-    return $pairs;
-}
-
-/**
- * Returns an array of element id-name pairs suitable for use with
- * select() in html forms. Only elements in use will be returned.
- */
-function forbes_theme_element_pairs_for_select() {
-    $select = get_db()->select()
-        ->distinct()
-        ->from(array('T'=>'omeka_elements'), array('id', 'name'))
-        ->join(array('I'=>'omeka_element_texts'),'T.id=I.element_id', array());
-
-    $pairs = get_db()->fetchPairs($select);
-    asort($pairs);
-    return $pairs;
-}
-
-/**
  * Creates an html class name for help in styling the featured content
  * on the homepage.
  *

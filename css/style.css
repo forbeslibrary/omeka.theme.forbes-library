@@ -497,7 +497,6 @@ h6 {
 .block-link h4,
 .block-link h5,
 .block-link h6 {
-  margin: -2px;
   padding: 2px;
 }
 .block-link > *:first-child {
@@ -558,6 +557,9 @@ h6 {
 .records-list .record h2 a {
   color: #006c64;
   text-decoration: none;
+}
+.thumbnail {
+  margin: 5px 5px 5px 0;
 }
 .element-name {
   padding-right: 1em;
@@ -844,6 +846,24 @@ body.exhibits #content h1 a {
 .items-more-info-link:hover {
   background-color: #009f93;
   color: #ffffff;
+}
+#advanced-search-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+#advanced-search-form .field {
+  margin: 0 0.5em 0.5em 0;
+  background: #f1e9e9;
+  border-radius: 3px;
+  padding: 3px;
+  flex-grow: 1;
+}
+#advanced-search-form #submit_search_advanced {
+  margin: 0 0.5em 0.5em 0;
+  line-height: 400%;
+}
+#advanced-search-form select {
+  margin: 0 0.2em 0.5em 0;
 }
 /* !--Other Imports ------------------------------------------------------ */
 @media screen and (min-width: 600px) {
