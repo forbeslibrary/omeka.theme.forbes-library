@@ -42,6 +42,12 @@ Table of Contents
     height:1px;
     overflow:hidden;
 }
+.single-line-truncate() {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .button() {
   background-color: @contrast-color;
   border-radius: 3px;
@@ -299,6 +305,7 @@ h6 {
           text-decoration:underline;
           color: @main-color;
           margin: 0.25em 0;
+          .single-line-truncate();
         }
     }
 

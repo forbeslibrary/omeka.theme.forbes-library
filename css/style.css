@@ -735,6 +735,9 @@ h6 {
   text-decoration: underline;
   color: #333333;
   margin: 0.25em 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #featured-content h2 {
   margin: 0.25em 0;
@@ -891,6 +894,16 @@ body.exhibits #content h1 a {
     display: block;
     opacity: 1;
     position: static;
+  }
+  .items-list .item {
+    display: inline-block;
+    vertical-align: top;
+    width: 49%;
+  }
+  .items-list .item h2 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
   .menu_bar li {
     float: left;

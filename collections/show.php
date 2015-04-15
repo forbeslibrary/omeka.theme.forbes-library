@@ -36,10 +36,10 @@ $link_to_all_items_in_collection = link_to_items_in_collection(
 
 <section>
     <h2 class="collection-items-heading"><?php echo __('Items in this Collection'); ?></h2>
-    <?php if ($total_items > 5): ?>
+    <?php if ($total_items > 6): ?>
         <div class="collections-show-more-items-line">
             <?php echo $link_to_all_items_in_collection; ?>
-            <?php echo __('Showing first five items in this collection.'); ?>
+            <?php echo __('Showing first six items in this collection.'); ?>
           </div>
     <?php endif; ?>
     <?php
@@ -60,16 +60,16 @@ $link_to_all_items_in_collection = link_to_items_in_collection(
         'sort_dir' => $sort_dir,
         'collection' => get_current_record('collection')->id
         ),
-      5);
+      6);
     ?>
     <ul class="records-list items-list">
         <?php foreach (loop('items', $items) as $item): ?>
             <?php echo common("show-in-browse", array('item' => $item), 'items') ?>
         <?php endforeach; ?>
     </ul>
-    <?php if($total_items > 5): ?>
+    <?php if($total_items > 6): ?>
         <div class="collections-show-more-items-line">
-            <?php echo __('Showing first five items in this collection.');?>
+            <?php echo __('Showing first six items in this collection.');?>
             <?php echo $link_to_all_items_in_collection; ?>
         </div>
     <?php endif; ?>
