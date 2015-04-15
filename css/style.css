@@ -845,6 +845,24 @@ body.exhibits #content h1 a {
   background-color: #009f93;
   color: #ffffff;
 }
+#advanced-search-form {
+  display: flex;
+  flex-wrap: wrap;
+}
+#advanced-search-form .field {
+  margin: 0 0.5em 0.5em 0;
+  background: #f1e9e9;
+  border-radius: 3px;
+  padding: 3px;
+  flex-grow: 1;
+}
+#advanced-search-form #submit_search_advanced {
+  margin: 0 0.5em 0.5em 0;
+  line-height: 400%;
+}
+#advanced-search-form select {
+  margin: 0 0.2em 0.5em 0;
+}
 /* !--Other Imports ------------------------------------------------------ */
 @media screen and (min-width: 600px) {
   #wrapper {
