@@ -553,6 +553,9 @@ h6 {
 .records-list .record h2 {
   clear: both;
   border-bottom: 1px solid #006c64;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .records-list .record h2 a {
   color: #006c64;
@@ -735,6 +738,9 @@ h6 {
   text-decoration: underline;
   color: #333333;
   margin: 0.25em 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 #featured-content h2 {
   margin: 0.25em 0;
