@@ -60,4 +60,4 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
   </header>
 
   <div id="content">
-    <?php fire_plugin_hook('public_content', array('view'=>$this));
+    <?php fire_plugin_hook('public_content_top', array('view'=>$this)); ?>
