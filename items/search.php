@@ -10,6 +10,4 @@ echo head(array('title' => $pageTitle,
 array('formAttributes' =>
 array('id'=>'advanced-search-form'))); ?>
 
-<?php fire_plugin_hook('public_items_search', array('view' => $this)); ?>
-
 <?php echo foot(); ?>
