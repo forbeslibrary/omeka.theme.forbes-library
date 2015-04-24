@@ -25,5 +25,6 @@ if (forbes_theme_on_search_results_page()) {
 </ul>
 <div id="pagination-bottom" class="pagination"><?php echo pagination_links(); ?></div>
 
-<?php echo fire_plugin_hook('append_to_items_browse'); ?>
+<?php fire_plugin_hook('public_items_browse', array('items' => $items, 'view' => $this)); ?>
+
 <?php echo foot();?>

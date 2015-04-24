@@ -38,10 +38,8 @@ $description = metadata($item, array('Dublin Core', 'Description'));
 	<h3><?php echo __('Citation'); ?></h3>
 	<div><?php echo metadata($item, 'citation', array('no_escape' => True)); ?></div>
 </div>
-<?php $pluginAdditions = fire_plugin_hook('append_to_items_show');
-if ($pluginAdditions) {
-    echo '<div id="item-show-plugin-addtions">', $pluginAdditions, '</div>';
-} ?>
+
+<?php fire_plugin_hook('public_items_show', array('view' => $this, 'item' => $item)); ?>
 
 <!-- The following prints a list of all tags associated with the item -->
 <?php if (metadata($item, 'has tags')): ?>
