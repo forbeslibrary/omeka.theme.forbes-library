@@ -32,7 +32,4 @@
 			</a>
 		</div>
 	<?php endif; ?>
-
-	<!-- plugin hook append_to_items_browse_each -->
-	<?php fire_plugin_hook('public_items_browse', array('items' => $items, 'view' => $this)); ?>
 </li>
