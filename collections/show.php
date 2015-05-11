@@ -76,5 +76,5 @@ $link_to_all_items_in_collection = link_to_items_in_collection(
 </section>
 
 <?php
-echo fire_plugin_hook('append_to_collections_show');
+fire_plugin_hook('public_collections_show', array('collection' => $collection, 'view' => $this));
 echo foot();

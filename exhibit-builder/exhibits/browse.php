@@ -20,11 +20,9 @@ set_loop_records('exhibits', get_records('exhibit', array ('sort_field'=>'name')
       <div class="element-text description">
         <?php echo text_to_paragraphs(metadata('exhibit', 'Description', array('no_escape' => true))); ?>
        </div>
-      <?php echo fire_plugin_hook('append_to_exhibits_browse_each'); ?>
       <?php echo link_to_exhibit(__('More on this exhibit.')); ?>
     </li>
 <?php endforeach; ?>
 </ul>
 
-<?php echo fire_plugin_hook('append_to_exhibits_browse'); ?>
 <?php echo foot(); ?>

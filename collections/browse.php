@@ -39,7 +39,8 @@ set_loop_records(
           <?php echo text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description'))); ?>
         </div>
       </a>
-      <?php echo fire_plugin_hook('append_to_collections_browse_each'); ?>
+
+      <?php fire_plugin_hook('public_collections_browse_each' , array('collection' => $collection, 'view' => $this)); ?>
 
       <?php if (is_allowed($collection, 'edit')): ?>
         <div class="edit-link">
@@ -53,5 +54,5 @@ set_loop_records(
 <?php endforeach; ?>
 </ul>
 
-<?php echo fire_plugin_hook('append_to_collections_browse'); ?>
+<?php fire_plugin_hook('public_collections_browse', array('collections' => $collections, 'view' => $this)); ?>
 <?php echo foot(); ?>

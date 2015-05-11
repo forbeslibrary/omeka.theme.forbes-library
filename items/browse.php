@@ -21,9 +21,12 @@ if (forbes_theme_on_search_results_page()) {
 <ul class="records-list items-list">
 	<?php foreach (loop('items') as $item): ?>
 		<?php echo common("show-in-browse", array('item' => $item), 'items') ?>
+		<!-- plugin hook append_to_items_browse_each -->
+		<?php fire_plugin_hook('public_items_browse', array('items' => $items, 'view' => $this)); ?>
 	<?php endforeach; ?>
 </ul>
 <div id="pagination-bottom" class="pagination"><?php echo pagination_links(); ?></div>
 
-<?php echo fire_plugin_hook('append_to_items_browse'); ?>
+<?php fire_plugin_hook('public_items_browse', array('items' => $items, 'view' => $this)); ?>
+
 <?php echo foot();?>
