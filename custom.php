@@ -220,23 +220,6 @@ function forbes_theme_display_random_featured_collection() {
 }
 
 /**
- * Returns the first available item thumbnail from the items in the current collection.
- */
-function forbes_theme_collection_thumbnail() {
-        $db = get_db();
-        $select = $db->select()
-            ->from(array('i' =>'omeka_items'),'id')
-            ->join(array('f' =>'omeka_files'),'f.item_id = i.id', array())
-            ->where('f.has_derivative_image = 1 AND i.collection_id = ?', metadata('collection', 'id'))
-            ->limit(1);
-        $result = $db->query($select)->fetch();
-        if ($result) {
-            set_current_record('item',get_record_by_id('item', $result['id']));
-            return item_image('thumbnail');
-        }
-}
-
-/**
 * This function checks the Favicon theme option, then and returns an appropriate
 * link tag if it is set.
 *
