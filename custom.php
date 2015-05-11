@@ -59,21 +59,6 @@ function forbes_theme_featured_content_class() {
 }
 
 /**
- * Processes $file as a php file and queues the output to be inserted
- * into the <head> as an embedded style.
- */
-function forbes_theme_queue_generated_css($file) {
-    ob_start(); // Capture all output (output buffering)
-    require(physical_path_to('css/'.$file)); // Generate CSS
-    $css = ob_get_clean(); // Get generated CSS (output buffering)
-    /* remove comments */
-        $css = preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css);
-        /* remove tabs, spaces, newlines, etc. */
-        $css = str_replace(array("\r\n", "\r", "\n", "\t", '  ', '    ', '    '), '', $css);
-    queue_css_string($css);
-}
-
-/**
  * The Omeka snippet function strips all html formatting. This function
  * first converts p and br tags to a pillcrow or a specified string before
  * passing it to Omeka's snippet.
