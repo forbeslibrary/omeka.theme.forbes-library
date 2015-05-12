@@ -14,12 +14,27 @@ module.exports = function(grunt) {
           "css/style.css": "css/less/base.less"
         }
       }
-    }
+    },
+
+    compress: {
+      main: {
+        options: {
+          archive: 'ForbesLibrary.zip',
+          mode: 'zip'
+        },
+        files: [
+          {
+            src: ['**/*.@(css|ini|md|php)', '!css/less/**', '!node_modules/**'],
+            dest: 'forbes-library'
+          }
+        ]
+      }
+    },
   });
 
   require("load-grunt-tasks")(grunt);
 
   // Default task(s).
-  grunt.registerTask('default', ['phplint', 'less']);
+  grunt.registerTask('default', ['phplint', 'less', 'compress']);
 
 };
