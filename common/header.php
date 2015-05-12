@@ -4,7 +4,7 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 <!DOCTYPE html>
 <html lang="<?php echo get_html_lang(); ?>">
 
-<?php echo common('head'); ?>
+<?php echo common('head', array('title' => $title)); ?>
 
 <?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
   <!-- plugin hook 'public_body' -->
