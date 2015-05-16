@@ -1,12 +1,32 @@
 <?php
+
+/**
+ * header.php template for the forbes-library Omeka theme
+ *
+ * This partial template looks for the following variables:
+ *  - $title
+ *  - $bodyid
+ *  - $bodyclass
+ */
+
+// == Set variables for this template =========================================
+$headVars = array(
+  'title' => isset($title) ? $title : null
+  );
+$bodyVars = array(
+  'bodyid' => isset($bodyid) ? $bodyid : null,
+  'bodyclass' => isset($bodyclass) ? $bodyclass : null,
+  );
+
+// == Content begins here =====================================================
 $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo get_html_lang(); ?>">
 
-<?php echo common('head', array('title' => $title)); ?>
+<?php echo common('head', $headVars); ?>
 
-<?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
+<?php echo body_tag($bodyVars); ?>
   <!-- plugin hook 'public_body' -->
   <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
   <div id="wrapper">
@@ -31,8 +51,16 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 
     <!-- navigation -->
     <nav id="top-level-nav" class="menu_bar">
-      <h2 class="navigation-label"><a href="<?php echo url('?nav=True');?>"><?php echo __('Navigation'); ?></a></h2>
-      <span class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></span>
+      <h2 class="navigation-label">
+        <a href="<?php echo url('?nav=True');?>">
+          <?php echo __('Navigation'); ?>
+        </a>
+      </h2>
+      <span class="nav-jump-to-content">
+        <a href="#content" tabindex="0">
+          <?php echo __('Skip to content') ?>
+        </a>
+      </span>
       <input type="checkbox" id="toggle" />
       <div>
         <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
@@ -50,10 +78,7 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
         </form>
 
         <!-- main menu -->
-        <?php
-        $menu = public_nav_main();
-        echo $menu;
-        ?>
+        <?php echo public_nav_main(); ?>
         </div>
       </div>
     </nav>
