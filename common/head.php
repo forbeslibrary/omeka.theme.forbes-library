@@ -1,3 +1,19 @@
+<?php
+
+/**
+ * head.php template for the forbes-library Omeka theme
+ *
+ * This partial template looks for the following variables:
+ * - title
+ */
+
+// == Set variables for this template =========================================
+$title = isset($title) ? $title . ' | ' : '';
+$title = $title . option('site_title');
+
+
+// == Content begins here =====================================================
+?>
 <!-- common/head -->
 <head>
 	<!-- meta tags -->
@@ -12,12 +28,7 @@
 
 	<!-- title -->
 	<title>
-	<?php
-	if (isset($title)) {
-		echo strip_formatting($title).' | ';
-	}
-	echo option('site_title');
-	?>
+		<?php echo $title; ?>
 	</title>
 
 	<!-- link tags -->
