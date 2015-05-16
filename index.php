@@ -6,7 +6,7 @@
 
 // == Content begins here =====================================================
 
-<?php echo head(array('bodyid'=>'home')); ?>
+echo head(array('bodyid'=>'home')); ?>
 
 <?php if (get_theme_option('Homepage Text')): ?>
   <div id="home-page-text">
