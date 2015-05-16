@@ -2,8 +2,6 @@
 
 /**
  * error/404.php template for the forbes-library Omeka theme
- *
- * This template may be called without arguments.
  */
 
 // == Output HTTP header ======================================================
