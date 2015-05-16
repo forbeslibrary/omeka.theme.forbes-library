@@ -40,7 +40,7 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
         <!-- custom navigation links as defined in the theme configuration -->
         <div class="menu">
         <div id="header-buttons">
-          <?php echo forbes_theme_public_header_nav(); ?>
+          <?php echo ForbesTheme::public_header_nav(); ?>
         </div>
 
         <!-- simple search form -->

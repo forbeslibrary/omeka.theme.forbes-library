@@ -20,7 +20,7 @@
 			} ?>
 
 			<div class="items-show-in-browse-description">
-					<?php echo forbes_theme_snippet_with_new_lines(metadata($item, array('Dublin Core', 'Description')),0,200); ?>
+					<?php echo ForbesTheme::snippet_with_new_lines(metadata($item, array('Dublin Core', 'Description')),0,200); ?>
 			</div>
 		</div>
 	</a>

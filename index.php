@@ -11,22 +11,22 @@
 </form>
 <?php endif; ?>
 
-<div id="featured-content" class="<?php echo forbes_theme_featured_content_class(); ?>">
+<div id="featured-content" class="<?php echo ForbesTheme::featured_content_class(); ?>">
 	<?php if (get_theme_option('Display Featured Item') !== '0'): ?>
 		<section class="featured-item">
-      <?php echo forbes_theme_display_random_featured_item(); ?>
+      <?php echo ForbesTheme::display_random_featured_item(); ?>
     </section>
 	<?php endif; ?>
 
 	<?php if (get_theme_option('Display Featured Collection') !== '0'): ?>
 		<section class="featured-collection">
-			<?php echo forbes_theme_display_random_featured_collection(); ?>
+			<?php echo ForbesTheme::display_random_featured_collection(); ?>
 		</section>
 	<?php endif; ?>
 
 	<?php if (get_theme_option('Display Featured Exhibit') !== '0'): ?>
 		<section class="featured-exhibit">
-			<?php echo forbes_theme_display_random_featured_exhibit(); ?>
+			<?php echo ForbesTheme::display_random_featured_exhibit(); ?>
 		</section>
 	<?php endif; ?>
 </div>

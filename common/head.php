@@ -11,12 +11,12 @@
 	}
 	echo $this->headMeta();
 	?>
-	
+
 	<!-- title -->
 	<title>
 	<?php
 	if (isset($title)) {
-		echo strip_formatting($title).' | ';	
+		echo strip_formatting($title).' | ';
 	}
 	echo option('site_title');
 	?>
@@ -25,13 +25,13 @@
 	<!-- link tags -->
 	<?php
 	echo auto_discovery_link_tags();
-	echo forbes_theme_favicon_link_tag();
-	echo forbes_theme_largeicon_link_tag();
+	echo ForbesTheme::favicon_link_tag();
+	echo ForbesTheme::largeicon_link_tag();
 	?>
-	
+
 	<!-- plugin hook: public_head -->
 	<?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
-	
+
 	<!-- stylesheets -->
 	<?php
 	$banner_image = get_theme_option('banner');
@@ -44,9 +44,8 @@
 	queue_css_file('style');
 	echo head_css();
 	?>
-	
+
 	<!-- scripts -->
 	<?php echo head_js(); ?>
 </head>
 <!-- end common/head -->
-
