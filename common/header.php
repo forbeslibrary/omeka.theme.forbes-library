@@ -19,7 +19,6 @@ $bodyVars = array(
   );
 
 // == Content begins here =====================================================
-$forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo get_html_lang(); ?>">

@@ -1,7 +1,5 @@
 <!-- common/head -->
 <head>
-	<?php $forbesThemeSession = new Zend_Session_Namespace('forbes_theme'); ?>
-
 	<!-- meta tags -->
 	<?php
 	$this->headMeta()->setCharset('utf-8');
