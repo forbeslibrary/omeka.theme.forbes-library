@@ -30,6 +30,13 @@ module.exports = function(grunt) {
         ]
       }
     },
+
+    githooks: {
+      all: {
+        // Will run the jshint and test:unit tasks at every commit
+        'pre-commit': ['phplint', 'less']
+      }
+    }
   });
 
   require("load-grunt-tasks")(grunt);
