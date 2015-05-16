@@ -3,6 +3,8 @@
 /**
  * footer.php template for the forbes-library Omeka theme
  *
+ * Outputs the end of the HTML file, from where the content ends
+ *
  * This partial template does not take any arguments.
  */
 

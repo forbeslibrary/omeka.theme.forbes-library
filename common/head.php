@@ -3,6 +3,8 @@
 /**
  * head.php template for the forbes-library Omeka theme
  *
+ * Outputs the head tag.
+ *
  * This partial template looks for the following variables:
  * - title
  */

@@ -3,6 +3,8 @@
 /**
  * header.php template for the forbes-library Omeka theme
  *
+ * Outputs the 'top' of the HTML file, up until the content begins
+ *
  * This partial template looks for the following variables:
  *  - $title
  *  - $bodyid
