@@ -1,12 +1,9 @@
 <?php
 
 /**
- * header.php template for the forbes-library Omeka theme
+ * footer.php template for the forbes-library Omeka theme
  *
- * This partial template looks for the following variables:
- *  - $title
- *  - $bodyid
- *  - $bodyclass
+ * This partial template does not take any arguments.
  */
 
 // == Set variables for this template =========================================
