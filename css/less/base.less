@@ -48,16 +48,16 @@ Table of Contents
   overflow: hidden;
 }
 
-.button() {
-  background-color: @contrast-color;
+.button(@button-color: @contrast-color) {
+  background-color: @button-color;
   border-radius: 3px;
-  color: @background;
+  color: contrast(@button-color, @main-color, @background);
   padding: 4px 8px;
   margin: 8px 0;
   display: inline-block;
   &:hover {
-    background-color: lighten(@contrast-color, 10%);
-    color: @background;
+    background-color: lighten(@button-color, 10%);
+    color: contrast(@button-color, @main-color, @background);
   }
 }
 .fancy-heading() {
@@ -191,8 +191,7 @@ h6 {
   padding: 0 2px;
 }
 /* !-- Navigation -------------------------------------------------------- */
-.pagination,
-.item-pagination {
+.pagination {
     font-size:.9em;
     width:auto;
     padding:0;
@@ -201,11 +200,36 @@ h6 {
         display:inline;
         padding:0 .25em;
     }
+    li.pagination_previous {
+      padding-right: 1em;
+      ::before {
+        content: "\25C0";
+        margin-right: 0.5em;
+      }
+    }
+    li.pagination_next {
+      padding-left: 1em;
+      ::after {
+        content: "\25b6";
+        margin-left: 0.5em;
+      }
+    }
     a,
     ul {
         display:inline;
         margin: 0;
         padding: 0;
+        text-decoration: none;
+    }
+    a {
+      .button();
+    }
+    li.pagination_current {
+      font-weight: 900;
+      padding: 4px;
+      margin: 0 4px;
+      border-bottom: @main-color solid 1px;
+      border-top: @main-color solid 1px;
     }
 }
 .navigation-label,
