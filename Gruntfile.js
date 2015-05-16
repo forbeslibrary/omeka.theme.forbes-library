@@ -31,6 +31,13 @@ module.exports = function(grunt) {
       }
     },
 
+    watch: {
+      scripts: {
+        files: ['css/less/*.@(less|css)'],
+        tasks: ['less'],
+      },
+    },
+
     githooks: {
       all: {
         // Will run the jshint and test:unit tasks at every commit
