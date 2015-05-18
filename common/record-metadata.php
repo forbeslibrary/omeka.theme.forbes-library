@@ -20,18 +20,18 @@ foreach ($elementsForDisplay as $setName => $setElements): ?>
 			</tr>
 		<?php endif ?>
 		<?php foreach ($setElements as $elementName => $elementInfo): ?>
-  		<tr>
-  			<td class="element-name">
-  				<?php echo html_escape(__($elementName)); ?>
-  			</td>
-  			<td class="element-text">
-  				<?php foreach ($elementInfo['texts'] as $text): ?>
-  					<div class="element-text">
-  						<?php echo $text; ?>
-  					</div>
-  				 <?php endforeach; ?>
-  			</td>
-  		</tr>
-	   <?php endforeach; ?>
+			<tr>
+				<td class="element-name">
+					<?php echo html_escape(__($elementName)); ?>
+				</td>
+				<td class="element-text">
+					<?php foreach ($elementInfo['texts'] as $text): ?>
+						<div class="element-text">
+							<?php echo $text; ?>
+						</div>
+					 <?php endforeach; ?>
+				</td>
+			</tr>
+		<?php endforeach; ?>
 	</table>
 <?php endforeach;
