@@ -1,0 +1,35 @@
+body {
+	font-family: 'Lato', Georgia, Times, Serif;
+	font-size: 11px;
+	line-height: 1.5;
+	background: @bodyColor;
+	color: @mainColor;
+}
+footer {
+	padding: 0.1em 1em;
+	color: @bgColor;
+	background: @accentColor;
+	font-size: 110%;
+	a {
+		color: @bgColor;
+		font-weight: bold;
+	}
+}
+img {
+		max-width: 100%;
+}
+a {
+	color: @accentColor;
+	&:hover {
+			color: @contrastColor;
+	}
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: @contrastColor;
+	margin-bottom: 0;
+}

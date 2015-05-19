@@ -1,0 +1,41 @@
+.pagination {
+	font-size:.9em;
+	width:auto;
+	padding:0;
+	clear:both;
+	li {
+			display:inline;
+			padding:0 .25em;
+	}
+	li.pagination_previous {
+		padding-right: 1em;
+		::before {
+			content: "\25C0";
+			margin-right: 0.5em;
+		}
+	}
+	li.pagination_next {
+		padding-left: 1em;
+		::after {
+			content: "\25b6";
+			margin-left: 0.5em;
+		}
+	}
+	a,
+	ul {
+			display:inline;
+			margin: 0;
+			padding: 0;
+			text-decoration: none;
+	}
+	a {
+		.button();
+	}
+	li.pagination_current {
+		font-weight: 900;
+		padding: 4px;
+		margin: 0 4px;
+		border-bottom: @mainColor solid 1px;
+		border-top: @mainColor solid 1px;
+	}
+}

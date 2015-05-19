@@ -1,0 +1,44 @@
+.accessible-hide() {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+
+.button(@button-color: @contrastColor) {
+	background-color: @button-color;
+	border-radius: 3px;
+	color: contrast(@button-color, @mainColor, @bgColor);
+	padding: 4px 8px;
+	margin: 8px 0;
+	display: inline-block;
+	&:hover {
+		background-color: lighten(@button-color, 10%);
+		color: contrast(@button-color, @mainColor, @bgColor);
+	}
+}
+
+.fancy-heading() {
+	clear: both;
+	border-bottom: 1px solid @contrastColor;
+	a {
+		color: @contrastColor;
+		text-decoration: none;
+	}
+}
+
+.screenSize(@size; @rules) when (@size = "medium") {
+	@media screen and (min-width: 800px)
+}
+
+.screenSize(@size; @rules) when (@size = "large") {
+	@media screen and (min-width: 600px) { @rules(); }
+}
+
+.single-line-truncate() {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+}
