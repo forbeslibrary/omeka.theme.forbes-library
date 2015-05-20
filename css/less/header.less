@@ -1,6 +1,10 @@
 #site-title {
 	margin:0;
+	.screenSizeLarge({
+			padding: 1em;
+	})
 }
+
 .header {
 	position: relative;
 }
@@ -97,9 +101,17 @@
 		padding: 0 0.5em;
 		display: inline-block;
 	}
+	.screenSizeLarge({
+		right: @contentMarginLarge;
+		top: @contentMarginLarge/2;
+	});
 }
 #simple-search {
 	margin: 1em;
+	.screenSizeLarge({
+		right: @contentMarginLarge;
+		top: @contentMarginLarge/2 + 30px;
+	});
 }
 
 .navigation {

@@ -29,12 +29,12 @@
 	}
 }
 
-.screenSize(@size; @rules) when (@size = "medium") {
-	@media screen and (min-width: 800px)
+.screenSizeMedium(@rules) {
+	@media screen and (min-width: 600px) { @rules(); }
 }
 
-.screenSize(@size; @rules) when (@size = "large") {
-	@media screen and (min-width: 600px) { @rules(); }
+.screenSizeLarge(@rules) {
+	@media screen and (min-width: 800px) { @rules(); }
 }
 
 .single-line-truncate() {

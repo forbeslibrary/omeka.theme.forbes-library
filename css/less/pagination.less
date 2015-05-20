@@ -39,3 +39,19 @@
 		border-top: @mainColor solid 1px;
 	}
 }
+
+// position top pagination on the right on large screens.
+@forLargeScreens: {
+	#content {
+		position: relative;
+	}
+
+	#pagination-top {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+};
+.screenSizeLarge({
+	@forLargeScreens();
+});

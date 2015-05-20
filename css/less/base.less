@@ -1,20 +1,3 @@
-/*
-Table of Contents
-=================
--- Global Variables
--- Library Imports
--- Mixins
--- General HTML Elements
--- Global
--- Navigation
--- Header
--- Footer
--- Content
--- Home Page
--- Exhibits
--- Items
--- Other Imports
-*/
 /* !-- Global Variables -------------------------------------------------- */
 @bodyColor: #FFFAF0;
 @bgColor: #FFFFFF;
@@ -22,11 +5,14 @@ Table of Contents
 @accentColor:	 #722327;
 @contrastColor: #006C64;
 @contentMargin: 5px;
+@contentMarginMedium: 0.25in;
+@contentMarginLarge: 0.5in;
 
 @import (inline) 'normalize.css';
 @import 'mixins';
 @import 'elements';
 @import 'header';
+@import 'home';
 @import 'pagination';
 
 
@@ -37,6 +23,9 @@ Table of Contents
 	margin: 0 auto;
 	position:relative;
 	background: @bgColor;
+	.screenSizeLarge({
+		padding: @contentMarginLarge/2 @contentMarginLarge;
+	});
 }
 .block-link {
 	padding: 2px;
@@ -131,45 +120,6 @@ Table of Contents
 	clear:both;
 	font-size: 133%;
 	margin: 0 5px;
-}
-/* !-- Home Page --------------------------------------------------------- */
-#home-page-text {
-		padding: 0.5em 0;
-}
-#featured-content {
-	width:100%;
-
-	a {
-		text-decoration: none;
-		color: @mainColor;
-		h3 {
-			text-decoration:underline;
-			color: @mainColor;
-			margin: 0.25em 0;
-			.single-line-truncate();
-		}
-	}
-
-	h2 {
-		margin: 0.25em 0;
-		.fancy-heading();
-	}
-
-	.description {
-		margin-top: 0.5em;
-		img {
-			max-width: 100%;
-			float: none;
-			margin: 0;
-		}
-	}
-	&>section {
-		position:relative;
-		overflow:hidden; /* expand section to fit content */
-	}
-}
-.featured-item img {
-	display: block;
 }
 /* !-- Collections ------------------------------------------------------- */
 .collection-items-heading {
