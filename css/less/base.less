@@ -23,6 +23,9 @@
 	margin: 0 auto;
 	position:relative;
 	background: @bgColor;
+	.screenSizeMedium({
+		padding: @contentMarginMedium;
+	});
 	.screenSizeLarge({
 		padding: @contentMarginLarge/2 @contentMarginLarge;
 	});
@@ -202,4 +205,3 @@ body.exhibits #content h1 {
 }
 /* !--Other Imports ------------------------------------------------------ */
 @import 'screen-medium.less' screen and (min-width: 600px);
-@import 'screen-large.less' screen and (min-width: 800px);
