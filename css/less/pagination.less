@@ -32,11 +32,14 @@
 		.button();
 	}
 	li.pagination_current {
+		.button(mix(@bgColor, @mainColor, 90%); mix(@bgColor, @mainColor, 90%));
 		font-weight: 900;
-		padding: 4px;
-		margin: 0 4px;
-		border-bottom: @mainColor solid 1px;
-		border-top: @mainColor solid 1px;
+		border: solid 1px @contrastColor;
+		//padding: 4px 8px;
+		//margin: 0 4px;
+		//background-color: mix(@bgColor, @mainColor, 90%);
+		//border-bottom: @mainColor solid 1px;
+		//border-top: @mainColor solid 1px;
 	}
 }
 

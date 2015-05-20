@@ -7,7 +7,7 @@
 	overflow:hidden;
 }
 
-.button(@button-color: @contrastColor) {
+.button(@button-color: @contrastColor; @hover-color: lighten(@button-color, 10%)) {
 	background-color: @button-color;
 	border-radius: 3px;
 	color: contrast(@button-color, @mainColor, @bgColor);
@@ -15,7 +15,7 @@
 	margin: 8px 0;
 	display: inline-block;
 	&:hover {
-		background-color: lighten(@button-color, 10%);
+		background-color: @hover-color;
 		color: contrast(@button-color, @mainColor, @bgColor);
 	}
 }
