@@ -12,16 +12,17 @@ set_loop_records('exhibits', get_records('exhibit', array ('sort_field'=>'name')
 
 <ul class="records-list exhibits-list">
 <?php foreach (loop('exhibits') as $exhibit): ?>
-    <?php set_current_record('exhibit', $exhibit); ?>
-    <li class="exhibit record">
-      <h2>
-          <?php echo link_to_exhibit(metadata('exhibit', 'Title')); ?>
-      </h2>
-      <div class="element-text description">
-        <?php echo text_to_paragraphs(metadata('exhibit', 'Description', array('no_escape' => true))); ?>
-       </div>
-      <?php echo link_to_exhibit(__('More on this exhibit.')); ?>
-    </li>
+	<?php set_current_record('exhibit', $exhibit); ?>
+	<a href="<?php echo record_url($exhibit); ?>" class="block-link">
+		<li class="exhibit record">
+			<h2>
+					<?php echo metadata('exhibit', 'Title'); ?>
+			</h2>
+			<div class="element-text description">
+				<?php echo text_to_paragraphs(metadata('exhibit', 'Description', array('no_escape' => true))); ?>
+			</div>
+		</li>
+	</a>
 <?php endforeach; ?>
 </ul>
 

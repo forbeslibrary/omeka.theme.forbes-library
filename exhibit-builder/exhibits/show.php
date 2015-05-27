@@ -1,17 +1,27 @@
-<?php head(array('title' => html_escape(exhibit('title') . ' : '. exhibit_page('title')), 'bodyid'=>'exhibit','bodyclass'=>'show')); ?>
-<h1><?php echo link_to_exhibit(); ?></h1>
+<?php
+$headOptions = array(
+	'title' => html_escape(metadata('exhibit', 'title') . ' : ' . metadata('exhibit_page', 'title')),
+	'bodyid' => 'exhibit',
+	'bodyclass' => 'show'
+);
+?>
+<?php echo head($headOptions); ?>
+<h1>
+	<?php echo link_to_exhibit(); ?>
+</h1>
 
 <nav id="nav-container">
-	<?php echo exhibit_builder_section_nav();?>
 	<?php echo exhibit_builder_page_nav();?>
 </nav>
 
-<h2><?php echo exhibit_page('title'); ?></h2>
+<h2>
+	<?php echo metadata('exhibit_page', 'title'); ?>
+</h2>
 
 <?php exhibit_builder_render_exhibit_page(); ?>
 
 <nav id="exhibit-page-navigation">
-	<?php echo exhibit_builder_link_to_previous_exhibit_page(); ?>
-    	<?php echo exhibit_builder_link_to_next_exhibit_page(); ?>
+	<?php echo exhibit_builder_link_to_previous_page(); ?>
+	<?php echo exhibit_builder_link_to_next_page(); ?>
 </nav>
-<?php foot(); ?>
+<?php echo foot();
