@@ -1,4 +1,3 @@
-/* !-- Exhibits ---------------------------------------------------------- */
 .exhibit-page-nav {
 	a {
 		text-decoration: none;
@@ -36,26 +35,33 @@
 	display: inline-block;
 	margin: 0 1em 0 0;
 }
-body.exhibits #content h1 {
+body#exhibit #content h1 {
 	.fancy-heading();
 }
-// the following rules overide Exhibit Builder defaults
-#exhibit-pages {
-  .screenSizeLarge({
-    width: 33%;
-    float: right;
-  });
+nav#exhibit-pages {
+	background-color: mix(@accentColor, @bgColor, 10%);
+	border: 1px @contrastColor solid;
+	margin: 1em 0;
+	padding: 0.5em;
+	box-sizing: border-box;
 	li {
 		list-style: none;
 	}
 	ul {
 		margin: 0;
-    padding: 0 0 0 1em;
+		padding: 0 0 0 1em;
 	}
+	.screenSizeLarge({
+		width: 25%;
+		position: absolute;
+		right: 0;
+	});
 }
 
-body.exhibits #primary {
-  .screenSizeLarge({
-    width: 66%;
-  });
+body#exhibit #primary {
+	.screenSizeLarge({
+		box-sizing: border-box;
+		padding-right: 0.5em;
+		width: 75%;
+	});
 }
