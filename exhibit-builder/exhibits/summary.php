@@ -1,24 +1,16 @@
-<?php echo head(array('title' => metadata('exhibit', 'title'), 'bodyclass'=>'exhibits summary')); ?>
+<?php echo head(array('title' => metadata('exhibit', 'title'), 'class' => 'exhibits summary')); ?>
 
 <h1>
 	<?php echo metadata('exhibit', 'title'); ?>
 </h1>
 <?php set_exhibit_pages_for_loop_by_exhibit(); ?>
 <?php if (has_loop_records('exhibit_page')): ?>
-<nav id="nav-container">
-		<ul class="exhibit-page-nav navigation">
-			<ul>
-				<li>
-					<?php foreach (loop('exhibit_page') as $exhibitPage): ?>
-						<li>
-							<a href="<?php echo record_url($exhibitPage); ?>" class="exhibit-page-title">
-								<?php echo metadata('exhibit_page', 'title'); ?>
-							</a>
-						</li>
-					<?php endforeach; ?>
-				</li>
-			</ul>
-		</ul>
+<nav id="exhibit-pages">
+	<ul>
+		<?php foreach (loop('exhibit_page') as $exhibitPage): ?>
+			<?php echo exhibit_builder_page_summary($exhibitPage); ?>
+		<?php endforeach; ?>
+	</ul>
 </nav>
 <?php endif; ?>
 

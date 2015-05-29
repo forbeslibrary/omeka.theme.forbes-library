@@ -22,8 +22,8 @@ if (isset($_GET['search'])) {
 }
 $headOptions = array(
 	'title' => $pageTitle,
-	'bodyid' => 'items',
-	'bodyclass' => 'browse'
+	'id' => 'items',
+	'class' => 'browse'
 );
 // == Content begins here =====================================================
 echo head($headOptions); ?>

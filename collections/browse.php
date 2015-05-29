@@ -1,6 +1,6 @@
 <?php
 $pageTitle = __('Collections');
-echo head(array('title'=>$pageTitle,'bodyid'=>'collections','bodyclass' => 'browse'));
+echo head(array('title'=>$pageTitle,'id'=>'collections','class' => 'browse'));
 ?>
 <h1><?php echo $pageTitle; ?></h1>
 

@@ -15,8 +15,8 @@ $errorMessage = __(
 $pageTitle = __('404 Not Found');
 $headVars = array(
 	'title' => $pageTitle,
-	'bodyid' => '404',
-	'bodyclass' => 'error 404'
+	'id' => '404',
+	'class' => 'error 404'
 	);
 
 // == Content begins here =====================================================

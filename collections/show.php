@@ -1,8 +1,8 @@
 <?php
 echo head(array(
   'title' => metadata('collection', array('Dublin Core', 'Title')),
-  'bodyid' => 'collections',
-  'bodyclass' => 'show'
+  'id' => 'collections',
+  'class' => 'show'
   ));
 
 $total_items = get_current_record('collection')->totalItems();

@@ -7,8 +7,8 @@
  *
  * This partial template looks for the following variables:
  *  - $title
- *  - $bodyid
- *  - $bodyclass
+ *  - $id
+ *  - $class
  */
 
 // == Set variables for this template =========================================
@@ -16,8 +16,8 @@ $headVars = array(
   'title' => isset($title) ? $title : null
   );
 $bodyVars = array(
-  'bodyid' => isset($bodyid) ? $bodyid : null,
-  'bodyclass' => isset($bodyclass) ? $bodyclass : null,
+  'id' => isset($id) ? $id : null,
+  'class' => isset($class) ? $class : null,
   );
 
 // == Content begins here =====================================================

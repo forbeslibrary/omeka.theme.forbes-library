@@ -1,8 +1,8 @@
 <?php
 $headOptions = array(
 	'title' => html_escape(metadata('exhibit', 'title') . ' : ' . metadata('exhibit_page', 'title')),
-	'bodyid' => 'exhibit',
-	'bodyclass' => 'show'
+	'id' => 'exhibit',
+	'class' => 'show'
 );
 ?>
 <?php echo head($headOptions); ?>

@@ -1,6 +1,6 @@
 <?php
 $pageTitle = __('View Item Tags');
-echo head(array('title'=>$pageTitle,'bodyid'=>'items','bodyclass'=>'tags'));
+echo head(array('title'=>$pageTitle,'id'=>'items','class'=>'tags'));
 ?>
 <h1><?php echo $pageTitle;?></h1>
 <?php common('browse-navigation', array('pageTitle'=>$pageTitle), 'items')?>

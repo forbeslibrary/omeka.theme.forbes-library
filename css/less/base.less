@@ -11,6 +11,7 @@
 @import (inline) 'normalize.css';
 @import 'mixins';
 @import 'elements';
+@import 'exhibits';
 @import 'header';
 @import 'home';
 @import 'menu';
@@ -132,51 +133,6 @@
 .collections-show-more-items-line a {
 	.button();
 	display: block;
-}
-/* !-- Exhibits ---------------------------------------------------------- */
-.exhibit-page-nav {
-	a {
-		text-decoration: none;
-	}
-	li {
-		list-style: none;
-		display: inline-block;
-		margin: 0 1em 0 0;
-	}
-	ul {
-		padding: 0;
-		margin: 0;
-	}
-	&>li {
-		display: block;
-		margin: 0;
-		ul {
-			border-bottom: 1px solid @accentColor;
-		}
-	}
-	li.current {
-		font-weight: bold;
-	}
-	.exhibit-title {
-		font-size: 130%;
-		font-weight: bold;
-		width: 100%;
-		display: block;
-		.fancy-heading()
-	}
-
-}
-.exhibit-child-nav li {
-	list-style: none;
-	display: inline-block;
-	margin: 0 1em 0 0;
-}
-body.exhibits #content h1 {
-	.fancy-heading();
-}
-// the following rules overide Exhibit Builder defaults
-#exhibit-pages ul {
-	margin: 0;
 }
 /* !--Items -------------------------------------------------------------- */
 .items-more-info-link {

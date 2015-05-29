@@ -3,7 +3,7 @@ $title       = metadata($item, array('Dublin Core', 'Title'));
 $identifier  = metadata($item, array('Dublin Core', 'Identifier'));
 $description = metadata($item, array('Dublin Core', 'Description'));
 ?>
-<?php echo head(array('title' => $title, 'bodyid'=>'items','bodyclass' => 'show')); ?>
+<?php echo head(array('title' => $title, 'id'=>'items','class' => 'show')); ?>
 <?php if ($title): ?>
   <h2><?php echo $title; ?></h2>
   Image ID: <?php echo $identifier; ?>
