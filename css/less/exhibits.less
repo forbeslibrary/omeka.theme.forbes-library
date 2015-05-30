@@ -38,18 +38,32 @@
 body#exhibit #content h1 {
 	.fancy-heading();
 }
+#exhibit-page-navigation .previous-page,
+#exhibit-page-navigation .next-page {
+	.button();
+}
 nav#exhibit-pages {
 	background-color: mix(@accentColor, @bgColor, 10%);
 	border: 1px @contrastColor solid;
 	margin: 1em 0;
 	padding: 0.5em;
 	box-sizing: border-box;
+	font-weight: bold;
 	li {
 		list-style: none;
 	}
 	ul {
 		margin: 0;
 		padding: 0 0 0 1em;
+	}
+	&>ul>li {
+		.screenSizeMedium({
+			display:inline-block;
+			vertical-align: top;
+		});
+		.screenSizeLarge({
+			display: inherit;
+		});
 	}
 	.screenSizeLarge({
 		width: 25%;
