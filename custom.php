@@ -121,14 +121,16 @@ class ForbesTheme {
       $featured_exhibits = get_records('exhibit', array('featured' => true));
 
       if (count($featured_exhibits) > 1) {
-        $html .= '<h3>' . __('More Featured Collections') . '</h3><ul>';
+        $html .= '<details class="additional-features">';
+        $html .= '<summary><h3>' . __('More Featured Collections') . '</h3><summary>';
+        $html .= '<ul>';
         foreach ($featured_exhibits as $e) {
           if ($e->id == $exhibit->id) {
             continue; // skip this record
           }
           $html .= '<li>' . exhibit_builder_link_to_exhibit($e) . '</li>';
         }
-        $html .= '</ul>';
+        $html .= '</ul></details>';
       }
 
       return $html;
@@ -161,7 +163,9 @@ class ForbesTheme {
         $featured_items = get_records('item', array('featured' => true));
 
         if (count($featured_items) > 1) {
-          $html .= '<h3>' . __('More Featured Items') . '</h3><ul>';
+          $html .= '<details class="additional-features">';
+          $html .= '<summary><h3>' . __('More Featured Items') . '</h3></summary>';
+          $html .= '<ul>';
           foreach ($featured_items as $i) {
             if ($i->id == $item->id) {
               continue; // skip this record
@@ -169,7 +173,7 @@ class ForbesTheme {
             set_current_record('item',$i);
             $html .= '<li>' . link_to_item() . '</li>';
           }
-          $html .= '</ul>';
+          $html .= '</ul></summary>';
         }
 
         return $html;
@@ -196,7 +200,9 @@ class ForbesTheme {
           $featured_collections = get_records('collection', array('featured' => true));
 
           if (count($featured_collections) > 1) {
-            $html .= '<h3>' . __('More Featured Collections') . '</h3><ul>';
+            $html .= '<details class="additional-features">';
+            $html .= '<summary><h3>' . __('More Featured Collections') . '</h3></summary>';
+            $html .= '<ul>';
             foreach ($featured_collections as $c) {
               if ($c->id == $collection->id) {
                 continue; // skip this record
@@ -204,7 +210,7 @@ class ForbesTheme {
               set_current_record('collection',$c);
               $html .= '<li>' . link_to_collection() . '</li>';
             }
-            $html .= '</ul>';
+            $html .= '</ul></details>';
           }
 
           return $html;
