@@ -4,7 +4,7 @@
 		<h2><?php echo metadata($item, array('Dublin Core', 'Title')); ?></h2>
 
 		<!-- item section thumbnail -->
-	  <?php $thumbnail = (metadata($item, 'has thumbnail') ? item_image('thumbnail', array('class'=>'thumbnail')) :  '<img src="'.img('image-not-available.png').'">' ); ?>
+	  <?php $thumbnail = (metadata($item, 'has thumbnail') ? item_image('thumbnail', array('class'=>'thumbnail')) :  '<img src="'.img('fallback-file.png').'">' ); ?>
 		<?php echo $thumbnail; ?>
 
 		<!-- item section metadata -->
