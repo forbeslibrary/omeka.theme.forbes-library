@@ -5,7 +5,16 @@ $description = metadata($item, array('Dublin Core', 'Description'));
 ?>
 <?php echo head(array('title' => $title, 'id'=>'items','class' => 'show')); ?>
 <?php if ($title): ?>
-	<h2><?php echo $title; ?></h2>
+	<h2>
+		<?php echo $title; ?>
+		<?php if (is_allowed($item, 'edit')): ?>
+			<div class="edit-link">
+				<a href="<?php echo admin_url('items/edit/' . metadata('item', 'id')); ?>">
+					<?php echo __('edit item'); ?>
+				</a>
+			</div>
+		<?php endif; ?>
+	</h2>
 	Image ID: <?php echo $identifier; ?>
 <?php else: ?>
 	<h2>Image ID: <?php echo $identifier; ?></h2>
