@@ -1,8 +1,15 @@
 <?php echo head(array('title' => metadata('exhibit', 'title'), 'id' => 'exhibit', 'class' => 'summary')); ?>
 
-<h1>
+<h2>
 	<?php echo metadata('exhibit', 'title'); ?>
-</h1>
+	<?php if (is_allowed($exhibit, 'edit')): ?>
+		<div class="edit-link">
+			<a href="<?php echo admin_url('exhibits/edit/' . metadata('exhibit', 'id')); ?>">
+				<?php echo __('edit exhibit'); ?>
+			</a>
+		</div>
+	<?php endif; ?>
+</h2>
 <?php set_exhibit_pages_for_loop_by_exhibit(); ?>
 <?php if (has_loop_records('exhibit_page')): ?>
 <nav id="exhibit-pages">

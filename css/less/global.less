@@ -52,9 +52,19 @@
 	float: left;
 	margin: 0.5em 1em 1em 1em;
 }
-.edit-link a {
-	.button();
-	float: right;
+.edit-link {
+	a {
+		.button();
+		float: right;
+	}
+	h2 & {
+		display: inline-block;
+		vertical-align: middle;
+		font-size: 60%;
+		a {
+			color: #fff;
+		}
+	}
 }
 .hTagcloud ul {
 	margin-top: 0;

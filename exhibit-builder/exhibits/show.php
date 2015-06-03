@@ -6,9 +6,16 @@ $headOptions = array(
 );
 ?>
 <?php echo head($headOptions); ?>
-<h1>
+<h2>
 	<?php echo link_to_exhibit(); ?>
-</h1>
+	<?php if (is_allowed($exhibit, 'edit')): ?>
+		<div class="edit-link">
+			<a href="<?php echo admin_url('exhibits/edit/' . metadata('exhibit', 'id')); ?>">
+				<?php echo __('edit exhibit'); ?>
+			</a>
+		</div>
+	<?php endif; ?>
+</h2>
 <?php $thisPage = $exhibitPage = get_current_record('exhibit_page'); ?>
 <?php set_exhibit_pages_for_loop_by_exhibit(); ?>
 <?php if (has_loop_records('exhibit_page')): ?>
