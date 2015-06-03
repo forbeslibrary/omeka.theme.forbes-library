@@ -112,5 +112,4 @@ echo __('%1$s %2$s your search for items %3$s.',
 	($total_results==1 ? __('item matches') : __('items match')),
 	implode(__(' AND '), $limits)
 );
-?>
-<?php endif; ?>
+endif;
