@@ -1,4 +1,15 @@
 <?php
+
+/**
+ * items/search-summary.php template for the forbes-library Omeka theme
+ *
+ * A partial template called by items/browse.php. This template describes the
+ * search query, if any, in a human readable form.
+ *
+ * This template looks for the following variables
+ * - $total_results : total number of matching items (not just on this page)
+ */
+
 if (isset($_GET['search']) && $_GET['search']!='') {
 	$limits[] = __(
 		'with at least one of the words in the query "%s"',
@@ -46,7 +57,7 @@ if (isset($_GET['collection']) && $_GET['collection']!='') {
 	}
 }
 if (isset($_GET['type']) && $_GET['type']!='') {
-				$type_id = $_GET['type'];
+	$type_id = $_GET['type'];
 	$table = get_db()->getTable('ItemType');
 	$type_name = $table->find($type_id)->name;
 	if ($type_name) {
