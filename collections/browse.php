@@ -37,7 +37,8 @@ echo head($headOptions);
 		array(
 			'sort_field' => $sort_field,
 			'sort_dir' => $sort_dir
-		)
+		),
+		null
 	)
 ); ?>
 
