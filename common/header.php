@@ -79,7 +79,7 @@ $bodyVars = array(
         </form>
 
         <!-- main menu -->
-        <?php echo public_nav_main(); ?>
+        <div id="main-menu"><?php echo public_nav_main(); ?></div>
         </div>
       </div>
     </nav>
