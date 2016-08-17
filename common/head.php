@@ -1,7 +1,23 @@
+<?php
+
+/**
+ * head.php template for the forbes-library Omeka theme
+ *
+ * Outputs the head tag.
+ *
+ * This partial template looks for the following variables:
+ * - title
+ */
+
+// == Set variables for this template =========================================
+$title = isset($title) ? $title . ' | ' : '';
+$title = $title . option('site_title');
+
+
+// == Content begins here =====================================================
+?>
 <!-- common/head -->
 <head>
-	<?php $forbesThemeSession = new Zend_Session_Namespace('forbes_theme'); ?>
-
 	<!-- meta tags -->
 	<?php
 	$this->headMeta()->setCharset('utf-8');
@@ -11,27 +27,22 @@
 	}
 	echo $this->headMeta();
 	?>
-	
+
 	<!-- title -->
 	<title>
-	<?php
-	if (isset($title)) {
-		echo strip_formatting($title).' | ';	
-	}
-	echo option('site_title');
-	?>
+		<?php echo $title; ?>
 	</title>
 
 	<!-- link tags -->
 	<?php
 	echo auto_discovery_link_tags();
-	echo forbes_theme_favicon_link_tag();
-	echo forbes_theme_largeicon_link_tag();
+	echo ForbesTheme::favicon_link_tag();
+	echo ForbesTheme::largeicon_link_tag();
 	?>
-	
+
 	<!-- plugin hook: public_head -->
 	<?php fire_plugin_hook('public_head', array('view'=>$this)); ?>
-	
+
 	<!-- stylesheets -->
 	<?php
 	$banner_image = get_theme_option('banner');
@@ -44,9 +55,8 @@
 	queue_css_file('style');
 	echo head_css();
 	?>
-	
+
 	<!-- scripts -->
 	<?php echo head_js(); ?>
 </head>
 <!-- end common/head -->
-

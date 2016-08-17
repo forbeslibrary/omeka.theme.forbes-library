@@ -1,17 +1,26 @@
 <?php
-$title       = metadata($item, array('Dublin Core', 'Title'));
-$identifier  = metadata($item, array('Dublin Core', 'Identifier'));
+$title			 = metadata($item, array('Dublin Core', 'Title'));
+$identifier	= metadata($item, array('Dublin Core', 'Identifier'));
 $description = metadata($item, array('Dublin Core', 'Description'));
 ?>
-<?php echo head(array('title' => $title, 'bodyid'=>'items','bodyclass' => 'show')); ?>
+<?php echo head(array('title' => $title, 'id'=>'items','class' => 'show')); ?>
 <?php if ($title): ?>
-  <h2><?php echo $title; ?></h2>
-  Image ID: <?php echo $identifier; ?>
+	<h2>
+		<?php echo $title; ?>
+		<?php if (is_allowed($item, 'edit')): ?>
+			<div class="edit-link">
+				<a href="<?php echo admin_url('items/edit/' . metadata('item', 'id')); ?>">
+					<?php echo __('edit item'); ?>
+				</a>
+			</div>
+		<?php endif; ?>
+	</h2>
+	Image ID: <?php echo $identifier; ?>
 <?php else: ?>
-  <h2>Image ID: <?php echo $identifier; ?></h2>
+	<h2>Image ID: <?php echo $identifier; ?></h2>
 <?php endif; ?>
 <?php if (function_exists('forbes_purchase_form_public_append_to_items_show')): ?>
-  <?php echo forbes_purchase_form_public_append_to_items_show(); ?>
+	<?php echo forbes_purchase_form_public_append_to_items_show(); ?>
 <?php endif; ?>
 <div id="files-container">
 	<!-- The following returns all of the files associated with an item. -->
@@ -30,7 +39,7 @@ $description = metadata($item, array('Dublin Core', 'Description'));
 <div id="item-metadata-wrapper">
 	<h3 id="item-metadata-button" class="_toggle_button">Image Details</h3>
 	<div id="item-metadata" class="_toggle">
-    <?php echo all_element_texts($item); ?>
+		<?php echo all_element_texts($item); ?>
 	</div>
 </div>
 <!-- The following prints a citation for this item. -->

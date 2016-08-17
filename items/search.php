@@ -1,13 +1,26 @@
 <?php
+
+/**
+ * items/search.php template for the forbes-library Omeka theme
+ *
+ * Outputs a the items search page (advanced search).
+ */
+
+// == Set variables for this template =========================================
 $pageTitle = __('Search Items');
-echo head(array('title' => $pageTitle,
-'bodyclass' => 'items advanced-search'));
+$headOptions = array(
+	'title' => $pageTitle,
+	'class' => 'items advanced-search'
+);
+// == Content begins here =====================================================
 ?>
-
-<h1><?php echo $pageTitle; ?></h1>
-
+<?php echo head($headOptions); ?>
+<h1>
+	<?php echo $pageTitle; ?>
+</h1>
 <?php echo $this->partial('items/search-form.php',
-array('formAttributes' =>
-array('id'=>'advanced-search-form'))); ?>
-
+	array('formAttributes' =>
+		array('id'=>'advanced-search-form')
+	)
+); ?>
 <?php echo foot(); ?>

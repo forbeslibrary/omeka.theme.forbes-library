@@ -1,0 +1,60 @@
+.pagination {
+	font-size:.9em;
+	width:auto;
+	padding:0;
+	clear:both;
+	li {
+			display:inline;
+			padding:0 .25em;
+	}
+	li.pagination_previous {
+		padding-right: 1em;
+		::before {
+			content: "\25C0";
+			margin-right: 0.5em;
+		}
+	}
+	li.pagination_next {
+		padding-left: 1em;
+		::after {
+			content: "\25b6";
+			margin-left: 0.5em;
+		}
+	}
+	a,
+	ul {
+			display:inline;
+			margin: 0;
+			padding: 0;
+			text-decoration: none;
+	}
+	a {
+		.button();
+	}
+	li.pagination_current {
+		.button(mix(@bgColor, @mainColor, 90%); mix(@bgColor, @mainColor, 90%));
+		font-weight: 900;
+		border: solid 1px @contrastColor;
+		//padding: 4px 8px;
+		//margin: 0 4px;
+		//background-color: mix(@bgColor, @mainColor, 90%);
+		//border-bottom: @mainColor solid 1px;
+		//border-top: @mainColor solid 1px;
+	}
+}
+
+// position top pagination on the right on large screens.
+@paginationForLargeScreens: {
+	#content {
+		position: relative;
+	}
+
+	#pagination-top {
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
+};
+.screenSizeLarge({
+	@paginationForLargeScreens();
+});

@@ -1,12 +1,33 @@
 <?php
-$forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
+
+/**
+ * header.php template for the forbes-library Omeka theme
+ *
+ * Outputs the 'top' of the HTML file, up until the content begins
+ *
+ * This partial template looks for the following variables:
+ *  - $title
+ *  - $id
+ *  - $class
+ */
+
+// == Set variables for this template =========================================
+$headVars = array(
+  'title' => isset($title) ? $title : null
+  );
+$bodyVars = array(
+  'id' => isset($id) ? $id : null,
+  'class' => isset($class) ? $class : null,
+  );
+
+// == Content begins here =====================================================
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo get_html_lang(); ?>">
 
-<?php echo common('head'); ?>
+<?php echo common('head', $headVars); ?>
 
-<?php echo body_tag(array('id' => @$bodyid, 'class' => @$bodyclass)); ?>
+<?php echo body_tag($bodyVars); ?>
   <!-- plugin hook 'public_body' -->
   <?php fire_plugin_hook('public_body', array('view'=>$this)); ?>
   <div id="wrapper">
@@ -31,8 +52,16 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
 
     <!-- navigation -->
     <nav id="top-level-nav" class="menu_bar">
-      <h2 class="navigation-label"><a href="<?php echo url('?nav=True');?>"><?php echo __('Navigation'); ?></a></h2>
-      <span class="nav-jump-to-content"><a href="#content" tabindex="0"><?php echo __('Skip to content') ?></a></span>
+      <h2 class="navigation-label">
+        <a href="<?php echo url('?nav=True');?>">
+          <?php echo __('Navigation'); ?>
+        </a>
+      </h2>
+      <span class="nav-jump-to-content">
+        <a href="#content" tabindex="0">
+          <?php echo __('Skip to content') ?>
+        </a>
+      </span>
       <input type="checkbox" id="toggle" />
       <div>
         <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
@@ -40,7 +69,7 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
         <!-- custom navigation links as defined in the theme configuration -->
         <div class="menu">
         <div id="header-buttons">
-          <?php echo forbes_theme_public_header_nav(); ?>
+          <?php echo ForbesTheme::public_header_nav(); ?>
         </div>
 
         <!-- simple search form -->
@@ -50,10 +79,7 @@ $forbesThemeSession = new Zend_Session_Namespace('forbes_theme');
         </form>
 
         <!-- main menu -->
-        <?php
-        $menu = public_nav_main();
-        echo $menu;
-        ?>
+        <div id="main-menu"><?php echo public_nav_main(); ?></div>
         </div>
       </div>
     </nav>
