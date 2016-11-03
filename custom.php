@@ -155,7 +155,7 @@ class ForbesTheme {
   			}
   			$html = '<h2>' . __('Featured Item') . '</h2>' .
           '<h3>' . $title . '</h3>' .
-          '<img alt=' . $title . ' src=' . $file_uri . '>' .
+          '<img alt="' . $title . '" src="' . $file_uri . '">' .
           '<div class="description">' . ForbesTheme::summary(metadata('item', array('Dublin Core', 'Description'))) . '</div>';
 
         $html = link_to_item($html);
