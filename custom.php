@@ -286,6 +286,13 @@ class ForbesTheme {
     #put all opened tags into an array
     preg_match_all ( "#<([a-z]+)( .*)?(?!/)>#iU", $html, $result );
     $openedtags = $result[1];
+    # remove tags that should not be closed
+    $dont_close = array('img','meta','br','hr');
+    foreach ($dont_close as $tag) {
+      foreach (array_keys($openedtags, $tag) as $key) {
+        unset($openedtags[$key]);
+      }
+    }
     #put all closed tags into an array
     preg_match_all ( "#</([a-z]+)>#iU", $html, $result );
     $closedtags = $result[1];
