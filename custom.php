@@ -173,7 +173,7 @@ class ForbesTheme {
             set_current_record('item',$i);
             $html .= '<li>' . link_to_item() . '</li>';
           }
-          $html .= '</ul></summary>';
+          $html .= '</ul></details>';
         }
 
         return $html;
