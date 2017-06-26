@@ -51,7 +51,7 @@ echo head($headOptions);
 				<?php echo metadata('collection', array('Dublin Core', 'Title')); ?>
 			</h2>
 			<div class="element-text description">
-				<?php echo ForbesTheme::summary(text_to_paragraphs(metadata('collection', array('Dublin Core', 'Description')))); ?>
+				<?php echo ForbesTheme::summary(metadata('collection', array('Dublin Core', 'Description'))); ?>
 			</div>
 		</a>
 
