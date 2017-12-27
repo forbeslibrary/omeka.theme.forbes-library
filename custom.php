@@ -8,6 +8,15 @@
  * The ForbesTheme class contains static methods used by the theme's templates
  */
 class ForbesTheme {
+  private static $tidy;
+  private static $tidy_config;
+
+  public static function static_init() {
+    self::$tidy = new tidy();
+    self::$tidy_config= array(
+      'show-body-only' => TRUE
+    );
+  }
 
   /**
    * Whether or not the current page is a search results page.
@@ -265,56 +274,24 @@ class ForbesTheme {
   /**
    * Truncates text at the wordpress style <!-- more --> tag.
    */
-  public static function summary($html) {
+  public static function summary($html, $strip_anchors = false) {
+    //truncate at <!-- more -->
     $pattern = '/^(.*)<!--\s*more/is';
     preg_match($pattern, $html, $matches);
     if (isset ($matches[1])) {
-      return ForbesTheme::closetags($matches[1]);
-    } else {
-      return $html;
+      $html = $matches[1];
     }
+
+    if ($strip_anchors) {
+      // Remove anchor tags (the invalid tags will be cleaned up by tidy)
+      $html = str_ireplace('<a','<invalid', $html);
+      $html = str_ireplace('</a>','</invalid>', $html);
+    }
+
+    $html = self::$tidy->repairString($html, self::$tidy_config, 'utf8');
+    return $html;
   }
 
-  /**
-   * Close open html tags.
-   *
-   * Note that this is not a general HTML cleanup tool and will not help if the tags are improperly nested.
-   * It's intended function is only to close tags when a fragment of valid HTML must be inserted into markup.
-   */
-   // close opened html tags
-  public static function closetags($html) {
-    #put all opened tags into an array
-    preg_match_all ( "#<([a-z]+)( .*)?(?!/)>#iU", $html, $result );
-    $openedtags = $result[1];
-    # remove tags that should not be closed
-    $dont_close = array('img','meta','br','hr');
-    foreach ($dont_close as $tag) {
-      foreach (array_keys($openedtags, $tag) as $key) {
-        unset($openedtags[$key]);
-      }
-    }
-    #put all closed tags into an array
-    preg_match_all ( "#</([a-z]+)>#iU", $html, $result );
-    $closedtags = $result[1];
-    $len_opened = count ( $openedtags );
-    # all tags are closed
-    if( count ( $closedtags ) == $len_opened )
-    {
-    return $html;
-    }
-    $openedtags = array_reverse ( $openedtags );
-    # close tags
-    for( $i = 0; $i < $len_opened; $i++ )
-    {
-        if ( !in_array ( $openedtags[$i], $closedtags ) )
-        {
-        $html .= "</" . $openedtags[$i] . ">";
-        }
-        else
-        {
-        unset ( $closedtags[array_search ( $openedtags[$i], $closedtags)] );
-        }
-    }
-    return $html;
-  }
 }
+
+ForbesTheme::static_init();
