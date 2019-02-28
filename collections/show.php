@@ -24,12 +24,12 @@ $link_to_all_items_in_collection = link_to_items_in_collection(
 	</div>
 </section>
 
-<?php $collectors = metadata('collection', array('Dublin Core', 'Contributor')); ?>
-<?php if ($collectors): ?>
+<?php $contributors = metadata('collection', array('Dublin Core', 'Contributor')); ?>
+<?php if ($contributors): ?>
 <section>
-	<h2><?php echo __('Collector(s)'); ?></h2>
+	<h2><?php echo __('Contributor(s)'); ?></h2>
 	<ul>
-		<li><?php echo $collectors; ?></li>
+		<li><?php echo $contributors; ?></li>
 	</ul>
 </section>
 <?php endif; ?>
