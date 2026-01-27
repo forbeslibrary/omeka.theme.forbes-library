@@ -195,8 +195,8 @@ class ForbesTheme {
    */
   public static function display_random_featured_collection() {
       $collection = get_random_featured_collection();
-      set_current_record('collection', $collection);
       if ($collection) {
+          set_current_record('collection', $collection);
           $title = metadata($collection, array('Dublin Core', 'Title'));
           $description = metadata($collection, array('Dublin Core', 'Description'));
           $html = '<header>' .
