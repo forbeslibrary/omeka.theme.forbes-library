@@ -150,7 +150,7 @@ class ForbesTheme {
    */
   public static function display_random_featured_item() {
       $item_array = get_random_featured_items(1);
-      $item = $item_array[0];
+      $item = $item_array[0] ?? null;
       if ($item) {
   			set_current_record('item',$item);
   			$title = metadata('item', array('Dublin Core', 'Title'));
