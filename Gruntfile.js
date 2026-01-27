@@ -4,10 +4,6 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
 
-    phplint: {
-      php: ["**/*.php"],
-    },
-
     less: {
       less: {
         files: {
@@ -37,18 +33,11 @@ module.exports = function(grunt) {
         tasks: ['less'],
       },
     },
-
-    githooks: {
-      all: {
-        // Will run the jshint and test:unit tasks at every commit
-        'pre-commit': ['phplint', 'less']
-      }
-    }
   });
 
   require("load-grunt-tasks")(grunt);
 
   // Default task(s).
-  grunt.registerTask('default', ['phplint', 'less', 'compress']);
+  grunt.registerTask('default', ['less', 'compress']);
 
 };
