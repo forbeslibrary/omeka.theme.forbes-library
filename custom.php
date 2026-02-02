@@ -157,15 +157,22 @@ class ForbesTheme {
   			if ($creator = metadata('item', array('Dublin Core', 'Creator'))) {
   					$creator =  '<p>' . __('Creator: %s.', $creator) . '</p>';
   			}
-  			$files = $item->Files;
-  			foreach($files as $file) {
-  				$file_uri = file_display_url($file);
-  				break;
-  			}
-  			$html = '<h2>' . __('Featured Item') . '</h2>' .
-          '<h3>' . $title . '</h3>' .
-          '<img alt="' . $title . '" src="' . $file_uri . '">' .
-          '<div class="description">' . ForbesTheme::summary(metadata('item', array('Dublin Core', 'Description'))) . '</div>';
+
+        $files = $item->getFiles();
+        if (count($files) == 0) {
+          $file_uri = null;
+        } else {
+          $file_uri = file_display_url(array_values($files)[0]);
+        }
+        
+        $html = '<h2>' . __('Featured Item') . '</h2>';
+        $html .= '<h3>' . $title . '</h3>';
+
+        if ($file_uri) {
+          $html = '<img alt="' . $title . '" src="' . $file_uri . '">';
+        }
+
+        $html .= '<div class="description">' . ForbesTheme::summary(metadata('item', array('Dublin Core', 'Description'))) . '</div>';
 
         $html = link_to_item($html);
 
